@@ -1,0 +1,1615 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Writing Data Frames to Files &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Joining Data Frames" href="11_joining_data_frames.html" />
+    <link rel="prev" title="Performing Grouped Aggregations" href="09_performing_grouped_aggregations.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/09_list_of_dicts.html">
+   List of dicts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../19_project_web_scraping_into_database/08_setup_database.html">
+   Setup Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/02_overview_of_list_and_set.html">
+   Overview of list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/03_create_database_and_users_table.html">
+   Create Database and Users Table
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_creating_data_frames_from_lists.html">
+     Creating Data Frames from lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_data_frames_basic_operations.html">
+     Data Frames - Basic Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_projecting_and_filtering.html">
+     Projecting and Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_exercises_pandas_data_frames.html">
+     Exercises - Pandas Data Frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_csv_to_pandas_data_frame.html">
+     CSV to Pandas Data Frame
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_performing_total_aggregations.html">
+     Performing Total Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_series.html">
+     Overview of Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_pandas_data_structures_overview.html">
+     Pandas Data Structures – Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_performing_grouped_aggregations.html">
+     Performing Grouped Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Writing Data Frames to Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_joining_data_frames.html">
+     Joining Data Frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/09_leveraging_google%E2%80%99s_colab.html">
+   Leveraging Google’s Colab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/03_constructors.html">
+   Constructors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/06_formatting_strings.html">
+   Formatting Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/04_recap_of_insert.html">
+   Recap of Insert
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/03_creating_database_table.html">
+   Creating Database Table
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/02_function_get_database_connection.html">
+   Function - Get Database Connection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/19_preparing_database.html">
+   Preparing Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/22_best_practices.html">
+   Best Practices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/05_operators_in_python.html">
+   Operators in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_overview_of_gcp_and_provision_ubuntu_vm/06_setup_docker.html">
+   Setup Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/08_updating_existing_table_data.html">
+   Update Existing Table Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_setup_postgres_db/08_sql_workbench_features.html">
+   SQL Workbench Features
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/06_varying_arguments.html">
+   Varying Arguments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_web_scraping_using_beautifulsoup/07_creating_data_frame.html">
+   Creating Data Frame
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/08_develop_myReduceByKey.html">
+   Develop myReduceByKey
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/05_overview_of_editors_and_ides.html">
+   Overview of Editors and IDEs
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/15_overview_of_pandas_libraries/10_writing_data_frames_to_files.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F15_overview_of_pandas_libraries/10_writing_data_frames_to_files.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/15_overview_of_pandas_libraries/10_writing_data_frames_to_files.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/15_overview_of_pandas_libraries/10_writing_data_frames_to_files.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="writing-data-frames-to-files">
+<h1>Writing Data Frames to Files<a class="headerlink" href="#writing-data-frames-to-files" title="Permalink to this headline">¶</a></h1>
+<p>Pandas also provides simple APIs to write the data back to files.</p>
+<ul class="simple">
+<li><p>Let us write the revenue per order along with order_id to a file.</p></li>
+</ul>
+<p>Here are the steps which you need to follow before writing Data Frame to a file.</p>
+<ul class="simple">
+<li><p>Make sure you have the Data Frame that is supposed to be written to file.</p></li>
+<li><p>You need to ensure that you have write permissions on the folder under which files are supposed to be written.</p></li>
+<li><p>Make sure to use appropriate key word arguments to write the Data Frame into file as per the requirements.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> 06_csv_to_pandas_data_frame.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>order_items.to_csv<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+order_items<span class=" -Color -Color-Blue">.</span>to_csv<span class=" -Color -Color-Blue">(</span>
+    path_or_buf<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> pathlib<span class=" -Color -Color-Blue">.</span>Path<span class=" -Color -Color-Blue">,</span> IO<span class=" -Color -Color-Blue">[~</span>AnyStr<span class=" -Color -Color-Blue">],</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    sep<span class=" -Color -Color-Blue">:</span>str<span class=" -Color -Color-Blue">=&#39;,&#39;,</span>
+    na_rep<span class=" -Color -Color-Blue">:</span>str<span class=" -Color -Color-Blue">=&#39;&#39;,</span>
+    float_format<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    columns<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>Sequence<span class=" -Color -Color-Blue">[</span>collections<span class=" -Color -Color-Blue">.</span>abc<span class=" -Color -Color-Blue">.</span>Hashable<span class=" -Color -Color-Blue">],</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    header<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>bool<span class=" -Color -Color-Blue">,</span> List<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">]]=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    index<span class=" -Color -Color-Blue">:</span>bool<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    index_label<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>bool<span class=" -Color -Color-Blue">,</span> str<span class=" -Color -Color-Blue">,</span> Sequence<span class=" -Color -Color-Blue">[</span>collections<span class=" -Color -Color-Blue">.</span>abc<span class=" -Color -Color-Blue">.</span>Hashable<span class=" -Color -Color-Blue">],</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    mode<span class=" -Color -Color-Blue">:</span>str<span class=" -Color -Color-Blue">=&#39;w&#39;,</span>
+    encoding<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    compression<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> Mapping<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> str<span class=" -Color -Color-Blue">],</span> NoneType<span class=" -Color -Color-Blue">]=&#39;infer&#39;,</span>
+    quoting<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>int<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    quotechar<span class=" -Color -Color-Blue">:</span>str<span class=" -Color -Color-Blue">=&#39;&quot;&#39;,</span>
+    line_terminator<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    chunksize<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>int<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    date_format<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    doublequote<span class=" -Color -Color-Blue">:</span>bool<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    escapechar<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    decimal<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=&#39;.&#39;,</span>
+    errors<span class=" -Color -Color-Blue">:</span>str<span class=" -Color -Color-Blue">=&#39;strict&#39;,</span>
+<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Write object to a comma-separated values (csv) file.
+
+.. versionchanged:: 0.24.0
+    The order of arguments for Series was changed.
+
+Parameters
+----------
+path_or_buf : str or file handle, default None
+    File path or object, if None is provided the result is returned as
+    a string.  If a file object is passed it should be opened with
+    `newline=&#39;&#39;`, disabling universal newlines.
+
+    .. versionchanged:: 0.24.0
+
+       Was previously named &quot;path&quot; for Series.
+
+sep : str, default &#39;,&#39;
+    String of length 1. Field delimiter for the output file.
+na_rep : str, default &#39;&#39;
+    Missing data representation.
+float_format : str, default None
+    Format string for floating point numbers.
+columns : sequence, optional
+    Columns to write.
+header : bool or list of str, default True
+    Write out the column names. If a list of strings is given it is
+    assumed to be aliases for the column names.
+
+    .. versionchanged:: 0.24.0
+
+       Previously defaulted to False for Series.
+
+index : bool, default True
+    Write row names (index).
+index_label : str or sequence, or False, default None
+    Column label for index column(s) if desired. If None is given, and
+    `header` and `index` are True, then the index names are used. A
+    sequence should be given if the object uses MultiIndex. If
+    False do not print fields for index names. Use index_label=False
+    for easier importing in R.
+mode : str
+    Python write mode, default &#39;w&#39;.
+encoding : str, optional
+    A string representing the encoding to use in the output file,
+    defaults to &#39;utf-8&#39;.
+compression : str or dict, default &#39;infer&#39;
+    If str, represents compression mode. If dict, value at &#39;method&#39; is
+    the compression mode. Compression mode may be any of the following
+    possible values: {&#39;infer&#39;, &#39;gzip&#39;, &#39;bz2&#39;, &#39;zip&#39;, &#39;xz&#39;, None}. If
+    compression mode is &#39;infer&#39; and `path_or_buf` is path-like, then
+    detect compression mode from the following extensions: &#39;.gz&#39;,
+    &#39;.bz2&#39;, &#39;.zip&#39; or &#39;.xz&#39;. (otherwise no compression). If dict given
+    and mode is one of {&#39;zip&#39;, &#39;gzip&#39;, &#39;bz2&#39;}, or inferred as
+    one of the above, other entries passed as
+    additional compression options.
+
+    .. versionchanged:: 1.0.0
+
+       May now be a dict with key &#39;method&#39; as compression mode
+       and other entries as additional compression options if
+       compression mode is &#39;zip&#39;.
+
+    .. versionchanged:: 1.1.0
+
+       Passing compression options as keys in dict is
+       supported for compression modes &#39;gzip&#39; and &#39;bz2&#39;
+       as well as &#39;zip&#39;.
+
+quoting : optional constant from csv module
+    Defaults to csv.QUOTE_MINIMAL. If you have set a `float_format`
+    then floats are converted to strings and thus csv.QUOTE_NONNUMERIC
+    will treat them as non-numeric.
+quotechar : str, default &#39;\&quot;&#39;
+    String of length 1. Character used to quote fields.
+line_terminator : str, optional
+    The newline character or character sequence to use in the output
+    file. Defaults to `os.linesep`, which depends on the OS in which
+    this method is called (&#39;\n&#39; for linux, &#39;\r\n&#39; for Windows, i.e.).
+
+    .. versionchanged:: 0.24.0
+chunksize : int or None
+    Rows to write at a time.
+date_format : str, default None
+    Format string for datetime objects.
+doublequote : bool, default True
+    Control quoting of `quotechar` inside a field.
+escapechar : str, default None
+    String of length 1. Character used to escape `sep` and `quotechar`
+    when appropriate.
+decimal : str, default &#39;.&#39;
+    Character recognized as decimal separator. E.g. use &#39;,&#39; for
+    European data.
+errors : str, default &#39;strict&#39;
+    Specifies how encoding and decoding errors are to be handled.
+    See the errors argument for :func:`open` for a full list
+    of options.
+
+    .. versionadded:: 1.1.0
+
+Returns
+-------
+None or str
+    If path_or_buf is None, returns the resulting csv format as a
+    string. Otherwise returns None.
+
+See Also
+--------
+read_csv : Load a CSV file into a DataFrame.
+to_excel : Write DataFrame to an Excel file.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame({&#39;name&#39;: [&#39;Raphael&#39;, &#39;Donatello&#39;],
+...                    &#39;mask&#39;: [&#39;red&#39;, &#39;purple&#39;],
+...                    &#39;weapon&#39;: [&#39;sai&#39;, &#39;bo staff&#39;]})
+&gt;&gt;&gt; df.to_csv(index=False)
+&#39;name,mask,weapon\nRaphael,red,sai\nDonatello,purple,bo staff\n&#39;
+
+Create &#39;out.zip&#39; containing &#39;out.csv&#39;
+
+&gt;&gt;&gt; compression_opts = dict(method=&#39;zip&#39;,
+...                         archive_name=&#39;out.csv&#39;)  # doctest: +SKIP
+&gt;&gt;&gt; df.to_csv(&#39;out.zip&#39;, index=False,
+...           compression=compression_opts)  # doctest: +SKIP
+<span class=" -Color -Color-Red">File:</span>      /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/pandas/core/generic.py
+<span class=" -Color -Color-Red">Type:</span>      method
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">username</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;itversity&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/home/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">/data/retail_db&quot;</span>
+<span class="n">base_dir</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/itversity/data/retail_db&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">base_dir</span><span class="si">}</span><span class="s1">/revenue_per_order&#39;</span>
+<span class="n">output_dir</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/itversity/data/retail_db/revenue_per_order&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+rm -rf /home/`whoami`/data/retail_db/revenue_per_order
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+ls -ltr /home/`whoami`/data/retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s1">&#39;mkdir&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="c1">#ls -ltr /Users/itversity/Research/data/retail_db/revenue_per_order</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;ls&#39;</span><span class="p">,</span> <span class="s1">&#39;-ltr&#39;</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;total 0\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+ls -ltr /data/retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 20156
+drwxr-xr-x 2 root root     4096 Nov 22 16:08 categories
+-rw-r--r-- 1 root root      806 Nov 22 16:08 README.md
+drwxr-xr-x 2 root root     4096 Nov 22 16:08 customers
+-rw-r--r-- 1 root root     1748 Nov 22 16:08 create_db_tables_pg.sql
+-rw-r--r-- 1 root root 10303297 Nov 22 16:08 create_db.sql
+drwxr-xr-x 2 root root     4096 Nov 22 16:08 departments
+drwxr-xr-x 2 root root     4096 Nov 22 16:08 order_items
+-rw-r--r-- 1 root root 10297372 Nov 22 16:08 load_db_tables_pg.sql
+drwxr-xr-x 2 root root     4096 Nov 22 16:08 orders
+drwxr-xr-x 2 root root     4096 Nov 22 16:08 products
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_id</th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>12111</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11318</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68878</th>
+      <td>68879</td>
+      <td>2014-07-09 00:00:00.0</td>
+      <td>778</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68879</th>
+      <td>68880</td>
+      <td>2014-07-13 00:00:00.0</td>
+      <td>1117</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68880</th>
+      <td>68881</td>
+      <td>2014-07-19 00:00:00.0</td>
+      <td>2518</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>68882</td>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>68883</td>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+    </tr>
+  </tbody>
+</table>
+<p>68883 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_order_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>4</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172193</th>
+      <td>172194</td>
+      <td>68881</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>172194</th>
+      <td>172195</td>
+      <td>68882</td>
+      <td>365</td>
+      <td>1</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>172196</td>
+      <td>68882</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>172196</th>
+      <td>172197</td>
+      <td>68883</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>172198</td>
+      <td>68883</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>172198 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">)[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sum</th>
+      <th>min</th>
+      <th>max</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>order_item_order_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>299.98</td>
+      <td>299.98</td>
+      <td>299.98</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>579.98</td>
+      <td>129.99</td>
+      <td>250.00</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>699.85</td>
+      <td>49.98</td>
+      <td>299.95</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1129.86</td>
+      <td>99.96</td>
+      <td>299.98</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>579.92</td>
+      <td>79.95</td>
+      <td>299.98</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68879</th>
+      <td>1259.97</td>
+      <td>129.99</td>
+      <td>999.99</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>68880</th>
+      <td>999.77</td>
+      <td>149.94</td>
+      <td>250.00</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>129.99</td>
+      <td>129.99</td>
+      <td>129.99</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>109.99</td>
+      <td>50.00</td>
+      <td>59.99</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2149.99</td>
+      <td>150.00</td>
+      <td>1999.99</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>57431 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_order_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>4</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172193</th>
+      <td>172194</td>
+      <td>68881</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>172194</th>
+      <td>172195</td>
+      <td>68882</td>
+      <td>365</td>
+      <td>1</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>172196</td>
+      <td>68882</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>172196</th>
+      <td>172197</td>
+      <td>68883</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>172198</td>
+      <td>68883</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>172198 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">)[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span><span class="o">.</span> \
+    <span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_order_id</th>
+      <th>sum</th>
+      <th>min</th>
+      <th>max</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+      <td>299.98</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>579.98</td>
+      <td>129.99</td>
+      <td>250.00</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>699.85</td>
+      <td>49.98</td>
+      <td>299.95</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>1129.86</td>
+      <td>99.96</td>
+      <td>299.98</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7</td>
+      <td>579.92</td>
+      <td>79.95</td>
+      <td>299.98</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>57426</th>
+      <td>68879</td>
+      <td>1259.97</td>
+      <td>129.99</td>
+      <td>999.99</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>57427</th>
+      <td>68880</td>
+      <td>999.77</td>
+      <td>149.94</td>
+      <td>250.00</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>57428</th>
+      <td>68881</td>
+      <td>129.99</td>
+      <td>129.99</td>
+      <td>129.99</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>57429</th>
+      <td>68882</td>
+      <td>109.99</td>
+      <td>50.00</td>
+      <td>59.99</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>57430</th>
+      <td>68883</td>
+      <td>2149.99</td>
+      <td>150.00</td>
+      <td>1999.99</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>57431 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">)[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span><span class="o">.</span> \
+    <span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="s1">&#39;item_count&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">:</span> <span class="s1">&#39;revenue&#39;</span><span class="p">})</span><span class="o">.</span> \
+    <span class="n">to_json</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">/revenue_per_order.json&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+ls -ltr /home/`whoami`/data/retail_db/revenue_per_order
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 4884
+-rw-rw-r-- 1 itversity itversity 4999377 Dec 14 10:54 revenue_per_order.json
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+head -10 /home/`whoami`/data/retail_db/revenue_per_order/revenue_per_order.json
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub data rate exceeded.
+The notebook server will temporarily stop sending output
+to the client in order to avoid crashing it.
+To change this limit, set the config variable
+`--NotebookApp.iopub_data_rate_limit`.
+
+Current values:
+NotebookApp.iopub_data_rate_limit=1000000.0 (bytes/sec)
+NotebookApp.rate_limit_window=3.0 (secs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">)[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span><span class="o">.</span> \
+    <span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="s1">&#39;item_count&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">:</span> <span class="s1">&#39;revenue&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>revenue</th>
+      <th>min</th>
+      <th>max</th>
+      <th>item_count</th>
+    </tr>
+    <tr>
+      <th>order_item_order_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>299.98</td>
+      <td>299.98</td>
+      <td>299.98</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>579.98</td>
+      <td>129.99</td>
+      <td>250.00</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>699.85</td>
+      <td>49.98</td>
+      <td>299.95</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1129.86</td>
+      <td>99.96</td>
+      <td>299.98</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>579.92</td>
+      <td>79.95</td>
+      <td>299.98</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68879</th>
+      <td>1259.97</td>
+      <td>129.99</td>
+      <td>999.99</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>68880</th>
+      <td>999.77</td>
+      <td>149.94</td>
+      <td>250.00</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>129.99</td>
+      <td>129.99</td>
+      <td>129.99</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>109.99</td>
+      <td>50.00</td>
+      <td>59.99</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2149.99</td>
+      <td>150.00</td>
+      <td>1999.99</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>57431 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">)[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span><span class="o">.</span> \
+    <span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="s1">&#39;item_count&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">:</span> <span class="s1">&#39;revenue&#39;</span><span class="p">})</span><span class="o">.</span> \
+    <span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">to_csv</span><span class="p">(</span><span class="n">output_dir</span> <span class="o">+</span> <span class="s1">&#39;/revenue_per_order.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+ls -ltr /home/`whoami`/data/retail_db/revenue_per_order
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 6460
+-rw-rw-r-- 1 itversity itversity 4999377 Dec 14 10:54 revenue_per_order.json
+-rw-rw-r-- 1 itversity itversity 1610716 Dec 14 10:55 revenue_per_order.csv
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+head /home/`whoami`/data/retail_db/revenue_per_order/revenue_per_order.csv
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>order_item_order_id,revenue,min,max,item_count
+1,299.98,299.98,299.98,1
+2,579.98,129.99,250.0,3
+4,699.85,49.98,299.95,4
+5,1129.86,99.96,299.98,5
+7,579.92,79.95,299.98,3
+8,729.84,50.0,299.95,4
+9,599.96,199.98,199.99,3
+10,651.92,21.99,199.99,5
+11,919.79,49.98,399.96,5
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./15_overview_of_pandas_libraries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="09_performing_grouped_aggregations.html" title="previous page">Performing Grouped Aggregations</a>
+    <a class='right-next' id="next-link" href="11_joining_data_frames.html" title="next page">Joining Data Frames</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

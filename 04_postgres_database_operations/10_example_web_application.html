@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example - Web Application &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overview of SQL" href="02_overview_of_sql.html" />
+    <link rel="prev" title="Perform Database Operations" href="01_postgres_database_operations.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/09_list_of_dicts.html">
+   List of dicts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../19_project_web_scraping_into_database/08_setup_database.html">
+   Setup Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/02_overview_of_list_and_set.html">
+   Overview of list and set
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="03_create_database_and_users_table.html">
+   Create Database and Users Table
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_example_data_engineering.html">
+     Example - Data Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_exercise_database_operations.html">
+     Exercise - Database Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_tcl_transaction_control_language.html">
+     TCL – Transaction Control Language
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_dml_data_manipulation_language.html">
+     DML – Data Manipulation Language
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_crud_operations_dml_and_dql.html">
+     CRUD Operations – DML and DQL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_postgres_database_operations.html">
+     Perform Database Operations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Example - Web Application
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_overview_of_sql.html">
+     Overview of SQL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_ddl_data_definition_language.html">
+     DDL – Data Definition Language
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_dql_data_query_language.html">
+     DQL – Data Query Language
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/09_leveraging_google%E2%80%99s_colab.html">
+   Leveraging Google’s Colab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/03_constructors.html">
+   Constructors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/06_formatting_strings.html">
+   Formatting Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/04_recap_of_insert.html">
+   Recap of Insert
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/03_creating_database_table.html">
+   Creating Database Table
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/02_function_get_database_connection.html">
+   Function - Get Database Connection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/19_preparing_database.html">
+   Preparing Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/22_best_practices.html">
+   Best Practices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/05_operators_in_python.html">
+   Operators in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_overview_of_gcp_and_provision_ubuntu_vm/06_setup_docker.html">
+   Setup Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/08_updating_existing_table_data.html">
+   Update Existing Table Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_setup_postgres_db/08_sql_workbench_features.html">
+   SQL Workbench Features
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/06_varying_arguments.html">
+   Varying Arguments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_web_scraping_using_beautifulsoup/07_creating_data_frame.html">
+   Creating Data Frame
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/08_develop_myReduceByKey.html">
+   Develop myReduceByKey
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/05_overview_of_editors_and_ides.html">
+   Overview of Editors and IDEs
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/04_postgres_database_operations/10_example_web_application.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F04_postgres_database_operations/10_example_web_application.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/04_postgres_database_operations/10_example_web_application.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/04_postgres_database_operations/10_example_web_application.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="example-web-application">
+<h1>Example - Web Application<a class="headerlink" href="#example-web-application" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how CRUD operations are performed for Web Applications using Python based frameworks such as Flask. Don’t worry if you do not understand the example completely. By the end of the course, you are supposed to gain fair amount of expertise related to Python in general. In future, we will come up with courses related to Flask.</p>
+<ul class="simple">
+<li><p>We typically perform CRUD operations for Web Applications using ORM Frameworks or Libraries.</p></li>
+<li><p>ORM stands for Object Relational Mapping. Applications typically use objects and databases persist data in the form of tables or relations.</p></li>
+<li><p>There will not be direct mapping between application objects and database tables or relations. This is where ORM comes into picture.</p></li>
+<li><p><strong>SQL Alchemy</strong> is the most popular Python based ORM library and it is used widely as part of web application frameworks such as Flask.</p></li>
+<li><p>As part of web application, we typically perform database operations using functions rather than directly running queries.</p></li>
+<li><p>A good application developer have to be comfortable with both databases as well as functions that comes as part of ORM libraries.</p></li>
+<li><p>Here are the steps involved to perform database operations using ORM:</p>
+<ul>
+<li><p>Install both database driver such as <code class="docutils literal notranslate"><span class="pre">psycopg2</span></code> as well as ORM such as <code class="docutils literal notranslate"><span class="pre">SQL</span> <span class="pre">Alchemy</span></code>.</p></li>
+<li><p>Import SQL Alchemy and build database URL.</p></li>
+<li><p>Create model by inheriting SQL Alchemy Model.</p></li>
+<li><p>Insert data into the table - one at a time or many at a time.</p></li>
+<li><p>Query the table to read the data.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:itversity!23@localhost:5433/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> TRUNCATE TABLE users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install psycopg2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install sqlalchemy
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">db</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Table Definition</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">users</span> <span class="p">(</span>
+  <span class="n">user_id</span> <span class="n">SERIAL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+  <span class="n">user_first_name</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
+  <span class="n">user_last_name</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
+  <span class="n">user_email_id</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
+  <span class="n">user_email_validated</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">FALSE</span><span class="p">,</span>
+  <span class="n">user_password</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+  <span class="n">user_role</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">DEFAULT</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="o">--</span><span class="n">U</span> <span class="ow">and</span> <span class="n">A</span>
+  <span class="n">is_active</span> <span class="n">BOOLEAN</span> <span class="n">DEFAULT</span> <span class="n">FALSE</span><span class="p">,</span>
+  <span class="n">created_dt</span> <span class="n">DATE</span> <span class="n">DEFAULT</span> <span class="n">CURRENT_DATE</span><span class="p">,</span>
+  <span class="n">last_updated_ts</span> <span class="n">TIMESTAMP</span> <span class="n">DEFAULT</span> <span class="n">CURRENT_TIMESTAMP</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span>
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;users&#39;</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">user_first_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+    <span class="n">user_last_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+    <span class="n">user_email_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">user_email_validated</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Boolean</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">user_password</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">user_role</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;U&#39;</span><span class="p">)</span>
+    <span class="n">is_active</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Boolean</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">created_dt</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span>
+    <span class="n">last_updated_ts</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+    
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;&quot;&lt;User(user_id=</span><span class="si">%s</span><span class="s2">, user_first_name=&#39;</span><span class="si">%s</span><span class="s2">&#39;, user_last_name=&#39;</span><span class="si">%s</span><span class="s2">&#39;,</span>
+<span class="s2">                    user_email_id=&#39;</span><span class="si">%s</span><span class="s2">&#39;, user_email_validated=&#39;</span><span class="si">%s</span><span class="s2">&#39;, user_password=&#39;</span><span class="si">%s</span><span class="s2">&#39;, </span>
+<span class="s2">                    user_role=&#39;</span><span class="si">%s</span><span class="s2">&#39;, is_active=&#39;</span><span class="si">%s</span><span class="s2">&#39;, created_dt=&#39;</span><span class="si">%s</span><span class="s2">&#39;, last_updated_ts=&#39;</span><span class="si">%s</span><span class="s2">&#39;</span>
+<span class="s2">                  )&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_first_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_last_name</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">user_email_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_email_validated</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_password</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">user_role</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_active</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">created_dt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_updated_ts</span>
+                  <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://itversity_sms_user:itversity!23@localhost:5433/itversity_sms_db&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+<span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span>
+    <span class="n">user_first_name</span><span class="o">=</span><span class="s1">&#39;Gordan&#39;</span><span class="p">,</span> 
+    <span class="n">user_last_name</span><span class="o">=</span><span class="s1">&#39;Bradock&#39;</span><span class="p">,</span> 
+    <span class="n">user_email_id</span><span class="o">=</span><span class="s1">&#39;gbradock0@barnesandnoble.com&#39;</span><span class="p">,</span> 
+    <span class="n">user_role</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> 
+    <span class="n">created_dt</span><span class="o">=</span><span class="s1">&#39;2020-01-10&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Tobe&#39;</span><span class="p">,</span> <span class="s1">&#39;Lyness&#39;</span><span class="p">,</span> <span class="s1">&#39;tlyness1@paginegialle.it&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-02-10&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Addie&#39;</span><span class="p">,</span> <span class="s1">&#39;Mesias&#39;</span><span class="p">,</span> <span class="s1">&#39;amesias2@twitpic.com&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-03-05&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Corene&#39;</span><span class="p">,</span> <span class="s1">&#39;Kohrsen&#39;</span><span class="p">,</span> <span class="s1">&#39;ckohrsen3@buzzfeed.com&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-04-15&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Darill&#39;</span><span class="p">,</span> <span class="s1">&#39;Halsall&#39;</span><span class="p">,</span> <span class="s1">&#39;dhalsall4@intel.com&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-10-10&#39;</span><span class="p">)</span> 
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_objects</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">(</span><span class="n">user_first_name</span><span class="o">=</span><span class="n">user</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">user_last_name</span><span class="o">=</span><span class="n">user</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">user_email_id</span><span class="o">=</span><span class="n">user</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">created_dt</span><span class="o">=</span><span class="n">user</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+    <span class="n">users</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">add_all</span><span class="p">(</span><span class="n">user_objects</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">user_email_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./04_postgres_database_operations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="01_postgres_database_operations.html" title="previous page">Perform Database Operations</a>
+    <a class='right-next' id="next-link" href="02_overview_of_sql.html" title="next page">Overview of SQL</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

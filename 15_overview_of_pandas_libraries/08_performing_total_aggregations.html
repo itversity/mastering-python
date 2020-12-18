@@ -1,0 +1,2126 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Performing Total Aggregations &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overview of Series" href="03_overview_of_series.html" />
+    <link rel="prev" title="CSV to Pandas Data Frame" href="06_csv_to_pandas_data_frame.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/09_list_of_dicts.html">
+   List of dicts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../19_project_web_scraping_into_database/08_setup_database.html">
+   Setup Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/02_overview_of_list_and_set.html">
+   Overview of list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/03_create_database_and_users_table.html">
+   Create Database and Users Table
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_creating_data_frames_from_lists.html">
+     Creating Data Frames from lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_data_frames_basic_operations.html">
+     Data Frames - Basic Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_projecting_and_filtering.html">
+     Projecting and Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_exercises_pandas_data_frames.html">
+     Exercises - Pandas Data Frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_csv_to_pandas_data_frame.html">
+     CSV to Pandas Data Frame
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Performing Total Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_series.html">
+     Overview of Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_pandas_data_structures_overview.html">
+     Pandas Data Structures – Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_performing_grouped_aggregations.html">
+     Performing Grouped Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_writing_data_frames_to_files.html">
+     Writing Data Frames to Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_joining_data_frames.html">
+     Joining Data Frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/09_leveraging_google%E2%80%99s_colab.html">
+   Leveraging Google’s Colab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/03_constructors.html">
+   Constructors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/06_formatting_strings.html">
+   Formatting Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/04_recap_of_insert.html">
+   Recap of Insert
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/03_creating_database_table.html">
+   Creating Database Table
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/02_function_get_database_connection.html">
+   Function - Get Database Connection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/19_preparing_database.html">
+   Preparing Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/22_best_practices.html">
+   Best Practices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/05_operators_in_python.html">
+   Operators in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_overview_of_gcp_and_provision_ubuntu_vm/06_setup_docker.html">
+   Setup Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/08_updating_existing_table_data.html">
+   Update Existing Table Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_setup_postgres_db/08_sql_workbench_features.html">
+   SQL Workbench Features
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/06_varying_arguments.html">
+   Varying Arguments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_web_scraping_using_beautifulsoup/07_creating_data_frame.html">
+   Creating Data Frame
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/08_develop_myReduceByKey.html">
+   Develop myReduceByKey
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/05_overview_of_editors_and_ides.html">
+   Overview of Editors and IDEs
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/15_overview_of_pandas_libraries/08_performing_total_aggregations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F15_overview_of_pandas_libraries/08_performing_total_aggregations.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/15_overview_of_pandas_libraries/08_performing_total_aggregations.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/15_overview_of_pandas_libraries/08_performing_total_aggregations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1">
+   Task 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2">
+   Task 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-3">
+   Task 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-4">
+   Task 4
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="performing-total-aggregations">
+<h1>Performing Total Aggregations<a class="headerlink" href="#performing-total-aggregations" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to perform total or global aggregations using Pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> 06_csv_to_pandas_data_frame.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Getting number of records in the Data Frame.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(68883, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68883
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>172198
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Getting number of non np.NaN values in each attribute in a Data Frame</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>order_id             68883
+order_date           68883
+order_customer_id    68883
+order_status         68883
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;order_id&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68883
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">order_id</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68883
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="p">[</span><span class="s1">&#39;order_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68883
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Getting basic statistics of numeric fields of a Data Frame</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_id</th>
+      <th>order_customer_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>68883.000000</td>
+      <td>68883.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>34442.000000</td>
+      <td>6216.571099</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>19884.953633</td>
+      <td>3586.205241</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>17221.500000</td>
+      <td>3122.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>34442.000000</td>
+      <td>6199.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>51662.500000</td>
+      <td>9326.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>68883.000000</td>
+      <td>12435.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Get revenue for order id 2 from order_items</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="p">[</span><span class="n">order_items</span><span class="o">.</span><span class="n">order_item_order_id</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_order_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="p">[</span><span class="n">order_items</span><span class="o">.</span><span class="n">order_item_order_id</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">order_item_subtotal</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1    199.99
+2    250.00
+3    129.99
+Name: order_item_subtotal, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="p">[</span><span class="n">order_items</span><span class="o">.</span><span class="n">order_item_order_id</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">order_item_subtotal</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>579.98
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="p">[</span><span class="n">order_items</span><span class="o">.</span><span class="n">order_item_order_id</span> <span class="o">==</span> <span class="mi">2</span><span class="p">][</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>579.98
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task-1">
+<h2>Task 1<a class="headerlink" href="#task-1" title="Permalink to this headline">¶</a></h2>
+<p>Use orders and get total number of records for a given month (201401).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_id</th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>12111</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11318</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68878</th>
+      <td>68879</td>
+      <td>2014-07-09 00:00:00.0</td>
+      <td>778</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68879</th>
+      <td>68880</td>
+      <td>2014-07-13 00:00:00.0</td>
+      <td>1117</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68880</th>
+      <td>68881</td>
+      <td>2014-07-19 00:00:00.0</td>
+      <td>2518</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>68882</td>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>68883</td>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+    </tr>
+  </tbody>
+</table>
+<p>68883 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">order_date</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        2013-07-25 00:00:00.0
+1        2013-07-25 00:00:00.0
+2        2013-07-25 00:00:00.0
+3        2013-07-25 00:00:00.0
+4        2013-07-25 00:00:00.0
+                 ...          
+68878    2014-07-09 00:00:00.0
+68879    2014-07-13 00:00:00.0
+68880    2014-07-19 00:00:00.0
+68881    2014-07-22 00:00:00.0
+68882    2014-07-23 00:00:00.0
+Name: order_date, Length: 68883, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="p">[</span><span class="s1">&#39;order_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        2013-07
+1        2013-07
+2        2013-07
+3        2013-07
+4        2013-07
+          ...   
+68878    2014-07
+68879    2014-07
+68880    2014-07
+68881    2014-07
+68882    2014-07
+Name: order_date, Length: 68883, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="p">[</span><span class="s1">&#39;order_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        201307
+1        201307
+2        201307
+3        201307
+4        201307
+          ...  
+68878    201407
+68879    201407
+68880    201407
+68881    201407
+68882    201407
+Name: order_date, Length: 68883, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="p">[</span><span class="s1">&#39;order_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">201401</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        False
+1        False
+2        False
+3        False
+4        False
+         ...  
+68878    False
+68879    False
+68880    False
+68881    False
+68882    False
+Name: order_date, Length: 68883, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="p">[</span><span class="n">orders</span><span class="p">[</span><span class="s1">&#39;order_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">201401</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_id</th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25875</th>
+      <td>25876</td>
+      <td>2014-01-01 00:00:00.0</td>
+      <td>3414</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>25876</th>
+      <td>25877</td>
+      <td>2014-01-01 00:00:00.0</td>
+      <td>5549</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>25877</th>
+      <td>25878</td>
+      <td>2014-01-01 00:00:00.0</td>
+      <td>9084</td>
+      <td>PENDING</td>
+    </tr>
+    <tr>
+      <th>25878</th>
+      <td>25879</td>
+      <td>2014-01-01 00:00:00.0</td>
+      <td>5118</td>
+      <td>PENDING</td>
+    </tr>
+    <tr>
+      <th>25879</th>
+      <td>25880</td>
+      <td>2014-01-01 00:00:00.0</td>
+      <td>10146</td>
+      <td>CANCELED</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68789</th>
+      <td>68790</td>
+      <td>2014-01-26 00:00:00.0</td>
+      <td>10302</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>68790</th>
+      <td>68791</td>
+      <td>2014-01-27 00:00:00.0</td>
+      <td>6524</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68791</th>
+      <td>68792</td>
+      <td>2014-01-28 00:00:00.0</td>
+      <td>9809</td>
+      <td>CANCELED</td>
+    </tr>
+    <tr>
+      <th>68792</th>
+      <td>68793</td>
+      <td>2014-01-30 00:00:00.0</td>
+      <td>5654</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68793</th>
+      <td>68794</td>
+      <td>2014-01-31 00:00:00.0</td>
+      <td>6873</td>
+      <td>COMPLETE</td>
+    </tr>
+  </tbody>
+</table>
+<p>5908 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="p">[</span><span class="n">orders</span><span class="p">[</span><span class="s1">&#39;order_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">201401</span><span class="p">][</span><span class="s1">&#39;order_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5908
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="task-2">
+<h2>Task 2<a class="headerlink" href="#task-2" title="Permalink to this headline">¶</a></h2>
+<p>Use order_items data set and compute total revenue generated for a given product_id.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_order_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>4</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172193</th>
+      <td>172194</td>
+      <td>68881</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>172194</th>
+      <td>172195</td>
+      <td>68882</td>
+      <td>365</td>
+      <td>1</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>172196</td>
+      <td>68882</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>172196</th>
+      <td>172197</td>
+      <td>68883</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>172198</td>
+      <td>68883</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>172198 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;order_item_product_id == 502&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_order_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>4</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>8</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>38</td>
+      <td>12</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>42</td>
+      <td>14</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172151</th>
+      <td>172152</td>
+      <td>68861</td>
+      <td>502</td>
+      <td>4</td>
+      <td>200.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>172173</th>
+      <td>172174</td>
+      <td>68871</td>
+      <td>502</td>
+      <td>4</td>
+      <td>200.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>172189</th>
+      <td>172190</td>
+      <td>68880</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>172196</td>
+      <td>68882</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>172198</td>
+      <td>68883</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.0</td>
+      <td>50.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>21035 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;order_item_product_id == 502&#39;</span><span class="p">)[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3147800.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;order_item_product_id == 502&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_item_subtotal</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3147800.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="task-3">
+<h2>Task 3<a class="headerlink" href="#task-3" title="Permalink to this headline">¶</a></h2>
+<p>Use order_items data set and get total number of items sold as well as total revenue generated for a given product_id.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_order_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>4</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172193</th>
+      <td>172194</td>
+      <td>68881</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>172194</th>
+      <td>172195</td>
+      <td>68882</td>
+      <td>365</td>
+      <td>1</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>172196</td>
+      <td>68882</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>172196</th>
+      <td>172197</td>
+      <td>68883</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>172198</td>
+      <td>68883</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>172198 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items_for_product_id</span> <span class="o">=</span> <span class="n">order_items</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;order_item_product_id == 502&#39;</span><span class="p">)</span>
+<span class="n">order_items_for_product_id</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_order_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>4</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>8</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>38</td>
+      <td>12</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>42</td>
+      <td>14</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172151</th>
+      <td>172152</td>
+      <td>68861</td>
+      <td>502</td>
+      <td>4</td>
+      <td>200.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>172173</th>
+      <td>172174</td>
+      <td>68871</td>
+      <td>502</td>
+      <td>4</td>
+      <td>200.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>172189</th>
+      <td>172190</td>
+      <td>68880</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>172196</td>
+      <td>68882</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.0</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>172198</td>
+      <td>68883</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.0</td>
+      <td>50.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>21035 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items_for_product_id</span><span class="p">[[</span><span class="s1">&#39;order_item_quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>250.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3</td>
+      <td>150.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>5</td>
+      <td>250.0</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>1</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172151</th>
+      <td>4</td>
+      <td>200.0</td>
+    </tr>
+    <tr>
+      <th>172173</th>
+      <td>4</td>
+      <td>200.0</td>
+    </tr>
+    <tr>
+      <th>172189</th>
+      <td>5</td>
+      <td>250.0</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>1</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>3</td>
+      <td>150.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>21035 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items_for_product_id</span><span class="p">[[</span><span class="s1">&#39;order_item_quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>order_item_quantity      62956.0
+order_item_subtotal    3147800.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">tuple</span><span class="p">(</span><span class="n">order_items_for_product_id</span><span class="p">[[</span><span class="s1">&#39;order_item_quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(62956.0, 3147800.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span><span class="p">(</span><span class="n">order_items_for_product_id</span><span class="p">[[</span><span class="s1">&#39;order_item_quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;order_item_quantity&#39;: 62956.0, &#39;order_item_subtotal&#39;: 3147800.0}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="task-4">
+<h2>Task 4<a class="headerlink" href="#task-4" title="Permalink to this headline">¶</a></h2>
+<p>Create a collection with sales and commission percentage. Using that collection compute total commission amount. If the commission percent is None or not present, treat it as 0.</p>
+<ul class="simple">
+<li><p>Each element in the collection should be a tuple.</p></li>
+<li><p>First element is the sales amount and second element is commission percentage.</p></li>
+<li><p>Commission for each sale can be computed by multiplying commission percentage with sales (make sure to divide commission percentage by 100).</p></li>
+<li><p>Some of the records does not have commission percentage, in that case commission amount for that sale shall be 0</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">376.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">548.23</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">107.93</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">838.22</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">846.85</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">234.84</span><span class="p">,),</span>
+<span class="p">(</span><span class="mf">850.2</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">992.2</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">267.01</span><span class="p">,),</span>
+<span class="p">(</span><span class="mf">958.91</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">412.59</span><span class="p">,),</span>
+<span class="p">(</span><span class="mf">283.14</span><span class="p">,),</span>
+<span class="p">(</span><span class="mf">350.01</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">226.95</span><span class="p">,),</span>
+<span class="p">(</span><span class="mf">132.7</span><span class="p">,</span> <span class="mi">14</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">transactions</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sale_amount&#39;</span><span class="p">,</span> <span class="s1">&#39;commission_pct&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sale_amount</th>
+      <th>commission_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>376.00</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>548.23</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>107.93</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>838.22</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>846.85</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>234.84</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>850.20</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>992.20</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>267.01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>958.91</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>412.59</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>283.14</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>350.01</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>226.95</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>132.70</td>
+      <td>14.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales_filled</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">sales_filled</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sale_amount</th>
+      <th>commission_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>376.00</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>548.23</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>107.93</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>838.22</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>846.85</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>234.84</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>850.20</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>992.20</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>267.01</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>958.91</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>412.59</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>283.14</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>350.01</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>226.95</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>132.70</td>
+      <td>14.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">sales_filled</span><span class="p">[</span><span class="s1">&#39;sale_amount&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">sales_filled</span><span class="p">[</span><span class="s1">&#39;commission_pct&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      30.0800
+1      76.7522
+2       8.6344
+3     117.3508
+4     177.8385
+5       0.0000
+6     178.5420
+7     208.3620
+8       0.0000
+9     201.3711
+10      0.0000
+11      0.0000
+12     49.0014
+13      0.0000
+14     18.5780
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">sales_filled</span><span class="p">[</span><span class="s1">&#39;sale_amount&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">sales_filled</span><span class="p">[</span><span class="s1">&#39;commission_pct&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1066.5104000000001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">sales_filled</span><span class="p">[</span><span class="s1">&#39;sale_amount&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">sales_filled</span><span class="p">[</span><span class="s1">&#39;commission_pct&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1066.51
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./15_overview_of_pandas_libraries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="06_csv_to_pandas_data_frame.html" title="previous page">CSV to Pandas Data Frame</a>
+    <a class='right-next' id="next-link" href="03_overview_of_series.html" title="next page">Overview of Series</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pandas Data Structures – Overview &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performing Grouped Aggregations" href="09_performing_grouped_aggregations.html" />
+    <link rel="prev" title="Overview of Series" href="03_overview_of_series.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/09_list_of_dicts.html">
+   List of dicts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../19_project_web_scraping_into_database/08_setup_database.html">
+   Setup Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/02_overview_of_list_and_set.html">
+   Overview of list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/03_create_database_and_users_table.html">
+   Create Database and Users Table
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_creating_data_frames_from_lists.html">
+     Creating Data Frames from lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_data_frames_basic_operations.html">
+     Data Frames - Basic Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_projecting_and_filtering.html">
+     Projecting and Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_exercises_pandas_data_frames.html">
+     Exercises - Pandas Data Frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_csv_to_pandas_data_frame.html">
+     CSV to Pandas Data Frame
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_performing_total_aggregations.html">
+     Performing Total Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_series.html">
+     Overview of Series
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Pandas Data Structures – Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_performing_grouped_aggregations.html">
+     Performing Grouped Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_writing_data_frames_to_files.html">
+     Writing Data Frames to Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_joining_data_frames.html">
+     Joining Data Frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/09_leveraging_google%E2%80%99s_colab.html">
+   Leveraging Google’s Colab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/03_constructors.html">
+   Constructors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/06_formatting_strings.html">
+   Formatting Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/04_recap_of_insert.html">
+   Recap of Insert
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/03_creating_database_table.html">
+   Creating Database Table
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/02_function_get_database_connection.html">
+   Function - Get Database Connection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/19_preparing_database.html">
+   Preparing Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/22_best_practices.html">
+   Best Practices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/05_operators_in_python.html">
+   Operators in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_overview_of_gcp_and_provision_ubuntu_vm/06_setup_docker.html">
+   Setup Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/08_updating_existing_table_data.html">
+   Update Existing Table Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_setup_postgres_db/08_sql_workbench_features.html">
+   SQL Workbench Features
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/06_varying_arguments.html">
+   Varying Arguments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_web_scraping_using_beautifulsoup/07_creating_data_frame.html">
+   Creating Data Frame
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/08_develop_myReduceByKey.html">
+   Develop myReduceByKey
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/05_overview_of_editors_and_ides.html">
+   Overview of Editors and IDEs
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/15_overview_of_pandas_libraries/02_pandas_data_structures_overview.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F15_overview_of_pandas_libraries/02_pandas_data_structures_overview.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/15_overview_of_pandas_libraries/02_pandas_data_structures_overview.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/15_overview_of_pandas_libraries/02_pandas_data_structures_overview.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="pandas-data-structures-overview">
+<h1>Pandas Data Structures – Overview<a class="headerlink" href="#pandas-data-structures-overview" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand the details with respect to Pandas.</p>
+<ul class="simple">
+<li><p>Pandas is not a core Python module and hence we need to install using pip - <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span></code>.</p></li>
+<li><p>It has 2 types of data structures - <code class="docutils literal notranslate"><span class="pre">Series</span></code> and <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Series</span></code> is a one dimension array while <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a two dimension array.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Series</span></code> only contains index for each row and one attribute or column.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> contains index for each row and multiple columns.</p></li>
+<li><p>Each attribute in the DataFrame is nothing but a Series.</p></li>
+<li><p>We can perform all standard transformations using Pandas APIs</p></li>
+<li><p>We also have SQL based wrappers on top of Pandas where we can write queries.</p></li>
+</ul>
+<p>Here are the steps to get started with Pandas Data Structures:</p>
+<ul class="simple">
+<li><p>Make sure Pandas library is installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p></li>
+<li><p>Import Pandas library - <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code></p></li>
+<li><p>We need to have a collection or data in a file to create Pandas Data Structures.</p></li>
+<li><p>Use appropriate APIs on the data to create Pandas Data Structures.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Series</span></code> for single dimension array.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> for two dimension array.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Typically we use <code class="docutils literal notranslate"><span class="pre">Series</span></code> for list of regular objects or dict and <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> for list of tuples or list of dicts. Let us use list for <code class="docutils literal notranslate"><span class="pre">Series</span></code> and list of dicts for <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install pandas
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas in /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages (1.1.4)
+Requirement already satisfied: python-dateutil&gt;=2.7.3 in /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages (from pandas) (2.8.1)
+Requirement already satisfied: pytz&gt;=2017.2 in /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages (from pandas) (2020.4)
+Requirement already satisfied: numpy&gt;=1.15.4 in /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages (from pandas) (1.19.4)
+Requirement already satisfied: six&gt;=1.5 in /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages (from python-dateutil&gt;=2.7.3-&gt;pandas) (1.15.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_l</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1500.0</span><span class="p">,</span> <span class="mf">2000.0</span><span class="p">,</span> <span class="mf">2200.00</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.Series<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span>
+pd<span class=" -Color -Color-Blue">.</span>Series<span class=" -Color -Color-Blue">(</span>
+    data<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    index<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    dtype<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    name<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    copy<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    fastpath<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>     
+One-dimensional ndarray with axis labels (including time series).
+
+Labels need not be unique but must be a hashable type. The object
+supports both integer- and label-based indexing and provides a host of
+methods for performing operations involving the index. Statistical
+methods from ndarray have been overridden to automatically exclude
+missing data (currently represented as NaN).
+
+Operations between Series (+, -, /, *, **) align values based on their
+associated index values-- they need not be the same length. The result
+index will be the sorted union of the two indexes.
+
+Parameters
+----------
+data : array-like, Iterable, dict, or scalar value
+    Contains data stored in Series.
+
+    .. versionchanged:: 0.23.0
+       If data is a dict, argument order is maintained for Python 3.6
+       and later.
+
+index : array-like or Index (1d)
+    Values must be hashable and have the same length as `data`.
+    Non-unique index values are allowed. Will default to
+    RangeIndex (0, 1, 2, ..., n) if not provided. If both a dict and index
+    sequence are used, the index will override the keys found in the
+    dict.
+dtype : str, numpy.dtype, or ExtensionDtype, optional
+    Data type for the output Series. If not specified, this will be
+    inferred from `data`.
+    See the :ref:`user guide &lt;basics.dtypes&gt;` for more usages.
+name : str, optional
+    The name to give to the Series.
+copy : bool, default False
+    Copy input data.
+<span class=" -Color -Color-Red">File:</span>           /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/pandas/core/series.py
+<span class=" -Color -Color-Red">Type:</span>           type
+<span class=" -Color -Color-Red">Subclasses:</span>     SubclassedSeries
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sals_l</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1500.0
+1    2000.0
+2    2200.0
+Name: sal, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1500.0
+1    2000.0
+Name: sal, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_ld</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1500.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2000.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">2200.00</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.DataFrame<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span>
+pd<span class=" -Color -Color-Blue">.</span>DataFrame<span class=" -Color -Color-Blue">(</span>
+    data<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    index<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>Collection<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    columns<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>Collection<span class=" -Color -Color-Blue">,</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    dtype<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>_ForwardRef<span class=" -Color -Color-Blue">(&#39;ExtensionDtype&#39;),</span> str<span class=" -Color -Color-Blue">,</span> numpy<span class=" -Color -Color-Blue">.</span>dtype<span class=" -Color -Color-Blue">,</span> Type<span class=" -Color -Color-Blue">[</span>Union<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">,</span> float<span class=" -Color -Color-Blue">,</span> int<span class=" -Color -Color-Blue">,</span> complex<span class=" -Color -Color-Blue">]],</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    copy<span class=" -Color -Color-Blue">:</span>bool<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>     
+Two-dimensional, size-mutable, potentially heterogeneous tabular data.
+
+Data structure also contains labeled axes (rows and columns).
+Arithmetic operations align on both row and column labels. Can be
+thought of as a dict-like container for Series objects. The primary
+pandas data structure.
+
+Parameters
+----------
+data : ndarray (structured or homogeneous), Iterable, dict, or DataFrame
+    Dict can contain Series, arrays, constants, or list-like objects.
+
+    .. versionchanged:: 0.23.0
+       If data is a dict, column order follows insertion-order for
+       Python 3.6 and later.
+
+    .. versionchanged:: 0.25.0
+       If data is a list of dicts, column order follows insertion-order
+       for Python 3.6 and later.
+
+index : Index or array-like
+    Index to use for resulting frame. Will default to RangeIndex if
+    no indexing information part of input data and no index provided.
+columns : Index or array-like
+    Column labels to use for resulting frame. Will default to
+    RangeIndex (0, 1, 2, ..., n) if no column labels are provided.
+dtype : dtype, default None
+    Data type to force. Only a single dtype is allowed. If None, infer.
+copy : bool, default False
+    Copy data from inputs. Only affects DataFrame / 2d ndarray input.
+
+See Also
+--------
+DataFrame.from_records : Constructor from tuples, also record arrays.
+DataFrame.from_dict : From dicts of Series, arrays, or dicts.
+read_csv : Read a comma-separated values (csv) file into DataFrame.
+read_table : Read general delimited file into DataFrame.
+read_clipboard : Read text from clipboard into DataFrame.
+
+Examples
+--------
+Constructing DataFrame from a dictionary.
+
+&gt;&gt;&gt; d = {&#39;col1&#39;: [1, 2], &#39;col2&#39;: [3, 4]}
+&gt;&gt;&gt; df = pd.DataFrame(data=d)
+&gt;&gt;&gt; df
+   col1  col2
+0     1     3
+1     2     4
+
+Notice that the inferred dtype is int64.
+
+&gt;&gt;&gt; df.dtypes
+col1    int64
+col2    int64
+dtype: object
+
+To enforce a single dtype:
+
+&gt;&gt;&gt; df = pd.DataFrame(data=d, dtype=np.int8)
+&gt;&gt;&gt; df.dtypes
+col1    int8
+col2    int8
+dtype: object
+
+Constructing DataFrame from numpy ndarray:
+
+&gt;&gt;&gt; df2 = pd.DataFrame(np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
+...                    columns=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;])
+&gt;&gt;&gt; df2
+   a  b  c
+0  1  2  3
+1  4  5  6
+2  7  8  9
+<span class=" -Color -Color-Red">File:</span>           /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>           type
+<span class=" -Color -Color-Red">Subclasses:</span>     SubclassedDataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sals_ld</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;sal&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1
+1    2
+2    3
+Name: id, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./15_overview_of_pandas_libraries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="03_overview_of_series.html" title="previous page">Overview of Series</a>
+    <a class='right-next' id="next-link" href="09_performing_grouped_aggregations.html" title="next page">Performing Grouped Aggregations</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

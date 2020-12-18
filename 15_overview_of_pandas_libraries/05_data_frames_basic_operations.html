@@ -1,0 +1,2150 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Frames - Basic Operations &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Projecting and Filtering" href="07_projecting_and_filtering.html" />
+    <link rel="prev" title="Creating Data Frames from lists" href="04_creating_data_frames_from_lists.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/09_list_of_dicts.html">
+   List of dicts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../19_project_web_scraping_into_database/08_setup_database.html">
+   Setup Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/02_overview_of_list_and_set.html">
+   Overview of list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/03_create_database_and_users_table.html">
+   Create Database and Users Table
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_creating_data_frames_from_lists.html">
+     Creating Data Frames from lists
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data Frames - Basic Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_projecting_and_filtering.html">
+     Projecting and Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_exercises_pandas_data_frames.html">
+     Exercises - Pandas Data Frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_csv_to_pandas_data_frame.html">
+     CSV to Pandas Data Frame
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_performing_total_aggregations.html">
+     Performing Total Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_series.html">
+     Overview of Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_pandas_data_structures_overview.html">
+     Pandas Data Structures – Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_performing_grouped_aggregations.html">
+     Performing Grouped Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_writing_data_frames_to_files.html">
+     Writing Data Frames to Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_joining_data_frames.html">
+     Joining Data Frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/09_leveraging_google%E2%80%99s_colab.html">
+   Leveraging Google’s Colab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/03_constructors.html">
+   Constructors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/06_formatting_strings.html">
+   Formatting Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/04_recap_of_insert.html">
+   Recap of Insert
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/03_creating_database_table.html">
+   Creating Database Table
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/02_function_get_database_connection.html">
+   Function - Get Database Connection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/19_preparing_database.html">
+   Preparing Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/22_best_practices.html">
+   Best Practices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/05_operators_in_python.html">
+   Operators in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_overview_of_gcp_and_provision_ubuntu_vm/06_setup_docker.html">
+   Setup Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/08_updating_existing_table_data.html">
+   Update Existing Table Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_setup_postgres_db/08_sql_workbench_features.html">
+   SQL Workbench Features
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/06_varying_arguments.html">
+   Varying Arguments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_web_scraping_using_beautifulsoup/07_creating_data_frame.html">
+   Creating Data Frame
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/08_develop_myReduceByKey.html">
+   Develop myReduceByKey
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/05_overview_of_editors_and_ides.html">
+   Overview of Editors and IDEs
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/15_overview_of_pandas_libraries/05_data_frames_basic_operations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F15_overview_of_pandas_libraries/05_data_frames_basic_operations.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/15_overview_of_pandas_libraries/05_data_frames_basic_operations.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/15_overview_of_pandas_libraries/05_data_frames_basic_operations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-frames-basic-operations">
+<h1>Data Frames - Basic Operations<a class="headerlink" href="#data-frames-basic-operations" title="Permalink to this headline">¶</a></h1>
+<p>Here are some of the basic operations we typically perform on top of Pandas Data Frame.</p>
+<ul class="simple">
+<li><p>Getting number of records and columns.</p></li>
+<li><p>Getting data types of the columns.</p></li>
+<li><p>Replacing <code class="docutils literal notranslate"><span class="pre">NaN</span></code> with some standard values.</p></li>
+<li><p>Dropping a column from the Data Frame.</p></li>
+<li><p>Getting or updating column names.</p></li>
+<li><p>Sorting by index or values.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Creating Pandas Data Frame using list of dicts.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_ld</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;sal&#39;</span><span class="p">:</span> <span class="mf">1500.0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;sal&#39;</span><span class="p">:</span> <span class="mf">2000.0</span><span class="p">,</span> <span class="s1">&#39;comm&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;sal&#39;</span><span class="p">:</span> <span class="mf">2200.0</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Column names will be inherited automatically using keys from the dict.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sals_ld</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>comm</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>10.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1
+1    2
+2    3
+Name: id, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="p">[[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;sal&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id        3
+sal       3
+comm      1
+active    1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">count</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id     3
+sal    3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>comm</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>10.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id          int64
+sal       float64
+comm      float64
+active     object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sals_df.fillna<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+sals_df<span class=" -Color -Color-Blue">.</span>fillna<span class=" -Color -Color-Blue">(</span>
+    value<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    method<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    axis<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    inplace<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    limit<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    downcast<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> Union<span class=" -Color -Color-Blue">[</span>_ForwardRef<span class=" -Color -Color-Blue">(&#39;DataFrame&#39;),</span> NoneType<span class=" -Color -Color-Blue">]</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Fill NA/NaN values using the specified method.
+
+Parameters
+----------
+value : scalar, dict, Series, or DataFrame
+    Value to use to fill holes (e.g. 0), alternately a
+    dict/Series/DataFrame of values specifying which value to use for
+    each index (for a Series) or column (for a DataFrame).  Values not
+    in the dict/Series/DataFrame will not be filled. This value cannot
+    be a list.
+method : {&#39;backfill&#39;, &#39;bfill&#39;, &#39;pad&#39;, &#39;ffill&#39;, None}, default None
+    Method to use for filling holes in reindexed Series
+    pad / ffill: propagate last valid observation forward to next valid
+    backfill / bfill: use next valid observation to fill gap.
+axis : {0 or &#39;index&#39;, 1 or &#39;columns&#39;}
+    Axis along which to fill missing values.
+inplace : bool, default False
+    If True, fill in-place. Note: this will modify any
+    other views on this object (e.g., a no-copy slice for a column in a
+    DataFrame).
+limit : int, default None
+    If method is specified, this is the maximum number of consecutive
+    NaN values to forward/backward fill. In other words, if there is
+    a gap with more than this number of consecutive NaNs, it will only
+    be partially filled. If method is not specified, this is the
+    maximum number of entries along the entire axis where NaNs will be
+    filled. Must be greater than 0 if not None.
+downcast : dict, default is None
+    A dict of item-&gt;dtype of what to downcast if possible,
+    or the string &#39;infer&#39; which will try to downcast to an appropriate
+    equal type (e.g. float64 to int64 if possible).
+
+Returns
+-------
+DataFrame or None
+    Object with missing values filled or None if ``inplace=True``.
+
+See Also
+--------
+interpolate : Fill NaN values using interpolation.
+reindex : Conform object to new index.
+asfreq : Convert TimeSeries to specified frequency.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame([[np.nan, 2, np.nan, 0],
+...                    [3, 4, np.nan, 1],
+...                    [np.nan, np.nan, np.nan, 5],
+...                    [np.nan, 3, np.nan, 4]],
+...                   columns=list(&#39;ABCD&#39;))
+&gt;&gt;&gt; df
+     A    B   C  D
+0  NaN  2.0 NaN  0
+1  3.0  4.0 NaN  1
+2  NaN  NaN NaN  5
+3  NaN  3.0 NaN  4
+
+Replace all NaN elements with 0s.
+
+&gt;&gt;&gt; df.fillna(0)
+    A   B   C   D
+0   0.0 2.0 0.0 0
+1   3.0 4.0 0.0 1
+2   0.0 0.0 0.0 5
+3   0.0 3.0 0.0 4
+
+We can also propagate non-null values forward or backward.
+
+&gt;&gt;&gt; df.fillna(method=&#39;ffill&#39;)
+    A   B   C   D
+0   NaN 2.0 NaN 0
+1   3.0 4.0 NaN 1
+2   3.0 4.0 NaN 5
+3   3.0 3.0 NaN 4
+
+Replace all NaN elements in column &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, and &#39;D&#39;, with 0, 1,
+2, and 3 respectively.
+
+&gt;&gt;&gt; values = {&#39;A&#39;: 0, &#39;B&#39;: 1, &#39;C&#39;: 2, &#39;D&#39;: 3}
+&gt;&gt;&gt; df.fillna(value=values)
+    A   B   C   D
+0   0.0 2.0 2.0 0
+1   3.0 4.0 2.0 1
+2   0.0 1.0 2.0 5
+3   0.0 3.0 2.0 4
+
+Only replace the first NaN element.
+
+&gt;&gt;&gt; df.fillna(value=values, limit=1)
+    A   B   C   D
+0   0.0 2.0 2.0 0
+1   3.0 4.0 NaN 1
+2   NaN 1.0 NaN 5
+3   NaN 3.0 NaN 4
+<span class=" -Color -Color-Red">File:</span>      /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>      method
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>comm</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>10.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">({</span><span class="s1">&#39;comm&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>comm</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>10.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">({</span><span class="s1">&#39;comm&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>comm</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>0.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>10.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Original Data Frame will be untouched, instead a new Data Frame will be created. Original Data Frame still contain <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. We typically assign the output of most of the Data Frame functions to another variable or object.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>comm</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>10.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span> <span class="o">=</span> <span class="n">sals_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">({</span><span class="s1">&#39;comm&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="n">sals_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>comm</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>0.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>10.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sals_df.drop<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+sals_df<span class=" -Color -Color-Blue">.</span>drop<span class=" -Color -Color-Blue">(</span>
+    labels<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    axis<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+    index<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    columns<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    level<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    inplace<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    errors<span class=" -Color -Color-Blue">=&#39;raise&#39;,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Drop specified labels from rows or columns.
+
+Remove rows or columns by specifying label names and corresponding
+axis, or by specifying directly index or column names. When using a
+multi-index, labels on different levels can be removed by specifying
+the level.
+
+Parameters
+----------
+labels : single label or list-like
+    Index or column labels to drop.
+axis : {0 or &#39;index&#39;, 1 or &#39;columns&#39;}, default 0
+    Whether to drop labels from the index (0 or &#39;index&#39;) or
+    columns (1 or &#39;columns&#39;).
+index : single label or list-like
+    Alternative to specifying axis (``labels, axis=0``
+    is equivalent to ``index=labels``).
+columns : single label or list-like
+    Alternative to specifying axis (``labels, axis=1``
+    is equivalent to ``columns=labels``).
+level : int or level name, optional
+    For MultiIndex, level from which the labels will be removed.
+inplace : bool, default False
+    If False, return a copy. Otherwise, do operation
+    inplace and return None.
+errors : {&#39;ignore&#39;, &#39;raise&#39;}, default &#39;raise&#39;
+    If &#39;ignore&#39;, suppress error and only existing labels are
+    dropped.
+
+Returns
+-------
+DataFrame
+    DataFrame without the removed index or column labels.
+
+Raises
+------
+KeyError
+    If any of the labels is not found in the selected axis.
+
+See Also
+--------
+DataFrame.loc : Label-location based indexer for selection by label.
+DataFrame.dropna : Return DataFrame with labels on given axis omitted
+    where (all or any) data are missing.
+DataFrame.drop_duplicates : Return DataFrame with duplicate rows
+    removed, optionally only considering certain columns.
+Series.drop : Return Series with specified index labels removed.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame(np.arange(12).reshape(3, 4),
+...                   columns=[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;])
+&gt;&gt;&gt; df
+   A  B   C   D
+0  0  1   2   3
+1  4  5   6   7
+2  8  9  10  11
+
+Drop columns
+
+&gt;&gt;&gt; df.drop([&#39;B&#39;, &#39;C&#39;], axis=1)
+   A   D
+0  0   3
+1  4   7
+2  8  11
+
+&gt;&gt;&gt; df.drop(columns=[&#39;B&#39;, &#39;C&#39;])
+   A   D
+0  0   3
+1  4   7
+2  8  11
+
+Drop a row by index
+
+&gt;&gt;&gt; df.drop([0, 1])
+   A  B   C   D
+2  8  9  10  11
+
+Drop columns and/or rows of MultiIndex DataFrame
+
+&gt;&gt;&gt; midx = pd.MultiIndex(levels=[[&#39;lama&#39;, &#39;cow&#39;, &#39;falcon&#39;],
+...                              [&#39;speed&#39;, &#39;weight&#39;, &#39;length&#39;]],
+...                      codes=[[0, 0, 0, 1, 1, 1, 2, 2, 2],
+...                             [0, 1, 2, 0, 1, 2, 0, 1, 2]])
+&gt;&gt;&gt; df = pd.DataFrame(index=midx, columns=[&#39;big&#39;, &#39;small&#39;],
+...                   data=[[45, 30], [200, 100], [1.5, 1], [30, 20],
+...                         [250, 150], [1.5, 0.8], [320, 250],
+...                         [1, 0.8], [0.3, 0.2]])
+&gt;&gt;&gt; df
+                big     small
+lama    speed   45.0    30.0
+        weight  200.0   100.0
+        length  1.5     1.0
+cow     speed   30.0    20.0
+        weight  250.0   150.0
+        length  1.5     0.8
+falcon  speed   320.0   250.0
+        weight  1.0     0.8
+        length  0.3     0.2
+
+&gt;&gt;&gt; df.drop(index=&#39;cow&#39;, columns=&#39;small&#39;)
+                big
+lama    speed   45.0
+        weight  200.0
+        length  1.5
+falcon  speed   320.0
+        weight  1.0
+        length  0.3
+
+&gt;&gt;&gt; df.drop(index=&#39;length&#39;, level=1)
+                big     small
+lama    speed   45.0    30.0
+        weight  200.0   100.0
+cow     speed   30.0    20.0
+        weight  250.0   150.0
+falcon  speed   320.0   250.0
+        weight  1.0     0.8
+<span class=" -Color -Color-Red">File:</span>      /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>      method
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;comm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We can also drop multiple columns by passing column names as list.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;comm&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;comm&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span> <span class="o">=</span> <span class="n">sals_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;comm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;id&#39;, &#39;sal&#39;, &#39;active&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;employee_id&#39;</span><span class="p">,</span> <span class="s1">&#39;salary&#39;</span><span class="p">,</span> <span class="s1">&#39;commission&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee_id</th>
+      <th>salary</th>
+      <th>commission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sals_df.sort_index<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+sals_df<span class=" -Color -Color-Blue">.</span>sort_index<span class=" -Color -Color-Blue">(</span>
+    axis<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+    level<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    ascending<span class=" -Color -Color-Blue">:</span>bool<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    inplace<span class=" -Color -Color-Blue">:</span>bool<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    kind<span class=" -Color -Color-Blue">:</span>str<span class=" -Color -Color-Blue">=&#39;quicksort&#39;,</span>
+    na_position<span class=" -Color -Color-Blue">:</span>str<span class=" -Color -Color-Blue">=&#39;last&#39;,</span>
+    sort_remaining<span class=" -Color -Color-Blue">:</span>bool<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    ignore_index<span class=" -Color -Color-Blue">:</span>bool<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    key<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>Callable<span class=" -Color -Color-Blue">[[</span>_ForwardRef<span class=" -Color -Color-Blue">(&#39;Index&#39;)],</span> Union<span class=" -Color -Color-Blue">[</span>_ForwardRef<span class=" -Color -Color-Blue">(&#39;Index&#39;),</span> <span class=" -Color -Color-Blue">~</span>AnyArrayLike<span class=" -Color -Color-Blue">]],</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Sort object by labels (along an axis).
+
+Returns a new DataFrame sorted by label if `inplace` argument is
+``False``, otherwise updates the original DataFrame and returns None.
+
+Parameters
+----------
+axis : {0 or &#39;index&#39;, 1 or &#39;columns&#39;}, default 0
+    The axis along which to sort.  The value 0 identifies the rows,
+    and 1 identifies the columns.
+level : int or level name or list of ints or list of level names
+    If not None, sort on values in specified index level(s).
+ascending : bool or list of bools, default True
+    Sort ascending vs. descending. When the index is a MultiIndex the
+    sort direction can be controlled for each level individually.
+inplace : bool, default False
+    If True, perform operation in-place.
+kind : {&#39;quicksort&#39;, &#39;mergesort&#39;, &#39;heapsort&#39;}, default &#39;quicksort&#39;
+    Choice of sorting algorithm. See also ndarray.np.sort for more
+    information.  `mergesort` is the only stable algorithm. For
+    DataFrames, this option is only applied when sorting on a single
+    column or label.
+na_position : {&#39;first&#39;, &#39;last&#39;}, default &#39;last&#39;
+    Puts NaNs at the beginning if `first`; `last` puts NaNs at the end.
+    Not implemented for MultiIndex.
+sort_remaining : bool, default True
+    If True and sorting by level and index is multilevel, sort by other
+    levels too (in order) after sorting by specified level.
+ignore_index : bool, default False
+    If True, the resulting axis will be labeled 0, 1, …, n - 1.
+
+    .. versionadded:: 1.0.0
+
+key : callable, optional
+    If not None, apply the key function to the index values
+    before sorting. This is similar to the `key` argument in the
+    builtin :meth:`sorted` function, with the notable difference that
+    this `key` function should be *vectorized*. It should expect an
+    ``Index`` and return an ``Index`` of the same shape. For MultiIndex
+    inputs, the key is applied *per level*.
+
+    .. versionadded:: 1.1.0
+
+Returns
+-------
+DataFrame
+    The original DataFrame sorted by the labels.
+
+See Also
+--------
+Series.sort_index : Sort Series by the index.
+DataFrame.sort_values : Sort DataFrame by the value.
+Series.sort_values : Sort Series by the value.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame([1, 2, 3, 4, 5], index=[100, 29, 234, 1, 150],
+...                   columns=[&#39;A&#39;])
+&gt;&gt;&gt; df.sort_index()
+     A
+1    4
+29   2
+100  1
+150  5
+234  3
+
+By default, it sorts in ascending order, to sort in descending order,
+use ``ascending=False``
+
+&gt;&gt;&gt; df.sort_index(ascending=False)
+     A
+234  3
+150  5
+100  1
+29   2
+1    4
+
+A key function can be specified which is applied to the index before
+sorting. For a ``MultiIndex`` this is applied to each level separately.
+
+&gt;&gt;&gt; df = pd.DataFrame({&quot;a&quot;: [1, 2, 3, 4]}, index=[&#39;A&#39;, &#39;b&#39;, &#39;C&#39;, &#39;d&#39;])
+&gt;&gt;&gt; df.sort_index(key=lambda x: x.str.lower())
+   a
+A  1
+b  2
+C  3
+d  4
+<span class=" -Color -Color-Red">File:</span>      /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>      method
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee_id</th>
+      <th>salary</th>
+      <th>commission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sals_df.sort_values<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+sals_df<span class=" -Color -Color-Blue">.</span>sort_values<span class=" -Color -Color-Blue">(</span>
+    by<span class=" -Color -Color-Blue">,</span>
+    axis<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+    ascending<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    inplace<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    kind<span class=" -Color -Color-Blue">=&#39;quicksort&#39;,</span>
+    na_position<span class=" -Color -Color-Blue">=&#39;last&#39;,</span>
+    ignore_index<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    key<span class=" -Color -Color-Blue">:</span>Union<span class=" -Color -Color-Blue">[</span>Callable<span class=" -Color -Color-Blue">[[</span>_ForwardRef<span class=" -Color -Color-Blue">(&#39;Series&#39;)],</span> Union<span class=" -Color -Color-Blue">[</span>_ForwardRef<span class=" -Color -Color-Blue">(&#39;Series&#39;),</span> <span class=" -Color -Color-Blue">~</span>AnyArrayLike<span class=" -Color -Color-Blue">]],</span> NoneType<span class=" -Color -Color-Blue">]=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Sort by the values along either axis.
+
+Parameters
+----------
+        by : str or list of str
+            Name or list of names to sort by.
+
+            - if `axis` is 0 or `&#39;index&#39;` then `by` may contain index
+              levels and/or column labels.
+            - if `axis` is 1 or `&#39;columns&#39;` then `by` may contain column
+              levels and/or index labels.
+
+            .. versionchanged:: 0.23.0
+
+               Allow specifying index or column level names.
+axis : {0 or &#39;index&#39;, 1 or &#39;columns&#39;}, default 0
+     Axis to be sorted.
+ascending : bool or list of bool, default True
+     Sort ascending vs. descending. Specify list for multiple sort
+     orders.  If this is a list of bools, must match the length of
+     the by.
+inplace : bool, default False
+     If True, perform operation in-place.
+kind : {&#39;quicksort&#39;, &#39;mergesort&#39;, &#39;heapsort&#39;}, default &#39;quicksort&#39;
+     Choice of sorting algorithm. See also ndarray.np.sort for more
+     information.  `mergesort` is the only stable algorithm. For
+     DataFrames, this option is only applied when sorting on a single
+     column or label.
+na_position : {&#39;first&#39;, &#39;last&#39;}, default &#39;last&#39;
+     Puts NaNs at the beginning if `first`; `last` puts NaNs at the
+     end.
+ignore_index : bool, default False
+     If True, the resulting axis will be labeled 0, 1, …, n - 1.
+
+     .. versionadded:: 1.0.0
+
+key : callable, optional
+    Apply the key function to the values
+    before sorting. This is similar to the `key` argument in the
+    builtin :meth:`sorted` function, with the notable difference that
+    this `key` function should be *vectorized*. It should expect a
+    ``Series`` and return a Series with the same shape as the input.
+    It will be applied to each column in `by` independently.
+
+    .. versionadded:: 1.1.0
+
+Returns
+-------
+DataFrame or None
+    DataFrame with sorted values if inplace=False, None otherwise.
+
+See Also
+--------
+DataFrame.sort_index : Sort a DataFrame by the index.
+Series.sort_values : Similar method for a Series.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame({
+...     &#39;col1&#39;: [&#39;A&#39;, &#39;A&#39;, &#39;B&#39;, np.nan, &#39;D&#39;, &#39;C&#39;],
+...     &#39;col2&#39;: [2, 1, 9, 8, 7, 4],
+...     &#39;col3&#39;: [0, 1, 9, 4, 2, 3],
+...     &#39;col4&#39;: [&#39;a&#39;, &#39;B&#39;, &#39;c&#39;, &#39;D&#39;, &#39;e&#39;, &#39;F&#39;]
+... })
+&gt;&gt;&gt; df
+  col1  col2  col3 col4
+0    A     2     0    a
+1    A     1     1    B
+2    B     9     9    c
+3  NaN     8     4    D
+4    D     7     2    e
+5    C     4     3    F
+
+Sort by col1
+
+&gt;&gt;&gt; df.sort_values(by=[&#39;col1&#39;])
+  col1  col2  col3 col4
+0    A     2     0    a
+1    A     1     1    B
+2    B     9     9    c
+5    C     4     3    F
+4    D     7     2    e
+3  NaN     8     4    D
+
+Sort by multiple columns
+
+&gt;&gt;&gt; df.sort_values(by=[&#39;col1&#39;, &#39;col2&#39;])
+  col1  col2  col3 col4
+1    A     1     1    B
+0    A     2     0    a
+2    B     9     9    c
+5    C     4     3    F
+4    D     7     2    e
+3  NaN     8     4    D
+
+Sort Descending
+
+&gt;&gt;&gt; df.sort_values(by=&#39;col1&#39;, ascending=False)
+  col1  col2  col3 col4
+4    D     7     2    e
+5    C     4     3    F
+2    B     9     9    c
+0    A     2     0    a
+1    A     1     1    B
+3  NaN     8     4    D
+
+Putting NAs first
+
+&gt;&gt;&gt; df.sort_values(by=&#39;col1&#39;, ascending=False, na_position=&#39;first&#39;)
+  col1  col2  col3 col4
+3  NaN     8     4    D
+4    D     7     2    e
+5    C     4     3    F
+2    B     9     9    c
+0    A     2     0    a
+1    A     1     1    B
+
+Sorting with a key function
+
+&gt;&gt;&gt; df.sort_values(by=&#39;col4&#39;, key=lambda col: col.str.lower())
+   col1  col2  col3 col4
+0    A     2     0    a
+1    A     1     1    B
+2    B     9     9    c
+3  NaN     8     4    D
+4    D     7     2    e
+5    C     4     3    F
+<span class=" -Color -Color-Red">File:</span>      /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>      method
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;employee_id&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee_id</th>
+      <th>salary</th>
+      <th>commission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;salary&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee_id</th>
+      <th>salary</th>
+      <th>commission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;salary&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee_id</th>
+      <th>salary</th>
+      <th>commission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_ld</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;sal&#39;</span><span class="p">:</span> <span class="mf">1500.0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;sal&#39;</span><span class="p">:</span> <span class="mf">2000.0</span><span class="p">,</span> <span class="s1">&#39;comm&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;sal&#39;</span><span class="p">:</span> <span class="mf">2200.0</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;sal&#39;</span><span class="p">:</span> <span class="mf">2000.0</span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sals_ld</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sal&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>comm</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>10.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2000.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sals_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sal&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sal</th>
+      <th>comm</th>
+      <th>active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2200.0</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2000.0</td>
+      <td>10.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2000.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1500.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./15_overview_of_pandas_libraries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04_creating_data_frames_from_lists.html" title="previous page">Creating Data Frames from lists</a>
+    <a class='right-next' id="next-link" href="07_projecting_and_filtering.html" title="next page">Projecting and Filtering</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

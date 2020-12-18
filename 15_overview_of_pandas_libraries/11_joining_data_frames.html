@@ -1,0 +1,2902 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joining Data Frames &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Leveraging Google’s Colab" href="../05_getting_started_with_python/09_leveraging_google%E2%80%99s_colab.html" />
+    <link rel="prev" title="Writing Data Frames to Files" href="10_writing_data_frames_to_files.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/09_list_of_dicts.html">
+   List of dicts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../19_project_web_scraping_into_database/08_setup_database.html">
+   Setup Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/02_overview_of_list_and_set.html">
+   Overview of list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/03_create_database_and_users_table.html">
+   Create Database and Users Table
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_creating_data_frames_from_lists.html">
+     Creating Data Frames from lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_data_frames_basic_operations.html">
+     Data Frames - Basic Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_projecting_and_filtering.html">
+     Projecting and Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_exercises_pandas_data_frames.html">
+     Exercises - Pandas Data Frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_csv_to_pandas_data_frame.html">
+     CSV to Pandas Data Frame
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_performing_total_aggregations.html">
+     Performing Total Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_series.html">
+     Overview of Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_pandas_data_structures_overview.html">
+     Pandas Data Structures – Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_performing_grouped_aggregations.html">
+     Performing Grouped Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_writing_data_frames_to_files.html">
+     Writing Data Frames to Files
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Joining Data Frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/09_leveraging_google%E2%80%99s_colab.html">
+   Leveraging Google’s Colab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/03_constructors.html">
+   Constructors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/06_formatting_strings.html">
+   Formatting Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/04_recap_of_insert.html">
+   Recap of Insert
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/03_creating_database_table.html">
+   Creating Database Table
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/02_function_get_database_connection.html">
+   Function - Get Database Connection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/19_preparing_database.html">
+   Preparing Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/22_best_practices.html">
+   Best Practices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/05_operators_in_python.html">
+   Operators in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_overview_of_gcp_and_provision_ubuntu_vm/06_setup_docker.html">
+   Setup Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/08_updating_existing_table_data.html">
+   Update Existing Table Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_setup_postgres_db/08_sql_workbench_features.html">
+   SQL Workbench Features
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/06_varying_arguments.html">
+   Varying Arguments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_web_scraping_using_beautifulsoup/07_creating_data_frame.html">
+   Creating Data Frame
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/08_develop_myReduceByKey.html">
+   Develop myReduceByKey
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/05_overview_of_editors_and_ides.html">
+   Overview of Editors and IDEs
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/15_overview_of_pandas_libraries/11_joining_data_frames.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F15_overview_of_pandas_libraries/11_joining_data_frames.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/15_overview_of_pandas_libraries/11_joining_data_frames.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/15_overview_of_pandas_libraries/11_joining_data_frames.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1">
+   Task 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2">
+   Task 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-3">
+   Task 3
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="joining-data-frames">
+<h1>Joining Data Frames<a class="headerlink" href="#joining-data-frames" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to join Data Frames using Pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> 06_csv_to_pandas_data_frame.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_id</th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>12111</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11318</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68878</th>
+      <td>68879</td>
+      <td>2014-07-09 00:00:00.0</td>
+      <td>778</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68879</th>
+      <td>68880</td>
+      <td>2014-07-13 00:00:00.0</td>
+      <td>1117</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68880</th>
+      <td>68881</td>
+      <td>2014-07-19 00:00:00.0</td>
+      <td>2518</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>68882</td>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>68883</td>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+    </tr>
+  </tbody>
+</table>
+<p>68883 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_order_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>4</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172193</th>
+      <td>172194</td>
+      <td>68881</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>172194</th>
+      <td>172195</td>
+      <td>68882</td>
+      <td>365</td>
+      <td>1</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>172196</td>
+      <td>68882</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>172196</th>
+      <td>172197</td>
+      <td>68883</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>172198</td>
+      <td>68883</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>172198 rows × 6 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Join orders and order_items using orders.order_id and order_items.order_item_order_id.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>orders.join<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> orders<span class=" -Color -Color-Blue">.</span>join<span class=" -Color -Color-Blue">(</span>other<span class=" -Color -Color-Blue">,</span> on<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span> how<span class=" -Color -Color-Blue">=&#39;left&#39;,</span> lsuffix<span class=" -Color -Color-Blue">=&#39;&#39;,</span> rsuffix<span class=" -Color -Color-Blue">=&#39;&#39;,</span> sort<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;DataFrame&#39;</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Join columns of another DataFrame.
+
+Join columns with `other` DataFrame either on index or on a key
+column. Efficiently join multiple DataFrame objects by index at once by
+passing a list.
+
+Parameters
+----------
+other : DataFrame, Series, or list of DataFrame
+    Index should be similar to one of the columns in this one. If a
+    Series is passed, its name attribute must be set, and that will be
+    used as the column name in the resulting joined DataFrame.
+on : str, list of str, or array-like, optional
+    Column or index level name(s) in the caller to join on the index
+    in `other`, otherwise joins index-on-index. If multiple
+    values given, the `other` DataFrame must have a MultiIndex. Can
+    pass an array as the join key if it is not already contained in
+    the calling DataFrame. Like an Excel VLOOKUP operation.
+how : {&#39;left&#39;, &#39;right&#39;, &#39;outer&#39;, &#39;inner&#39;}, default &#39;left&#39;
+    How to handle the operation of the two objects.
+
+    * left: use calling frame&#39;s index (or column if on is specified)
+    * right: use `other`&#39;s index.
+    * outer: form union of calling frame&#39;s index (or column if on is
+      specified) with `other`&#39;s index, and sort it.
+      lexicographically.
+    * inner: form intersection of calling frame&#39;s index (or column if
+      on is specified) with `other`&#39;s index, preserving the order
+      of the calling&#39;s one.
+lsuffix : str, default &#39;&#39;
+    Suffix to use from left frame&#39;s overlapping columns.
+rsuffix : str, default &#39;&#39;
+    Suffix to use from right frame&#39;s overlapping columns.
+sort : bool, default False
+    Order result DataFrame lexicographically by the join key. If False,
+    the order of the join key depends on the join type (how keyword).
+
+Returns
+-------
+DataFrame
+    A dataframe containing columns from both the caller and `other`.
+
+See Also
+--------
+DataFrame.merge : For column(s)-on-columns(s) operations.
+
+Notes
+-----
+Parameters `on`, `lsuffix`, and `rsuffix` are not supported when
+passing a list of `DataFrame` objects.
+
+Support for specifying index levels as the `on` parameter was added
+in version 0.23.0.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame({&#39;key&#39;: [&#39;K0&#39;, &#39;K1&#39;, &#39;K2&#39;, &#39;K3&#39;, &#39;K4&#39;, &#39;K5&#39;],
+...                    &#39;A&#39;: [&#39;A0&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;A3&#39;, &#39;A4&#39;, &#39;A5&#39;]})
+
+&gt;&gt;&gt; df
+  key   A
+0  K0  A0
+1  K1  A1
+2  K2  A2
+3  K3  A3
+4  K4  A4
+5  K5  A5
+
+&gt;&gt;&gt; other = pd.DataFrame({&#39;key&#39;: [&#39;K0&#39;, &#39;K1&#39;, &#39;K2&#39;],
+...                       &#39;B&#39;: [&#39;B0&#39;, &#39;B1&#39;, &#39;B2&#39;]})
+
+&gt;&gt;&gt; other
+  key   B
+0  K0  B0
+1  K1  B1
+2  K2  B2
+
+Join DataFrames using their indexes.
+
+&gt;&gt;&gt; df.join(other, lsuffix=&#39;_caller&#39;, rsuffix=&#39;_other&#39;)
+  key_caller   A key_other    B
+0         K0  A0        K0   B0
+1         K1  A1        K1   B1
+2         K2  A2        K2   B2
+3         K3  A3       NaN  NaN
+4         K4  A4       NaN  NaN
+5         K5  A5       NaN  NaN
+
+If we want to join using the key columns, we need to set key to be
+the index in both `df` and `other`. The joined DataFrame will have
+key as its index.
+
+&gt;&gt;&gt; df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;))
+      A    B
+key
+K0   A0   B0
+K1   A1   B1
+K2   A2   B2
+K3   A3  NaN
+K4   A4  NaN
+K5   A5  NaN
+
+Another option to join using the key columns is to use the `on`
+parameter. DataFrame.join always uses `other`&#39;s index but we can use
+any column in `df`. This method preserves the original DataFrame&#39;s
+index in the result.
+
+&gt;&gt;&gt; df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;)
+  key   A    B
+0  K0  A0   B0
+1  K1  A1   B1
+2  K2  A2   B2
+3  K3  A3  NaN
+4  K4  A4  NaN
+5  K5  A5  NaN
+<span class=" -Color -Color-Red">File:</span>      /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>      method
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+    </tr>
+    <tr>
+      <th>order_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>12111</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11318</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68879</th>
+      <td>2014-07-09 00:00:00.0</td>
+      <td>778</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68880</th>
+      <td>2014-07-13 00:00:00.0</td>
+      <td>1117</td>
+      <td>COMPLETE</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>2014-07-19 00:00:00.0</td>
+      <td>2518</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+    </tr>
+  </tbody>
+</table>
+<p>68883 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+    <tr>
+      <th>order_item_order_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>172194</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>172195</td>
+      <td>365</td>
+      <td>1</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>172196</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>172197</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>172198</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>172198 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join orders and order_items using order_id (order_item_order_id from order_items)</span>
+<span class="n">orders</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+      <th>order_item_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+      <td>1.0</td>
+      <td>957.0</td>
+      <td>1.0</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>2.0</td>
+      <td>1073.0</td>
+      <td>1.0</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>3.0</td>
+      <td>502.0</td>
+      <td>5.0</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>4.0</td>
+      <td>403.0</td>
+      <td>1.0</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>12111</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>2014-07-19 00:00:00.0</td>
+      <td>2518</td>
+      <td>PENDING_PAYMENT</td>
+      <td>172194.0</td>
+      <td>403.0</td>
+      <td>1.0</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172195.0</td>
+      <td>365.0</td>
+      <td>1.0</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172196.0</td>
+      <td>502.0</td>
+      <td>1.0</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172197.0</td>
+      <td>208.0</td>
+      <td>1.0</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172198.0</td>
+      <td>502.0</td>
+      <td>3.0</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>183650 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+      <th>order_item_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>3</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>4</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+      <td>5</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>2014-07-19 00:00:00.0</td>
+      <td>2518</td>
+      <td>PENDING_PAYMENT</td>
+      <td>172194</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172195</td>
+      <td>365</td>
+      <td>1</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172196</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172197</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172198</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>172198 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+      <th>order_item_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>3</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>4</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+      <td>5</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172193</th>
+      <td>68881</td>
+      <td>2014-07-19 00:00:00.0</td>
+      <td>2518</td>
+      <td>PENDING_PAYMENT</td>
+      <td>172194</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>172194</th>
+      <td>68882</td>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172195</td>
+      <td>365</td>
+      <td>1</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>68882</td>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172196</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>172196</th>
+      <td>68883</td>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172197</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>68883</td>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172198</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>172198 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">reset_index</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;order_id&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_id</th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+      <th>order_item_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>3</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>4</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+      <td>5</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>172193</th>
+      <td>68881</td>
+      <td>2014-07-19 00:00:00.0</td>
+      <td>2518</td>
+      <td>PENDING_PAYMENT</td>
+      <td>172194</td>
+      <td>403</td>
+      <td>1</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>172194</th>
+      <td>68882</td>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172195</td>
+      <td>365</td>
+      <td>1</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>172195</th>
+      <td>68882</td>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172196</td>
+      <td>502</td>
+      <td>1</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>172196</th>
+      <td>68883</td>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172197</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>172197</th>
+      <td>68883</td>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172198</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>172198 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="task-1">
+<h2>Task 1<a class="headerlink" href="#task-1" title="Permalink to this headline">¶</a></h2>
+<p>Compute Daily Revenue using orders.order_date and order_items.order_item_order_subtotal considering only COMPLETE and CLOSED orders.</p>
+<ul class="simple">
+<li><p>Here are the steps to join orders and order_items and get daily revenue.</p>
+<ul>
+<li><p>Create Data Frames for both orders and order_items using data in files.</p></li>
+<li><p>Filter for orders which are either in <strong>COMPLETE</strong> or <strong>CLOSED</strong> status.</p></li>
+<li><p>Set the join index for both the Data Frames.</p></li>
+<li><p>Join both the Data Frames using <code class="docutils literal notranslate"><span class="pre">inner</span></code>.</p></li>
+<li><p>Group the join results using <strong>order_date</strong> and get daily revenue by using <code class="docutils literal notranslate"><span class="pre">sum</span></code> on top of <strong>order_item_subtotal</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_considered</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;order_status in (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_filtered</span> <span class="o">=</span> <span class="n">orders</span><span class="p">[</span><span class="n">orders</span><span class="o">.</span><span class="n">order_status</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;COMPLETE&quot;</span><span class="p">,</span> <span class="s2">&quot;CLOSED&quot;</span><span class="p">])]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_considered</span><span class="o">.</span> \
+    <span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;order_date&#39;</span><span class="p">)[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">])</span><span class="o">.</span> \
+    <span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sum&#39;</span><span class="p">:</span> <span class="s1">&#39;revenue&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>revenue</th>
+    </tr>
+    <tr>
+      <th>order_date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-07-25 00:00:00.0</th>
+      <td>31547.23</td>
+    </tr>
+    <tr>
+      <th>2013-07-26 00:00:00.0</th>
+      <td>54713.23</td>
+    </tr>
+    <tr>
+      <th>2013-07-27 00:00:00.0</th>
+      <td>48411.48</td>
+    </tr>
+    <tr>
+      <th>2013-07-28 00:00:00.0</th>
+      <td>35672.03</td>
+    </tr>
+    <tr>
+      <th>2013-07-29 00:00:00.0</th>
+      <td>54579.70</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2014-07-20 00:00:00.0</th>
+      <td>60047.45</td>
+    </tr>
+    <tr>
+      <th>2014-07-21 00:00:00.0</th>
+      <td>51427.70</td>
+    </tr>
+    <tr>
+      <th>2014-07-22 00:00:00.0</th>
+      <td>36717.24</td>
+    </tr>
+    <tr>
+      <th>2014-07-23 00:00:00.0</th>
+      <td>38795.23</td>
+    </tr>
+    <tr>
+      <th>2014-07-24 00:00:00.0</th>
+      <td>50885.19</td>
+    </tr>
+  </tbody>
+</table>
+<p>364 rows × 1 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="task-2">
+<h2>Task 2<a class="headerlink" href="#task-2" title="Permalink to this headline">¶</a></h2>
+<p>Get all the orders for which there are no corresponding order items.</p>
+<ul class="simple">
+<li><p>We can use default join (<code class="docutils literal notranslate"><span class="pre">left</span></code>) to get orders with out corresponding order items.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+      <th>order_item_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+      <td>1.0</td>
+      <td>957.0</td>
+      <td>1.0</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>2.0</td>
+      <td>1073.0</td>
+      <td>1.0</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>3.0</td>
+      <td>502.0</td>
+      <td>5.0</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+      <td>4.0</td>
+      <td>403.0</td>
+      <td>1.0</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>12111</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68881</th>
+      <td>2014-07-19 00:00:00.0</td>
+      <td>2518</td>
+      <td>PENDING_PAYMENT</td>
+      <td>172194.0</td>
+      <td>403.0</td>
+      <td>1.0</td>
+      <td>129.99</td>
+      <td>129.99</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172195.0</td>
+      <td>365.0</td>
+      <td>1.0</td>
+      <td>59.99</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>68882</th>
+      <td>2014-07-22 00:00:00.0</td>
+      <td>10000</td>
+      <td>ON_HOLD</td>
+      <td>172196.0</td>
+      <td>502.0</td>
+      <td>1.0</td>
+      <td>50.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172197.0</td>
+      <td>208.0</td>
+      <td>1.0</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172198.0</td>
+      <td>502.0</td>
+      <td>3.0</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>183650 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">query</span><span class="p">(</span><span class="s1">&#39;order_item_id.isna()&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+      <th>order_item_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>12111</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>7130</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>333</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>7562</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>3960</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68867</th>
+      <td>2014-06-23 00:00:00.0</td>
+      <td>869</td>
+      <td>CANCELED</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68872</th>
+      <td>2014-06-29 00:00:00.0</td>
+      <td>3354</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68874</th>
+      <td>2014-07-03 00:00:00.0</td>
+      <td>1601</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68876</th>
+      <td>2014-07-06 00:00:00.0</td>
+      <td>4124</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68877</th>
+      <td>2014-07-07 00:00:00.0</td>
+      <td>9692</td>
+      <td>ON_HOLD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>11452 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_joined</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_joined</span><span class="p">[</span><span class="n">orders_joined</span><span class="p">[</span><span class="s1">&#39;order_item_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+      <th>order_item_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>12111</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>7130</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>333</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>7562</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>3960</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68867</th>
+      <td>2014-06-23 00:00:00.0</td>
+      <td>869</td>
+      <td>CANCELED</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68872</th>
+      <td>2014-06-29 00:00:00.0</td>
+      <td>3354</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68874</th>
+      <td>2014-07-03 00:00:00.0</td>
+      <td>1601</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68876</th>
+      <td>2014-07-06 00:00:00.0</td>
+      <td>4124</td>
+      <td>COMPLETE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68877</th>
+      <td>2014-07-07 00:00:00.0</td>
+      <td>9692</td>
+      <td>ON_HOLD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>11452 rows × 8 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="task-3">
+<h2>Task 3<a class="headerlink" href="#task-3" title="Permalink to this headline">¶</a></h2>
+<p>Compute Daily Product Revenue using orders.order_date as well as order_items.order_item_product_id and order_items.order_item_order_subtotal considering only COMPLETE and CLOSED orders.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_considered</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;order_status in (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_filtered</span> <span class="o">=</span> <span class="n">orders</span><span class="p">[</span><span class="n">orders</span><span class="o">.</span><span class="n">order_status</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;COMPLETE&quot;</span><span class="p">,</span> <span class="s2">&quot;CLOSED&quot;</span><span class="p">])]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_considered</span><span class="o">.</span> \
+    <span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+      <th>order_item_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+      <td>5</td>
+      <td>897</td>
+      <td>2</td>
+      <td>49.98</td>
+      <td>24.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+      <td>6</td>
+      <td>365</td>
+      <td>5</td>
+      <td>299.95</td>
+      <td>59.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+      <td>7</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>8827</td>
+      <td>CLOSED</td>
+      <td>8</td>
+      <td>1014</td>
+      <td>4</td>
+      <td>199.92</td>
+      <td>49.98</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68880</th>
+      <td>2014-07-13 00:00:00.0</td>
+      <td>1117</td>
+      <td>COMPLETE</td>
+      <td>172191</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>68880</th>
+      <td>2014-07-13 00:00:00.0</td>
+      <td>1117</td>
+      <td>COMPLETE</td>
+      <td>172192</td>
+      <td>1014</td>
+      <td>5</td>
+      <td>249.90</td>
+      <td>49.98</td>
+    </tr>
+    <tr>
+      <th>68880</th>
+      <td>2014-07-13 00:00:00.0</td>
+      <td>1117</td>
+      <td>COMPLETE</td>
+      <td>172193</td>
+      <td>1014</td>
+      <td>3</td>
+      <td>149.94</td>
+      <td>49.98</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172197</td>
+      <td>208</td>
+      <td>1</td>
+      <td>1999.99</td>
+      <td>1999.99</td>
+    </tr>
+    <tr>
+      <th>68883</th>
+      <td>2014-07-23 00:00:00.0</td>
+      <td>5533</td>
+      <td>COMPLETE</td>
+      <td>172198</td>
+      <td>502</td>
+      <td>3</td>
+      <td>150.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>75408 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_considered</span><span class="o">.</span> \
+    <span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;order_date&#39;</span><span class="p">,</span> <span class="s1">&#39;order_item_product_id&#39;</span><span class="p">])[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7f6dc89feeb8&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">orders_considered</span><span class="o">.</span> \
+    <span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;order_date&#39;</span><span class="p">,</span> <span class="s1">&#39;order_item_product_id&#39;</span><span class="p">])[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">])[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[((&#39;2013-07-25 00:00:00.0&#39;, 24),
+  57762    319.96
+  Name: order_item_subtotal, dtype: float64),
+ ((&#39;2013-07-25 00:00:00.0&#39;, 93),
+  17    74.97
+  Name: order_item_subtotal, dtype: float64),
+ ((&#39;2013-07-25 00:00:00.0&#39;, 134),
+  12    100.0
+  Name: order_item_subtotal, dtype: float64),
+ ((&#39;2013-07-25 00:00:00.0&#39;, 191),
+  12       499.95
+  28       399.96
+  28        99.99
+  61       399.96
+  71       499.95
+  101       99.99
+  57757    499.95
+  57764    499.95
+  57768    499.95
+  57776     99.99
+  57776     99.99
+  57779    499.95
+  57782    199.98
+  57788    199.98
+  57788    499.95
+  Name: order_item_subtotal, dtype: float64),
+ ((&#39;2013-07-25 00:00:00.0&#39;, 226),
+  68691    599.99
+  Name: order_item_subtotal, dtype: float64),
+ ((&#39;2013-07-25 00:00:00.0&#39;, 365),
+  4        299.95
+  5        299.95
+  15       179.97
+  17       239.96
+  18       119.98
+  28        59.99
+  37        59.99
+  45        59.99
+  57       179.97
+  57       119.98
+  61       119.98
+  61       119.98
+  71       119.98
+  91       299.95
+  57756     59.99
+  57757    119.98
+  57779    299.95
+  57781    299.95
+  57788    239.96
+  67416     59.99
+  Name: order_item_subtotal, dtype: float64),
+ ((&#39;2013-07-25 00:00:00.0&#39;, 403),
+  5        129.99
+  18       129.99
+  24       129.99
+  35       129.99
+  57       129.99
+  88       129.99
+  98       129.99
+  57754    129.99
+  57756    129.99
+  57757    129.99
+  57762    129.99
+  57762    129.99
+  57768    129.99
+  57788    129.99
+  68691    129.99
+  Name: order_item_subtotal, dtype: float64),
+ ((&#39;2013-07-25 00:00:00.0&#39;, 502),
+  4        150.0
+  12       250.0
+  15        50.0
+  24        50.0
+  24       250.0
+  51        50.0
+  62        50.0
+  67       150.0
+  98       100.0
+  57757    150.0
+  57758     50.0
+  57758    100.0
+  57764    150.0
+  67416    100.0
+  Name: order_item_subtotal, dtype: float64),
+ ((&#39;2013-07-25 00:00:00.0&#39;, 572),
+  72    119.97
+  Name: order_item_subtotal, dtype: float64),
+ ((&#39;2013-07-25 00:00:00.0&#39;, 625),
+  57764    199.99
+  Name: order_item_subtotal, dtype: float64)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_considered</span><span class="o">.</span> \
+    <span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;order_date&#39;</span><span class="p">,</span> <span class="s1">&#39;order_item_product_id&#39;</span><span class="p">])[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">])</span><span class="o">.</span> \
+    <span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sum&#39;</span><span class="p">:</span> <span class="s1">&#39;revenue&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>revenue</th>
+    </tr>
+    <tr>
+      <th>order_date</th>
+      <th>order_item_product_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">2013-07-25 00:00:00.0</th>
+      <th>24</th>
+      <td>319.96</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>74.97</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>5099.49</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>599.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">2014-07-24 00:00:00.0</th>
+      <th>926</th>
+      <td>31.98</td>
+    </tr>
+    <tr>
+      <th>957</th>
+      <td>5399.64</td>
+    </tr>
+    <tr>
+      <th>1004</th>
+      <td>10399.48</td>
+    </tr>
+    <tr>
+      <th>1014</th>
+      <td>3148.74</td>
+    </tr>
+    <tr>
+      <th>1073</th>
+      <td>4199.79</td>
+    </tr>
+  </tbody>
+</table>
+<p>9120 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_considered</span><span class="o">.</span> \
+    <span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">order_items</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;order_item_order_id&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;order_date&#39;</span><span class="p">,</span> <span class="s1">&#39;order_item_product_id&#39;</span><span class="p">])[</span><span class="s1">&#39;order_item_subtotal&#39;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">])</span><span class="o">.</span> \
+    <span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sum&#39;</span><span class="p">:</span> <span class="s1">&#39;revenue&#39;</span><span class="p">})</span><span class="o">.</span> \
+    <span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_date</th>
+      <th>order_item_product_id</th>
+      <th>revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>24</td>
+      <td>319.96</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>93</td>
+      <td>74.97</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>134</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>191</td>
+      <td>5099.49</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>226</td>
+      <td>599.99</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9115</th>
+      <td>2014-07-24 00:00:00.0</td>
+      <td>926</td>
+      <td>31.98</td>
+    </tr>
+    <tr>
+      <th>9116</th>
+      <td>2014-07-24 00:00:00.0</td>
+      <td>957</td>
+      <td>5399.64</td>
+    </tr>
+    <tr>
+      <th>9117</th>
+      <td>2014-07-24 00:00:00.0</td>
+      <td>1004</td>
+      <td>10399.48</td>
+    </tr>
+    <tr>
+      <th>9118</th>
+      <td>2014-07-24 00:00:00.0</td>
+      <td>1014</td>
+      <td>3148.74</td>
+    </tr>
+    <tr>
+      <th>9119</th>
+      <td>2014-07-24 00:00:00.0</td>
+      <td>1073</td>
+      <td>4199.79</td>
+    </tr>
+  </tbody>
+</table>
+<p>9120 rows × 3 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./15_overview_of_pandas_libraries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="10_writing_data_frames_to_files.html" title="previous page">Writing Data Frames to Files</a>
+    <a class='right-next' id="next-link" href="../05_getting_started_with_python/09_leveraging_google%E2%80%99s_colab.html" title="next page">Leveraging Google’s Colab</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
