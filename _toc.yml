@@ -46,94 +46,95 @@ sections:
   - file: 04_postgres_database_operations/10_example_web_application
   - file: 04_postgres_database_operations/11_exercise_database_operations
 
-- file: 05_getting_started_with_python/09_leveraging_googles_colab
+- file: 05_getting_started_with_python/01_getting_started_with_python
   sections:
-  - file: 05_getting_started_with_python/01_getting_started_with_python
-  - file: 05_getting_started_with_python/04_python_cli_and_jupyter_notebook
-  - file: 05_getting_started_with_python/06_using_ides_pycharm
   - file: 05_getting_started_with_python/02_installing_python
-  - file: 05_getting_started_with_python/07_overview_of_visual_studio_code
   - file: 05_getting_started_with_python/03_overview_of_anaconda
-  - file: 05_getting_started_with_python/08_using_itversity_labs
+  - file: 05_getting_started_with_python/04_python_cli_and_jupyter_notebook
   - file: 05_getting_started_with_python/05_overview_of_jupyter_lab
+  - file: 05_getting_started_with_python/06_using_ides_pycharm
+  - file: 05_getting_started_with_python/07_overview_of_visual_studio_code
+  - file: 05_getting_started_with_python/08_using_itversity_labs
+  - file: 05_getting_started_with_python/09_leveraging_googles_colab
 
-- file: 06_basic_programming_constructs/05_operators_in_python
+
+- file: 06_basic_programming_constructs/01_basic_programming_constructs
   sections:
+  - file: 06_basic_programming_constructs/02_getting_help
+  - file: 06_basic_programming_constructs/03_variables_and_objects
+  - file: 06_basic_programming_constructs/04_data_types_commonly_used
+  - file: 06_basic_programming_constructs/05_operators_in_python
+  - file: 06_basic_programming_constructs/06_comments_and_doc_strings
+  - file: 06_basic_programming_constructs/07_conditionals
+  - file: 06_basic_programming_constructs/08_all_about_for_loops
   - file: 06_basic_programming_constructs/09_running_os_commands
   - file: 06_basic_programming_constructs/10_exercises
-  - file: 06_basic_programming_constructs/02_getting_help
-  - file: 06_basic_programming_constructs/06_comments_and_doc_strings
-  - file: 06_basic_programming_constructs/04_data_types_commonly_used
-  - file: 06_basic_programming_constructs/08_all_about_for_loops
-  - file: 06_basic_programming_constructs/03_variables_and_objects
-  - file: 06_basic_programming_constructs/01_basic_programming_constructs
-  - file: 06_basic_programming_constructs/07_conditionals
 
-- file: 07_pre_defined_functions/06_formatting_strings
+- file: 07_pre_defined_functions/01_pre_defined_functions
   sections:
-  - file: 07_pre_defined_functions/08_date_manipulation_functions
+  - file: 07_pre_defined_functions/02_overview_of_pre-defined_functions
+  - file: 07_pre_defined_functions/03_numeric_functions
+  - file: 07_pre_defined_functions/04_overview_of_strings
+  - file: 07_pre_defined_functions/05_string_manipulation_functions
+  - file: 07_pre_defined_functions/06_formatting_strings
   - file: 07_pre_defined_functions/07_print_and_input_functions
+  - file: 07_pre_defined_functions/08_date_manipulation_functions
   - file: 07_pre_defined_functions/09_special_functions
   - file: 07_pre_defined_functions/10_exercises
-  - file: 07_pre_defined_functions/05_string_manipulation_functions
-  - file: 07_pre_defined_functions/02_overview_of_pre-defined_functions
-  - file: 07_pre_defined_functions/04_overview_of_strings
-  - file: 07_pre_defined_functions/01_pre_defined_functions
-  - file: 07_pre_defined_functions/03_numeric_functions
 
-- file: 08_user_defined_functions/06_varying_arguments
+- file: 08_user_defined_functions/01_user_defined_functions
   sections:
-  - file: 08_user_defined_functions/07_keyword_arguments
-  - file: 08_user_defined_functions/09_passing_functions_as_arguments
-  - file: 08_user_defined_functions/12_exercise_user_defined_functions
-  - file: 08_user_defined_functions/05_function_parameters_and_arguments
-  - file: 08_user_defined_functions/04_returning_values
-  - file: 08_user_defined_functions/01_user_defined_functions
-  - file: 08_user_defined_functions/11_usage_of_lambda_functions
   - file: 08_user_defined_functions/02_defining_functions
-  - file: 08_user_defined_functions/10_lambda_functions
-  - file: 08_user_defined_functions/08_recap_of_user_defined_functions
   - file: 08_user_defined_functions/03_doc_strings
+  - file: 08_user_defined_functions/04_returning_values
+  - file: 08_user_defined_functions/05_function_parameters_and_arguments
+  - file: 08_user_defined_functions/06_varying_arguments
+  - file: 08_user_defined_functions/07_keyword_arguments
+  - file: 08_user_defined_functions/08_recap_of_user_defined_functions
+  - file: 08_user_defined_functions/09_passing_functions_as_arguments
+  - file: 08_user_defined_functions/10_lambda_functions
+  - file: 08_user_defined_functions/11_usage_of_lambda_functions
+  - file: 08_user_defined_functions/12_exercise_user_defined_functions
 
-- file: 09_overview_of_collections_list_and_set/02_overview_of_list_and_set
+- file: 09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set
   sections:
-  - file: 09_overview_of_collections_list_and_set/09_typical_set_operations
+  - file: 09_overview_of_collections_list_and_set/02_overview_of_list_and_set
+  - file: 09_overview_of_collections_list_and_set/03_common_operations
+  - file: 09_overview_of_collections_list_and_set/04_accessing_elements_from_list
   - file: 09_overview_of_collections_list_and_set/05_adding_elements_to_list
   - file: 09_overview_of_collections_list_and_set/06_updating_and_deleting_elements
-  - file: 09_overview_of_collections_list_and_set/11_list_and_set_usage
-  - file: 09_overview_of_collections_list_and_set/04_accessing_elements_from_list
   - file: 09_overview_of_collections_list_and_set/07_other_list_operations
-  - file: 09_overview_of_collections_list_and_set/10_validating_set
-  - file: 09_overview_of_collections_list_and_set/03_common_operations
-  - file: 09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set
   - file: 09_overview_of_collections_list_and_set/08_adding_and_deleting_elements_set
+  - file: 09_overview_of_collections_list_and_set/09_typical_set_operations
+  - file: 09_overview_of_collections_list_and_set/10_validating_set
+  - file: 09_overview_of_collections_list_and_set/11_list_and_set_usage
 
-- file: 10_overview_of_collections_dict_and_tuple/09_list_of_dicts
+- file: 10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple
   sections:
-  - file: 10_overview_of_collections_dict_and_tuple/05_accessing_elements_dict
-  - file: 10_overview_of_collections_dict_and_tuple/08_list_of_tuples
-  - file: 10_overview_of_collections_dict_and_tuple/07_common_examples_dict
-  - file: 10_overview_of_collections_dict_and_tuple/04_accessing_elements_tuples
-  - file: 10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple
-  - file: 10_overview_of_collections_dict_and_tuple/03_common_operations
   - file: 10_overview_of_collections_dict_and_tuple/02_overview_of_dict_and_tuple
+  - file: 10_overview_of_collections_dict_and_tuple/03_common_operations
+  - file: 10_overview_of_collections_dict_and_tuple/04_accessing_elements_tuples
+  - file: 10_overview_of_collections_dict_and_tuple/05_accessing_elements_dict
   - file: 10_overview_of_collections_dict_and_tuple/06_manipulating_dict
+  - file: 10_overview_of_collections_dict_and_tuple/07_common_examples_dict
+  - file: 10_overview_of_collections_dict_and_tuple/08_list_of_tuples
+  - file: 10_overview_of_collections_dict_and_tuple/09_list_of_dicts
 
 - file: 11_manipulating_collections_using_loops/01_manipulating_collections_using_loops
   sections:
-  - file: 11_manipulating_collections_using_loops/09_performing_total_aggregations
-  - file: 11_manipulating_collections_using_loops/13_exercises
-  - file: 11_manipulating_collections_using_loops/12_limitations_of_using_loops
   - file: 11_manipulating_collections_using_loops/02_reading_files_into_collections
-  - file: 11_manipulating_collections_using_loops/10_performing_grouped_aggregations
-  - file: 11_manipulating_collections_using_loops/08_quick_recap_of_dict_operations
-  - file: 11_manipulating_collections_using_loops/04_row_level_transformations
-  - file: 11_manipulating_collections_using_loops/06_filtering_data
-  - file: 11_manipulating_collections_using_loops/05_getting_unique_elements
-  - file: 11_manipulating_collections_using_loops/07_preparing_data_sets
   - file: 11_manipulating_collections_using_loops/03_overview_of_standard_transformations
-  - file: 11_manipulating_collections_using_loops/11_joining_data_sets
+  - file: 11_manipulating_collections_using_loops/04_row_level_transformations
+  - file: 11_manipulating_collections_using_loops/05_getting_unique_elements
+  - file: 11_manipulating_collections_using_loops/06_filtering_data
+  - file: 11_manipulating_collections_using_loops/07_preparing_data_sets
   - file: 11_manipulating_collections_using_loops/07_run_other_python_notebook_demo
+  - file: 11_manipulating_collections_using_loops/08_quick_recap_of_dict_operations
+  - file: 11_manipulating_collections_using_loops/09_performing_total_aggregations
+  - file: 11_manipulating_collections_using_loops/10_performing_grouped_aggregations
+  - file: 11_manipulating_collections_using_loops/11_joining_data_sets
+  - file: 11_manipulating_collections_using_loops/12_limitations_of_using_loops
+  - file: 11_manipulating_collections_using_loops/13_exercises
 
 - file: 12_development_of_map_reduce_apis/08_develop_myReduceByKey
   sections:
@@ -181,7 +182,6 @@ sections:
   - file: 15_overview_of_pandas_libraries/09_performing_grouped_aggregations
   - file: 15_overview_of_pandas_libraries/10_writing_data_frames_to_files
   - file: 15_overview_of_pandas_libraries/11_joining_data_frames
-
 
 - file: 16_web_scraping_using_beautifulsoup/07_creating_data_frame
   sections:
