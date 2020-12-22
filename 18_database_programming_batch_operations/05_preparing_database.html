@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Mastering Python</title>
+    <title>Preparing Database &#8212; Mastering Python</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,7 +55,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="06_reading_data_from_file.html" />
+    <link rel="next" title="Reading data from file" href="06_reading_data_from_file.html" />
     <link rel="prev" title="Recap of Insert" href="04_recap_of_insert.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -94,20 +94,10 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_overview_of_windows_os/01_overview_of_windows_os.html">
    Overview of Windows Operating System
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02_overview_of_gcp_and_provision_ubuntu_vm/01_overview_of_gcp_and_provision_ubuntu_vm.html">
-   Overview of GCP and Provision Ubuntu VM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_setup_postgres_db/01_setup_postgres_db.html">
-   Setup Postgres Database on Ubuntu VM
   </a>
  </li>
  <li class="toctree-l1">
@@ -180,10 +170,37 @@
    Database Programming – CRUD Operations
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active">
   <a class="reference internal" href="01_database_programming_batch_operations.html">
    Database Programming – Batch Operations
   </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_function_get_database_connection.html">
+     Function - Get Database Connection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_creating_database_table.html">
+     Creating Database Table
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_recap_of_insert.html">
+     Recap of Insert
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Preparing Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_reading_data_from_file.html">
+     Reading data from file
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../19_project_web_scraping_into_database/01_project_web_scraping_into_database.html">
@@ -292,15 +309,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -308,7 +316,119 @@
         
               <div>
                 
-  
+  <div class="section" id="preparing-database">
+<h1>Preparing Database<a class="headerlink" href="#preparing-database" title="Permalink to this headline">¶</a></h1>
+<p>Let us setup the database along with tables to see how the batch loads are typically done.</p>
+<ul class="simple">
+<li><p>We have scripts and data set available in our <a class="reference external" href="https://github.com/dgadiraju/retail_db.git">GitHub repository</a>. If you are using our environment the repository is already cloned under <strong>/data/retail_db</strong>.</p></li>
+<li><p>It have scripts to create tables with primary keys. Those scripts are generated from MySQL tables and refactored for Postgres. We will create the tables and load the data from the files.</p>
+<ul>
+<li><p>Script to create tables: <strong>create_db_tables_pg.sql</strong></p></li>
+</ul>
+</li>
+<li><p>Here are the commands to launch <code class="docutils literal notranslate"><span class="pre">psql</span></code> and run scripts to create tables as well as load data into tables.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user \
+  -h localhost \
+  -p 5432 \
+  -d itversity_retail_db \
+  -W
+
+\i /data/retail_db/create_db_tables_pg.sql
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> 02_function_get_database_connection.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">retail_connection</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;connection object at 0x7f7ae96963f0; dsn: &#39;user=itversity_retail_user password=xxx dbname=itversity_retail_db host=localhost port=5432&#39;, closed: 0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM orders LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM order_items LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_item_id</th>
+        <th>order_item_order_id</th>
+        <th>order_item_product_id</th>
+        <th>order_item_quantity</th>
+        <th>order_item_subtotal</th>
+        <th>order_item_product_price</th>
+    </tr>
+</table></div></div>
+</div>
+</div>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -338,7 +458,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="04_recap_of_insert.html" title="previous page">Recap of Insert</a>
-    <a class='right-next' id="next-link" href="06_reading_data_from_file.html" title="next page">&lt;no title&gt;</a>
+    <a class='right-next' id="next-link" href="06_reading_data_from_file.html" title="next page">Reading data from file</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

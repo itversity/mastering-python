@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Mastering Python</title>
+    <title>Reading data from file &#8212; Mastering Python</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="07_processing_data_using_pandas.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="05_preparing_database.html" />
+    <link rel="next" title="&lt;no title&gt;" href="10_best_practices_batch_loading.html" />
+    <link rel="prev" title="Preparing Database" href="05_preparing_database.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -94,20 +94,10 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_overview_of_windows_os/01_overview_of_windows_os.html">
    Overview of Windows Operating System
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02_overview_of_gcp_and_provision_ubuntu_vm/01_overview_of_gcp_and_provision_ubuntu_vm.html">
-   Overview of GCP and Provision Ubuntu VM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_setup_postgres_db/01_setup_postgres_db.html">
-   Setup Postgres Database on Ubuntu VM
   </a>
  </li>
  <li class="toctree-l1">
@@ -180,10 +170,37 @@
    Database Programming – CRUD Operations
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active">
   <a class="reference internal" href="01_database_programming_batch_operations.html">
    Database Programming – Batch Operations
   </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_function_get_database_connection.html">
+     Function - Get Database Connection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_creating_database_table.html">
+     Creating Database Table
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_recap_of_insert.html">
+     Recap of Insert
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_preparing_database.html">
+     Preparing Database
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Reading data from file
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../19_project_web_scraping_into_database/01_project_web_scraping_into_database.html">
@@ -292,15 +309,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -308,7 +316,180 @@
         
               <div>
                 
-  
+  <div class="section" id="reading-data-from-file">
+<h1>Reading data from file<a class="headerlink" href="#reading-data-from-file" title="Permalink to this headline">¶</a></h1>
+<p>Let us read both orders as well as order_items data set from files into Pandas Data Frame.</p>
+<ul class="simple">
+<li><p>Both the files does not have header and hence we need to pass the schema while creating data frames.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="k">def</span> <span class="nf">get_df</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">schema</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+        <span class="n">path</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">names</span><span class="o">=</span><span class="n">schema</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_path</span> <span class="o">=</span> <span class="s2">&quot;/data/retail_db/orders/part-00000&quot;</span>
+<span class="n">orders_schema</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;order_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order_date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order_customer_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order_status&quot;</span>
+<span class="p">]</span>
+<span class="n">orders</span> <span class="o">=</span> <span class="n">get_df</span><span class="p">(</span><span class="n">orders_path</span><span class="p">,</span> <span class="n">orders_schema</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># orders.head(3)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_id</th>
+      <th>order_date</th>
+      <th>order_customer_id</th>
+      <th>order_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>11599</td>
+      <td>CLOSED</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>256</td>
+      <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2013-07-25 00:00:00.0</td>
+      <td>12111</td>
+      <td>COMPLETE</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items_path</span> <span class="o">=</span> <span class="s2">&quot;/data/retail_db/order_items/part-00000&quot;</span>
+<span class="n">order_items_schema</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;order_item_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order_item_order_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order_item_product_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order_item_quantity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order_item_subtotal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order_item_product_price&quot;</span>
+<span class="p">]</span>
+<span class="n">order_items</span> <span class="o">=</span> <span class="n">get_df</span><span class="p">(</span><span class="n">order_items_path</span><span class="p">,</span> <span class="n">order_items_schema</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># order_items.head(3)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_item_id</th>
+      <th>order_item_order_id</th>
+      <th>order_item_product_id</th>
+      <th>order_item_quantity</th>
+      <th>order_item_subtotal</th>
+      <th>order_item_product_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>957</td>
+      <td>1</td>
+      <td>299.98</td>
+      <td>299.98</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1073</td>
+      <td>1</td>
+      <td>199.99</td>
+      <td>199.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>502</td>
+      <td>5</td>
+      <td>250.00</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -337,8 +518,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="05_preparing_database.html" title="previous page">&lt;no title&gt;</a>
-    <a class='right-next' id="next-link" href="07_processing_data_using_pandas.html" title="next page">&lt;no title&gt;</a>
+    <a class='left-prev' id="prev-link" href="05_preparing_database.html" title="previous page">Preparing Database</a>
+    <a class='right-next' id="next-link" href="10_best_practices_batch_loading.html" title="next page">&lt;no title&gt;</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
