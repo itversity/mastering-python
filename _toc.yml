@@ -12,26 +12,26 @@ sections:
   - file: 01_overview_of_windows_os/07_connecting_to_linux_servers
   - file: 01_overview_of_windows_os/08_folders_and_files
 
-- file: 02_overview_of_gcp_and_provision_ubuntu_vm/01_overview_of_gcp_and_provision_ubuntu_vm
+- file: 02_setup_ubuntu_vm_on_gcp/01_overview_of_gcp_and_provision_ubuntu_vm
   sections:
-  - file: 02_overview_of_gcp_and_provision_ubuntu_vm/02_signing_up_for_gcp
-  - file: 02_overview_of_gcp_and_provision_ubuntu_vm/03_understanding_gcp_web_console
-  - file: 02_overview_of_gcp_and_provision_ubuntu_vm/04_overview_of_gcp_pricing
-  - file: 02_overview_of_gcp_and_provision_ubuntu_vm/05_provision_ubuntu_18
-  - file: 02_overview_of_gcp_and_provision_ubuntu_vm/06_setup_docker
-  - file: 02_overview_of_gcp_and_provision_ubuntu_vm/07_validating_python
-  - file: 02_overview_of_gcp_and_provision_ubuntu_vm/08_setup_jupyter_lab
+  - file: 02_setup_ubuntu_vm_on_gcp/02_signing_up_for_gcp
+  - file: 02_setup_ubuntu_vm_on_gcp/03_understanding_gcp_web_console
+  - file: 02_setup_ubuntu_vm_on_gcp/04_overview_of_gcp_pricing
+  - file: 02_setup_ubuntu_vm_on_gcp/05_provision_ubuntu_18
+  - file: 02_setup_ubuntu_vm_on_gcp/06_setup_docker
+  - file: 02_setup_ubuntu_vm_on_gcp/07_validating_python
+  - file: 02_setup_ubuntu_vm_on_gcp/08_setup_jupyter_lab
 
-- file: 03_setup_postgres_db/01_setup_postgres_db
+- file: 03_setup_postgres_database/01_setup_postgres_db
   sections:
-  - file: 03_setup_postgres_db/02_setup_postgres_using_docker
-  - file: 03_setup_postgres_db/03_accessing_postgres_using_docker_cli
-  - file: 03_setup_postgres_db/06_setup_sql_workbench
-  - file: 03_setup_postgres_db/05_executing_sql_scripts
-  - file: 03_setup_postgres_db/04_create_database_and_user
-  - file: 03_setup_postgres_db/07_connect_to_sql_workbench-postgres
-  - file: 03_setup_postgres_db/08_sql_workbench_features
-  - file: 03_setup_postgres_db/09_troubleshooting_issues
+  - file: 03_setup_postgres_database/02_setup_postgres_using_docker
+  - file: 03_setup_postgres_database/03_accessing_postgres_using_docker_cli
+  - file: 03_setup_postgres_database/06_setup_sql_workbench
+  - file: 03_setup_postgres_database/05_executing_sql_scripts
+  - file: 03_setup_postgres_database/04_create_database_and_user
+  - file: 03_setup_postgres_database/07_connect_to_sql_workbench-postgres
+  - file: 03_setup_postgres_database/08_sql_workbench_features
+  - file: 03_setup_postgres_database/09_troubleshooting_issues
 
 - file: 04_postgres_database_operations/01_postgres_database_operations
   sections:
