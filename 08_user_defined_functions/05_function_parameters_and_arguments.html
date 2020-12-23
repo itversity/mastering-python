@@ -422,6 +422,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Employee 1 have 1 invalid phones
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -431,6 +436,14 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">commission_amount</span> <span class="o">=</span> <span class="p">(</span><span class="n">sales_amount</span> <span class="o">*</span> <span class="n">commission_pct</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">commission_pct</span> <span class="k">else</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">commission_amount</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-5-60598743caf3&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">get_commission_amount</span><span class="p">(</span><span class="n">sales_amount</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">commission_pct</span><span class="p">):</span>
+                             <span class="o">^</span>
+<span class="ne">SyntaxError</span>: non-default argument follows default argument
 </pre></div>
 </div>
 </div>
@@ -457,11 +470,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50.0
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Will take commission_pct default value</span>
 <span class="n">get_commission_amount</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0
 </pre></div>
 </div>
 </div>
@@ -472,10 +495,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_commission_amount</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid Commision Percentage, greater than 100
 </pre></div>
 </div>
 </div>
@@ -484,6 +517,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Arguments by name</span>
 <span class="n">get_commission_amount</span><span class="p">(</span><span class="n">commission_pct</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">sales_amount</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>270.0
 </pre></div>
 </div>
 </div>

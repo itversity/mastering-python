@@ -381,6 +381,19 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">0</span><span class="n">fa187d3d10e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Employee </span><span class="si">{employee_id}</span><span class="s1"> have </span><span class="si">{invalid_count}</span><span class="s1"> invalid phones&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">invalid_count</span> <span class="o">=</span> <span class="n">get_invalid_phone_count</span><span class="p">(</span><span class="s1">&#39;1234&#39;</span><span class="p">,</span> <span class="s1">&#39;1234567890&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># argument by position will fail</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Python interpreter cannot determine whether 1 is related to phone_numbers or employee_id</span>
+
+<span class="ne">TypeError</span>: get_invalid_phone_count() missing 1 required keyword-only argument: &#39;employee_id&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -389,6 +402,20 @@
 <span class="n">employee_id</span><span class="p">,</span> <span class="n">invalid_count</span> <span class="o">=</span> <span class="n">get_invalid_phone_count</span><span class="p">(</span><span class="n">employee_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phone_numbers</span><span class="o">=</span><span class="n">phone_numbers</span><span class="p">)</span> 
 <span class="c1"># argument by name will fail</span>
 <span class="c1"># This will fail as we cannot pass varrying argument using keyword</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">05</span><span class="n">a120172b4e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Employee </span><span class="si">{employee_id}</span><span class="s1"> have </span><span class="si">{invalid_count}</span><span class="s1"> invalid phones&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;1234&#39;</span><span class="p">,</span> <span class="s1">&#39;1234567890&#39;</span><span class="p">,)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">invalid_count</span> <span class="o">=</span> <span class="n">get_invalid_phone_count</span><span class="p">(</span><span class="n">employee_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phone_numbers</span><span class="o">=</span><span class="n">phone_numbers</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># argument by name will fail</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># This will fail as we cannot pass varrying argument using keyword</span>
+
+<span class="ne">TypeError</span>: get_invalid_phone_count() got an unexpected keyword argument &#39;phone_numbers&#39;
 </pre></div>
 </div>
 </div>
@@ -406,6 +433,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">employee_id</span><span class="o">=</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">invalid_count</span><span class="o">=</span><span class="n">invalid_count</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Employee 1 have 1 invalid phones
 </pre></div>
 </div>
 </div>
@@ -433,10 +465,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of phone_numbers is: 2
+Type of phone_numbers is: &lt;class &#39;tuple&#39;&gt;
+Type of each phone number is: &lt;class &#39;str&#39;&gt;
+(&#39;1234&#39;, &#39;1234567890&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">employee_id</span><span class="o">=</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">invalid_count</span><span class="o">=</span><span class="n">invalid_count</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Employee 1 have 1 invalid phones
 </pre></div>
 </div>
 </div>
@@ -455,10 +500,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of phone_numbers is: 2
+Type of phone_numbers is: &lt;class &#39;tuple&#39;&gt;
+Type of each phone number is: &lt;class &#39;str&#39;&gt;
+(&#39;1234&#39;, &#39;1234567890&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">employee_id</span><span class="o">=</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">invalid_count</span><span class="o">=</span><span class="n">invalid_count</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Employee 1 have 1 invalid phones
 </pre></div>
 </div>
 </div>
