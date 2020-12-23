@@ -333,7 +333,12 @@
                 
   <div class="section" id="manipulating-dict">
 <h1>Manipulating dict<a class="headerlink" href="#manipulating-dict" title="Permalink to this headline">¶</a></h1>
-<p>Let us understand how we can manipulate the dicts.</p>
+<p>Let us understand how we can manipulate the dicts in Python.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/EVp-skflxO4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>We can add new key value pairs to <code class="docutils literal notranslate"><span class="pre">dict</span></code> by using typical assignment.</p></li>
 <li><p>We can also use assignment operation to update existing key value pair in the <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p></li>
@@ -715,7 +720,7 @@ In either case, this is followed by: for k in F:  D[k] = F[k]
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">68</span><span class="o">-</span><span class="mi">430</span><span class="n">dc980e4cd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">34</span><span class="o">-</span><span class="mi">430</span><span class="n">dc980e4cd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;phone_numbers&#39;</span><span class="p">)</span> <span class="c1"># throws KeyError</span>
 
 <span class="ne">KeyError</span>: &#39;phone_numbers&#39;
@@ -788,12 +793,7 @@ D.popitem() -&gt; (k, v), remove and return some (key, value) pair as a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">83</span><span class="o">-</span><span class="mi">83</span><span class="n">c64cff336b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
-
-<span class="ne">KeyError</span>: &#39;popitem(): dictionary is empty&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;commission_pct&#39;, 10)
 </pre></div>
 </div>
 </div>
@@ -805,7 +805,7 @@ D.popitem() -&gt; (k, v), remove and return some (key, value) pair as a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: 1, &#39;first_name&#39;: &#39;Scott&#39;, &#39;last_name&#39;: &#39;Tiger&#39;, &#39;amount&#39;: 1000.0}
 </pre></div>
 </div>
 </div>
