@@ -349,6 +349,98 @@
 <li><p>All about for loops</p></li>
 <li><p>Running OS Commands</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>IPython<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Type:</span>        module
+<span class=" -Color -Color-Red">String form:</span> &lt;module &#39;IPython&#39; from &#39;/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/__init__.py&#39;&gt;
+<span class=" -Color -Color-Red">File:</span>        /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/__init__.py
+<span class=" -Color -Color-Red">Docstring:</span>  
+IPython: tools for interactive and parallel computing in Python.
+
+https://ipython.org
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>IPython.display<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Type:</span>        module
+<span class=" -Color -Color-Red">String form:</span> &lt;module &#39;IPython.display&#39; from &#39;/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/display.py&#39;&gt;
+<span class=" -Color -Color-Red">File:</span>        /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/display.py
+<span class=" -Color -Color-Red">Docstring:</span>   Public API for display tools in IPython.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display_html</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;Hello World&lt;/h1&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;http://example.com&quot;&gt;link&lt;/a&gt;&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><a href="http://example.com">link</a></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;discourse-comments&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+  <span class="nx">DiscourseEmbed</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">discourseUrl</span><span class="o">:</span> <span class="s1">&#39;http://discuss.itversity.com/&#39;</span><span class="p">,</span>
+                     <span class="nx">discourseEmbedUrl</span><span class="o">:</span> <span class="s1">&#39;https://python.itversity.com/06_basic_programming_constructs/01_basic_programming_constructs.html&#39;</span> <span class="p">};</span>
+
+  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span> <span class="nx">d</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">d</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">DiscourseEmbed</span><span class="p">.</span><span class="nx">discourseUrl</span> <span class="o">+</span> <span class="s1">&#39;javascripts/embed.js&#39;</span><span class="p">;</span>
+    <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mf">0</span><span class="p">]</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mf">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">d</span><span class="p">);</span>
+  <span class="p">})();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id='discourse-comments'></div>
+
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'http://discuss.itversity.com/',
+                     discourseEmbedUrl: 'https://python.itversity.com/06_basic_programming_constructs/01_basic_programming_constructs.html' };
+
+  (function() {
+    var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+</div></div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
