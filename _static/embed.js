@@ -1,7 +1,7 @@
 <div id='discourse-comments'></div>
 
 <script type="text/javascript">
-  window.DiscourseEmbed = { discourseUrl: 'http://discuss.itversit.com/',
+  window.DiscourseEmbed = { discourseUrl: 'http://discuss.itversity.com/',
                      topicId: 8};
 
   (function() {
