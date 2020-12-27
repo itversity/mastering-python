@@ -1,4 +1,4 @@
-window.DiscourseEmbed = { discourseUrl: 'http://discuss.itversity.com/t/git-hub-link-request-for-pyspark-related-module/',
+window.DiscourseEmbed = { discourseUrl: 'https://discuss.itversity.com/',
                    topicId: 23884};
 
 (function() {
