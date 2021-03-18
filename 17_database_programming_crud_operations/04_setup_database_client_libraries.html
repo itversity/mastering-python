@@ -227,11 +227,6 @@
    Database Programming – Batch Operations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../19_project_web_scraping_into_database/01_project_web_scraping_into_database.html">
-   Project – Web Scraping and loading into Database
-  </a>
- </li>
 </ul>
 
 </nav>
@@ -343,10 +338,10 @@
                 
   <div class="section" id="setup-database-client-libraries">
 <h1>Setup Database Client Libraries<a class="headerlink" href="#setup-database-client-libraries" title="Permalink to this headline">¶</a></h1>
-<p>Let us understand how to install Database Connector to connect to Postgres Database and run queries.</p>
+<p>Let us understand how to install Database Connector to connect to Postgres Database and run queries. We will also try to connect to database and submit a query as part of the validation.</p>
 <ul class="simple">
 <li><p>You can install Postgres Python connector using <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">psycopg2</span></code> or <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">psycopg2-binary</span></code>.</p></li>
-<li><p>Typicall we need following information for our applications to connect to database.</p>
+<li><p>Typically we need following information for our applications to connect to database.</p>
 <ul>
 <li><p>Host Name or IP Address</p></li>
 <li><p>Port Number</p></li>
@@ -359,9 +354,30 @@
 <li><p>For CRUD operations, the user need to have <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, <code class="docutils literal notranslate"><span class="pre">INSERT</span></code>, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> permissions at the least.
 <img alt="image.png" src="17_database_programming_crud_operations/attachment:image.png" /></p></li>
 </ul>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/kRlQgzIREKE?rel=0&amp;amp;controls=1&amp;amp;showinfo=0&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/kRlQgzIREKE?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m pip install psycopg2-binary
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install psycopg2-binary
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
+Collecting psycopg2-binary
+  Downloading psycopg2_binary-2.8.6-cp36-cp36m-manylinux1_x86_64.whl (3.0 MB)
+     |████████████████████████████████| 3.0 MB 20.1 MB/s eta 0:00:01
+?25hInstalling collected packages: psycopg2-binary
+Successfully installed psycopg2-binary-2.8.6
 </pre></div>
 </div>
 </div>
@@ -369,6 +385,58 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>psycopg2.connect<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+psycopg2<span class=" -Color -Color-Blue">.</span>connect<span class=" -Color -Color-Blue">(</span>
+    dsn<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    connection_factory<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    cursor_factory<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">**</span>kwargs<span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Create a new database connection.
+
+The connection parameters can be specified as a string:
+
+    conn = psycopg2.connect(&quot;dbname=test user=postgres password=secret&quot;)
+
+or using a set of keyword arguments:
+
+    conn = psycopg2.connect(database=&quot;test&quot;, user=&quot;postgres&quot;, password=&quot;secret&quot;)
+
+Or as a mix of both. The basic connection parameters are:
+
+- *dbname*: the database name
+- *database*: the database name (only as keyword argument)
+- *user*: user name used to authenticate
+- *password*: password used to authenticate
+- *host*: database host address (defaults to UNIX socket if not provided)
+- *port*: connection port number (defaults to 5432 if not provided)
+
+Using the *connection_factory* parameter a different class or connections
+factory can be specified. It should be a callable object taking a dsn
+argument.
+
+Using the *cursor_factory* parameter, a new default cursor factory will be
+used by cursor().
+
+Using *async*=True an asynchronous connection will be created. *async_* is
+a valid alias (for Python versions where ``async`` is a keyword).
+
+Any other keyword parameter will be passed to the underlying client
+library: the list of supported parameters depends on the library version.
+<span class=" -Color -Color-Red">File:</span>      ~/.local/lib/python3.6/site-packages/psycopg2/__init__.py
+<span class=" -Color -Color-Red">Type:</span>      function
 </pre></div>
 </div>
 </div>
@@ -439,7 +507,7 @@
 <ul class="simple">
 <li><p>The returned connection object exposes a function called as <code class="docutils literal notranslate"><span class="pre">cursor</span></code>.</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">orders_cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">orders_cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -466,11 +534,15 @@
 </div>
 </div>
 <ul class="simple">
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">cursor</span></code>, we can execute queries using <code class="docutils literal notranslate"><span class="pre">query</span></code> function. It takes a valid query as a string.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">cursor</span></code>, we can execute queries using <code class="docutils literal notranslate"><span class="pre">execute</span></code> function. It takes a valid query as a string.</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM orders LIMIT 10&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM orders LIMIT 10&quot;&quot;&quot;</span>
 <span class="n">orders_cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To validate we will use <code class="docutils literal notranslate"><span class="pre">information_schema.tables</span></code>. It is the table provided by Postgres to give the information of the tables and views that are available for us. You might end up seeing some system tables as output.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -496,6 +568,20 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">table_details</span><span class="p">)</span>
 
 <span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;itversity_sms_db&#39;, &#39;public&#39;, &#39;users_range_part_default&#39;, &#39;BASE TABLE&#39;, None, None, None, None, None, &#39;YES&#39;, &#39;NO&#39;, None)
+(&#39;itversity_sms_db&#39;, &#39;public&#39;, &#39;users_range_part_2016&#39;, &#39;BASE TABLE&#39;, None, None, None, None, None, &#39;YES&#39;, &#39;NO&#39;, None)
+(&#39;itversity_sms_db&#39;, &#39;public&#39;, &#39;users_range_part_2019&#39;, &#39;BASE TABLE&#39;, None, None, None, None, None, &#39;YES&#39;, &#39;NO&#39;, None)
+(&#39;itversity_sms_db&#39;, &#39;public&#39;, &#39;users_range_part_2020&#39;, &#39;BASE TABLE&#39;, None, None, None, None, None, &#39;YES&#39;, &#39;NO&#39;, None)
+(&#39;itversity_sms_db&#39;, &#39;pg_catalog&#39;, &#39;pg_type&#39;, &#39;BASE TABLE&#39;, None, None, None, None, None, &#39;YES&#39;, &#39;NO&#39;, None)
+(&#39;itversity_sms_db&#39;, &#39;pg_catalog&#39;, &#39;pg_foreign_table&#39;, &#39;BASE TABLE&#39;, None, None, None, None, None, &#39;YES&#39;, &#39;NO&#39;, None)
+(&#39;itversity_sms_db&#39;, &#39;public&#39;, &#39;employees&#39;, &#39;BASE TABLE&#39;, None, None, None, None, None, &#39;YES&#39;, &#39;NO&#39;, None)
+(&#39;itversity_sms_db&#39;, &#39;pg_catalog&#39;, &#39;pg_roles&#39;, &#39;VIEW&#39;, None, None, None, None, None, &#39;NO&#39;, &#39;NO&#39;, None)
+(&#39;itversity_sms_db&#39;, &#39;pg_catalog&#39;, &#39;pg_settings&#39;, &#39;VIEW&#39;, None, None, None, None, None, &#39;NO&#39;, &#39;NO&#39;, None)
+(&#39;itversity_sms_db&#39;, &#39;pg_catalog&#39;, &#39;pg_prepared_statements&#39;, &#39;VIEW&#39;, None, None, None, None, None, &#39;NO&#39;, &#39;NO&#39;, None)
 </pre></div>
 </div>
 </div>

@@ -171,23 +171,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="07_validate_myReduce_function.html">
-     Validate myReduce
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="08_develop_myReduceByKey.html">
      Develop myReduceByKey
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09_validate_myReduceKey.html">
-     Validate myReduceKey
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="10_exercises.html">
-     Exercises
     </a>
    </li>
   </ul>
@@ -220,11 +205,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
    Database Programming – Batch Operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../19_project_web_scraping_into_database/01_project_web_scraping_into_database.html">
-   Project – Web Scraping and loading into Database
   </a>
  </li>
 </ul>
@@ -339,12 +319,19 @@
   <div class="section" id="validate-myfilter">
 <h1>Validate myFilter<a class="headerlink" href="#validate-myfilter" title="Permalink to this headline">¶</a></h1>
 <p>Use the same examples which were used before as part of Processing Collections using loops.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> 02_develop_myFilter.ipynb
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>Read orders data</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_path</span> <span class="o">=</span> <span class="s2">&quot;/Users/itversity/Research/data/retail_db/orders/part-00000&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_path</span> <span class="o">=</span> <span class="s2">&quot;/data/retail_db/orders/part-00000&quot;</span>
 <span class="n">orders</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">orders_path</span><span class="p">)</span><span class="o">.</span> \
     <span class="n">read</span><span class="p">()</span><span class="o">.</span> \
     <span class="n">splitlines</span><span class="p">()</span>
@@ -358,11 +345,30 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1,2013-07-25 00:00:00.0,11599,CLOSED&#39;,
+ &#39;2,2013-07-25 00:00:00.0,256,PENDING_PAYMENT&#39;,
+ &#39;3,2013-07-25 00:00:00.0,12111,COMPLETE&#39;,
+ &#39;4,2013-07-25 00:00:00.0,8827,CLOSED&#39;,
+ &#39;5,2013-07-25 00:00:00.0,11318,COMPLETE&#39;,
+ &#39;6,2013-07-25 00:00:00.0,7130,COMPLETE&#39;,
+ &#39;7,2013-07-25 00:00:00.0,4530,COMPLETE&#39;,
+ &#39;8,2013-07-25 00:00:00.0,2911,PROCESSING&#39;,
+ &#39;9,2013-07-25 00:00:00.0,5657,PENDING_PAYMENT&#39;,
+ &#39;10,2013-07-25 00:00:00.0,5648,PENDING_PAYMENT&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;1,2013-07-25 00:00:00.0,11599,CLOSED&#39;</span>
 <span class="nb">int</span><span class="p">(</span><span class="n">order</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">11599</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -385,6 +391,26 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;3774,2013-08-16 00:00:00.0,12431,CANCELED&#39;,
+ &#39;3870,2013-08-17 00:00:00.0,12431,PENDING_PAYMENT&#39;,
+ &#39;4032,2013-08-17 00:00:00.0,12431,ON_HOLD&#39;,
+ &#39;22812,2013-12-12 00:00:00.0,12431,PENDING&#39;,
+ &#39;22927,2013-12-13 00:00:00.0,12431,CLOSED&#39;,
+ &#39;25614,2013-12-30 00:00:00.0,12431,CLOSED&#39;,
+ &#39;27585,2014-01-12 00:00:00.0,12431,PROCESSING&#39;,
+ &#39;28244,2014-01-15 00:00:00.0,12431,PENDING_PAYMENT&#39;,
+ &#39;29109,2014-01-21 00:00:00.0,12431,ON_HOLD&#39;,
+ &#39;29232,2014-01-21 00:00:00.0,12431,ON_HOLD&#39;,
+ &#39;45894,2014-05-06 00:00:00.0,12431,CLOSED&#39;,
+ &#39;46217,2014-05-07 00:00:00.0,12431,CLOSED&#39;,
+ &#39;49678,2014-05-31 00:00:00.0,12431,PENDING&#39;,
+ &#39;51865,2014-06-15 00:00:00.0,12431,PROCESSING&#39;,
+ &#39;63146,2014-02-13 00:00:00.0,12431,PENDING_PAYMENT&#39;,
+ &#39;67110,2014-07-14 00:00:00.0,12431,PENDING&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>Get orders placed by customer id 12431 in the month of 2014 January</p></li>
@@ -396,6 +422,14 @@
                                      <span class="ow">and</span> <span class="n">order</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;2014-01&#39;</span><span class="p">)</span>
                           <span class="p">)</span>
 <span class="n">customer_orders_for_month</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;27585,2014-01-12 00:00:00.0,12431,PROCESSING&#39;,
+ &#39;28244,2014-01-15 00:00:00.0,12431,PENDING_PAYMENT&#39;,
+ &#39;29109,2014-01-21 00:00:00.0,12431,ON_HOLD&#39;,
+ &#39;29232,2014-01-21 00:00:00.0,12431,ON_HOLD&#39;]
 </pre></div>
 </div>
 </div>
@@ -417,6 +451,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">customer_orders_for_month</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;27585,2014-01-12 00:00:00.0,12431,PROCESSING&#39;,
+ &#39;28244,2014-01-15 00:00:00.0,12431,PENDING_PAYMENT&#39;]
 </pre></div>
 </div>
 </div>

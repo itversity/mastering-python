@@ -1,0 +1,1425 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyzing Website Data using Pandas &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/01_overview_of_windows_os.html">
+   Overview of Windows Operating System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/01_postgres_database_operations.html">
+   Perform Database Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/01_getting_started_with_python.html">
+   Getting Started with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/01_basic_programming_constructs.html">
+   Basic Programming Constructs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/01_pre_defined_functions.html">
+   Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/01_user_defined_functions.html">
+   User Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html">
+   Overview of Collections - list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html">
+   Overview of Collections - dict and tuple
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html">
+   Development of Map Reduce APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html">
+   Overview of Object Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_web_scraping_using_beautifulsoup.html">
+   Web Scraping using Beautiful Soup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/01_database_programming_crud_operations.html">
+   Database Programming – CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/16_web_scraping_using_beautifulsoup/10_analyzing_data_using_pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F16_web_scraping_using_beautifulsoup/10_analyzing_data_using_pandas.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/16_web_scraping_using_beautifulsoup/10_analyzing_data_using_pandas.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/16_web_scraping_using_beautifulsoup/10_analyzing_data_using_pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="analyzing-website-data-using-pandas">
+<h1>Analyzing Website Data using Pandas<a class="headerlink" href="#analyzing-website-data-using-pandas" title="Permalink to this headline">¶</a></h1>
+<p>As we understood how to get the data from website using BeautifulSoup, let us go ahead and perform few scenarios to validate data using Pandas.</p>
+<ul class="simple">
+<li><p>Create data frame using <code class="docutils literal notranslate"><span class="pre">url_and_content_list</span></code>.</p></li>
+<li><p>Get length of content for each url.</p></li>
+<li><p>Get word count for each url.</p></li>
+<li><p>Get the list of pages with content less than 30 words.</p></li>
+<li><p>Get unique word count for each url.</p></li>
+<li><p>Get number of times each word repeated for each url.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> 08_processing_data_using_data_frame_apis.ipynb
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5.55 s, sys: 80.1 ms, total: 5.63 s
+Wall time: 7.76 s
+https://python.itversity.com/01_overview_of_windows_os/01_overview_of_windows_os.html : 233
+https://python.itversity.com/01_overview_of_windows_os/02_getting_system_details.html : 463
+https://python.itversity.com/01_overview_of_windows_os/03_managing_windows_system.html : 475
+https://python.itversity.com/01_overview_of_windows_os/04_overview_of_microsoft_office.html : 573
+https://python.itversity.com/01_overview_of_windows_os/05_overview_of_editors_and_ides.html : 39
+https://python.itversity.com/01_overview_of_windows_os/06_power_shell_and_command_prompt.html : 41
+https://python.itversity.com/01_overview_of_windows_os/07_connecting_to_linux_servers.html : 38
+https://python.itversity.com/01_overview_of_windows_os/08_folders_and_files.html : 28
+https://python.itversity.com/04_postgres_database_operations/01_postgres_database_operations.html : 504
+https://python.itversity.com/04_postgres_database_operations/02_overview_of_sql.html : 714
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Create data frame using <code class="docutils literal notranslate"><span class="pre">url_and_content_list</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url_and_content_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">url_and_content_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get length of content for each url</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_and_content_df</span><span class="p">[</span><span class="s1">&#39;content_length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">url_and_content_df</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_and_content_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>url</th>
+      <th>content</th>
+      <th>content_length</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nOverview of Windows Operating System¶\...</td>
+      <td>233</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nGetting System Details¶\nLet us unders...</td>
+      <td>463</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nManaging Windows System¶\nLet us under...</td>
+      <td>475</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nOverview of Microsoft Office¶\nAs IT P...</td>
+      <td>573</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nOverview of Editors and IDEs¶\n\n\n\n\n\n</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nReading the data¶\n\n\n\n\n\n</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nValidating data¶\n\n\n\n\n\n</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nApply required transformations¶\n\n\n\...</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nWriting to Database¶\n\n\n\n\n\n</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nRun queries against data¶\n\n\n\n\n\n</td>
+      <td>35</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 3 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Get word count for each url</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_and_content_df</span><span class="p">[</span><span class="s1">&#39;word_count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">url_and_content_df</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_and_content_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;word_count&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>url</th>
+      <th>content</th>
+      <th>content_length</th>
+      <th>word_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>117</th>
+      <td>https://python.itversity.com/14_overview_of_ob...</td>
+      <td>\n\n\n\nPolymorphism¶\n\n\n\n\n\n</td>
+      <td>23</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>https://python.itversity.com/14_overview_of_ob...</td>
+      <td>\n\n\n\nConstructors¶\n\n\n\n\n\n</td>
+      <td>23</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>https://python.itversity.com/14_overview_of_ob...</td>
+      <td>\n\n\n\nMethods¶\n\n\n\n\n\n</td>
+      <td>18</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>https://python.itversity.com/14_overview_of_ob...</td>
+      <td>\n\n\n\nInheritance¶\n\n\n\n\n\n</td>
+      <td>22</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>https://python.itversity.com/14_overview_of_ob...</td>
+      <td>\n\n\n\nEncapsulation¶\n\n\n\n\n\n</td>
+      <td>24</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>https://python.itversity.com/15_overview_of_pa...</td>
+      <td>\n\n\n\nJoining Data Frames¶\nLet us understan...</td>
+      <td>20249</td>
+      <td>1975</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>https://python.itversity.com/13_understanding_...</td>
+      <td>\n\n\n\nRow level transformations using map¶\n...</td>
+      <td>23527</td>
+      <td>2105</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>https://python.itversity.com/07_pre_defined_fu...</td>
+      <td>\n\n\n\nString Manipulation Functions¶\nLet us...</td>
+      <td>15592</td>
+      <td>3724</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>https://python.itversity.com/15_overview_of_pa...</td>
+      <td>\n\n\n\nData Frames - Basic Operations¶\nHere ...</td>
+      <td>18321</td>
+      <td>3752</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>https://python.itversity.com/08_user_defined_f...</td>
+      <td>\n\n\n\nDoc Strings¶\nDocumentation is one of ...</td>
+      <td>16347</td>
+      <td>3936</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 4 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Get the list of pages with content less than 30 words</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">url_and_content_df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;word_count &lt;= 30&#39;</span><span class="p">)[</span><span class="s1">&#39;url&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://python.itversity.com/01_overview_of_windows_os/01_overview_of_windows_os.html
+https://python.itversity.com/01_overview_of_windows_os/05_overview_of_editors_and_ides.html
+https://python.itversity.com/01_overview_of_windows_os/06_power_shell_and_command_prompt.html
+https://python.itversity.com/01_overview_of_windows_os/07_connecting_to_linux_servers.html
+https://python.itversity.com/01_overview_of_windows_os/08_folders_and_files.html
+https://python.itversity.com/07_pre_defined_functions/01_pre_defined_functions.html
+https://python.itversity.com/12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html
+https://python.itversity.com/13_understanding_map_reduce_libraries/08_using_groupby.html
+https://python.itversity.com/13_understanding_map_reduce_libraries/09_limitations_of_map_reduce_libraries.html
+https://python.itversity.com/14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html
+https://python.itversity.com/14_overview_of_object_oriented_programming/02_classes_and_objects.html
+https://python.itversity.com/14_overview_of_object_oriented_programming/03_constructors.html
+https://python.itversity.com/14_overview_of_object_oriented_programming/04_methods.html
+https://python.itversity.com/14_overview_of_object_oriented_programming/05_inheritance.html
+https://python.itversity.com/14_overview_of_object_oriented_programming/06_encapsulation.html
+https://python.itversity.com/14_overview_of_object_oriented_programming/07_polymorphism.html
+https://python.itversity.com/14_overview_of_object_oriented_programming/08_dynamic_classes.html
+https://python.itversity.com/16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html
+https://python.itversity.com/16_web_scraping_using_beautifulsoup/02_problem_statement.html
+https://python.itversity.com/16_web_scraping_using_beautifulsoup/03_installing_pre-requisites.html
+https://python.itversity.com/16_web_scraping_using_beautifulsoup/04_overview_of_beautifulsoup.html
+https://python.itversity.com/16_web_scraping_using_beautifulsoup/05_getting_html_content.html
+https://python.itversity.com/16_web_scraping_using_beautifulsoup/06_processing_html_content.html
+https://python.itversity.com/16_web_scraping_using_beautifulsoup/07_creating_data_frame.html
+https://python.itversity.com/16_web_scraping_using_beautifulsoup/08_processing_data_using_data_frame_apis.html
+https://python.itversity.com/19_project_web_scraping_into_database/02_define_problem_statement.html
+https://python.itversity.com/19_project_web_scraping_into_database/03_setup_project.html
+https://python.itversity.com/19_project_web_scraping_into_database/04_overview_of_python_virtual_environments.html
+https://python.itversity.com/19_project_web_scraping_into_database/05_installing_required_libraries.html
+https://python.itversity.com/19_project_web_scraping_into_database/06_setup_logging.html
+https://python.itversity.com/19_project_web_scraping_into_database/07_modularizing_the_project.html
+https://python.itversity.com/19_project_web_scraping_into_database/08_setup_database.html
+https://python.itversity.com/19_project_web_scraping_into_database/10_create_required_table.html
+https://python.itversity.com/19_project_web_scraping_into_database/11_reading_the_data.html
+https://python.itversity.com/19_project_web_scraping_into_database/12_validating_data.html
+https://python.itversity.com/19_project_web_scraping_into_database/13_apply_required_transformations.html
+https://python.itversity.com/19_project_web_scraping_into_database/14_writing_to_database.html
+https://python.itversity.com/19_project_web_scraping_into_database/15_run_queries_against_data.html
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get unique word count for each url</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_unique_count</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_and_content_df</span><span class="p">[</span><span class="s1">&#39;unique_word_count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">url_and_content_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">cols</span><span class="p">:</span> <span class="n">get_unique_count</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_and_content_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>url</th>
+      <th>content</th>
+      <th>content_length</th>
+      <th>word_count</th>
+      <th>unique_word_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nOverview of Windows Operating System¶\...</td>
+      <td>233</td>
+      <td>25</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nGetting System Details¶\nLet us unders...</td>
+      <td>463</td>
+      <td>73</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nManaging Windows System¶\nLet us under...</td>
+      <td>475</td>
+      <td>65</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nOverview of Microsoft Office¶\nAs IT P...</td>
+      <td>573</td>
+      <td>79</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>https://python.itversity.com/01_overview_of_wi...</td>
+      <td>\n\n\n\nOverview of Editors and IDEs¶\n\n\n\n\n\n</td>
+      <td>39</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nReading the data¶\n\n\n\n\n\n</td>
+      <td>27</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nValidating data¶\n\n\n\n\n\n</td>
+      <td>26</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nApply required transformations¶\n\n\n\...</td>
+      <td>41</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nWriting to Database¶\n\n\n\n\n\n</td>
+      <td>30</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>https://python.itversity.com/19_project_web_sc...</td>
+      <td>\n\n\n\nRun queries against data¶\n\n\n\n\n\n</td>
+      <td>35</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 5 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Get number of times each word repeated for each url</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="n">url_and_content_df</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">words</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>3926</th>
+      <th>3927</th>
+      <th>3928</th>
+      <th>3929</th>
+      <th>3930</th>
+      <th>3931</th>
+      <th>3932</th>
+      <th>3933</th>
+      <th>3934</th>
+      <th>3935</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>\n\n\n\nOverview</td>
+      <td>of</td>
+      <td>Windows</td>
+      <td>Operating</td>
+      <td>System¶\n\nGetting</td>
+      <td>System</td>
+      <td>Details\nManaging</td>
+      <td>Windows</td>
+      <td>System\nOverview</td>
+      <td>of</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>\n\n\n\nGetting</td>
+      <td>System</td>
+      <td>Details¶\nLet</td>
+      <td>us</td>
+      <td>understand</td>
+      <td>how</td>
+      <td>to</td>
+      <td>get</td>
+      <td>System</td>
+      <td>Details</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>\n\n\n\nManaging</td>
+      <td>Windows</td>
+      <td>System¶\nLet</td>
+      <td>us</td>
+      <td>understand</td>
+      <td>how</td>
+      <td>to</td>
+      <td>manage</td>
+      <td>system</td>
+      <td>effectively.</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>\n\n\n\nOverview</td>
+      <td>of</td>
+      <td>Microsoft</td>
+      <td>Office¶\nAs</td>
+      <td>IT</td>
+      <td>Professionals,</td>
+      <td>it</td>
+      <td>is</td>
+      <td>important</td>
+      <td>to</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>\n\n\n\nOverview</td>
+      <td>of</td>
+      <td>Editors</td>
+      <td>and</td>
+      <td>IDEs¶\n\n\n\n\n\n</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>\n\n\n\nReading</td>
+      <td>the</td>
+      <td>data¶\n\n\n\n\n\n</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>\n\n\n\nValidating</td>
+      <td>data¶\n\n\n\n\n\n</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>\n\n\n\nApply</td>
+      <td>required</td>
+      <td>transformations¶\n\n\n\n\n\n</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>\n\n\n\nWriting</td>
+      <td>to</td>
+      <td>Database¶\n\n\n\n\n\n</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>\n\n\n\nRun</td>
+      <td>queries</td>
+      <td>against</td>
+      <td>data¶\n\n\n\n\n\n</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 3936 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_count</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_count</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;count &gt;= 50 and count &lt;= 100&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>#</th>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>'Friday',</th>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>'Monday',</th>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>'Saturday',</th>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>'Sunday',</th>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>'Thursday',</th>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>'Tuesday',</th>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>'Wednesday',</th>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>*</th>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>+</th>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>/)\n</th>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>2,</th>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>3,</th>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>:</th>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>Data</th>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>Dec</th>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>If</th>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Python</th>
+      <td>77</td>
+    </tr>
+    <tr>
+      <th>S</th>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>\\n</th>
+      <td>91</td>
+    </tr>
+    <tr>
+      <th>all</th>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>also</th>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>an</th>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>at</th>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>database</th>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>default</th>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>each</th>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>element</th>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>elements</th>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>function</th>
+      <td>96</td>
+    </tr>
+    <tr>
+      <th>functions</th>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>get</th>
+      <td>91</td>
+    </tr>
+    <tr>
+      <th>given</th>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>how</th>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>into</th>
+      <td>69</td>
+    </tr>
+    <tr>
+      <th>it</th>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>key</th>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>lambda</th>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>number</th>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>on</th>
+      <td>93</td>
+    </tr>
+    <tr>
+      <th>one</th>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>order</th>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>orders</th>
+      <td>69</td>
+    </tr>
+    <tr>
+      <th>part</th>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>perform</th>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>rows</th>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>set</th>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>should</th>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>string</th>
+      <td>79</td>
+    </tr>
+    <tr>
+      <th>such</th>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>that</th>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td>77</td>
+    </tr>
+    <tr>
+      <th>typically</th>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>use</th>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td>65</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./16_web_scraping_using_beautifulsoup"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-80990145-12', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

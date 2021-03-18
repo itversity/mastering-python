@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Mastering Python</title>
+    <title>Batch Loading of Data &#8212; Mastering Python</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -173,11 +173,6 @@
    Database Programming – Batch Operations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../19_project_web_scraping_into_database/01_project_web_scraping_into_database.html">
-   Project – Web Scraping and loading into Database
-  </a>
- </li>
 </ul>
 
 </nav>
@@ -280,15 +275,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -296,7 +282,28 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="batch-loading-of-data">
+<h1>Batch Loading of Data<a class="headerlink" href="#batch-loading-of-data" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how we should take care of loading data in batches. We will perform load using multiple approaches to understand which one is better.</p>
+<ul class="simple">
+<li><p>Approach 1: Insert and commit each record. Whenever there is a commit in database, there is considerable amount of overhead.</p></li>
+<li><p>Approach 2: Insert one record at a time, but commit at the end.</p></li>
+<li><p>Approach 3: Insert all records at once and commit at the end.</p></li>
+<li><p>Approach 4: Insert records in chunks or batches and commit per chunk or batch.</p></li>
+</ul>
+<p>We should follow the fourth approach while dealing with huge amounts of data. It will facilitate us to restartability or recoverability.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/LPeuy38Ihoo?rel=0&amp;amp;controls=1&amp;amp;showinfo=0&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/LPeuy38Ihoo?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> 02_function_get_database_connection.ipynb
 </pre></div>
@@ -479,8 +486,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 394 ms, sys: 419 ms, total: 813 ms
-Wall time: 6.67 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 460 ms, sys: 479 ms, total: 939 ms
+Wall time: 7.45 s
 </pre></div>
 </div>
 </div>
@@ -488,6 +495,13 @@ Wall time: 6.67 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;TRUNCATE TABLE orders&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">retail_connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -523,8 +537,8 @@ Wall time: 6.67 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.14 s, sys: 998 ms, total: 2.14 s
-Wall time: 4.8 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.28 s, sys: 1.03 s, total: 2.3 s
+Wall time: 5.16 s
 </pre></div>
 </div>
 </div>
@@ -566,8 +580,8 @@ Wall time: 4.8 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.33 s, sys: 927 ms, total: 2.26 s
-Wall time: 4.91 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.42 s, sys: 916 ms, total: 2.34 s
+Wall time: 5.1 s
 </pre></div>
 </div>
 </div>
@@ -579,6 +593,30 @@ Wall time: 4.91 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;TRUNCATE TABLE orders&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68883
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> <span class="mi">10000</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 10000, 20000, 30000, 40000, 50000, 60000]
 </pre></div>
 </div>
 </div>
@@ -609,8 +647,8 @@ Wall time: 4.91 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.14 s, sys: 991 ms, total: 2.13 s
-Wall time: 4.8 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.27 s, sys: 1.02 s, total: 2.29 s
+Wall time: 5.1 s
 </pre></div>
 </div>
 </div>
@@ -654,6 +692,7 @@ SELECT count(1) FROM orders
         <td>68883</td>
     </tr>
 </table></div></div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reading data from file &#8212; Mastering Python</title>
+    <title>Reading Data from File &#8212; Mastering Python</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,7 +55,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="10_best_practices_batch_loading.html" />
     <link rel="prev" title="Preparing Database" href="05_preparing_database.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -197,15 +196,10 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Reading data from file
+     Reading Data from File
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../19_project_web_scraping_into_database/01_project_web_scraping_into_database.html">
-   Project – Web Scraping and loading into Database
-  </a>
  </li>
 </ul>
 
@@ -317,11 +311,59 @@
               <div>
                 
   <div class="section" id="reading-data-from-file">
-<h1>Reading data from file<a class="headerlink" href="#reading-data-from-file" title="Permalink to this headline">¶</a></h1>
+<h1>Reading Data from File<a class="headerlink" href="#reading-data-from-file" title="Permalink to this headline">¶</a></h1>
 <p>Let us read both orders as well as order_items data set from files into Pandas Data Frame.</p>
 <ul class="simple">
 <li><p>Both the files does not have header and hence we need to pass the schema while creating data frames.</p></li>
 </ul>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/484T-LDpiJM?rel=0&amp;amp;controls=1&amp;amp;showinfo=0&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/484T-LDpiJM?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+# ls -ltr /data/retail_db/orders/part-00000
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 root root 2999944 Nov 22 16:08 /data/retail_db/orders/part-00000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+# head /data/retail_db/orders/part-00000
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1,2013-07-25 00:00:00.0,11599,CLOSED
+2,2013-07-25 00:00:00.0,256,PENDING_PAYMENT
+3,2013-07-25 00:00:00.0,12111,COMPLETE
+4,2013-07-25 00:00:00.0,8827,CLOSED
+5,2013-07-25 00:00:00.0,11318,COMPLETE
+6,2013-07-25 00:00:00.0,7130,COMPLETE
+7,2013-07-25 00:00:00.0,4530,COMPLETE
+8,2013-07-25 00:00:00.0,2911,PROCESSING
+9,2013-07-25 00:00:00.0,5657,PENDING_PAYMENT
+10,2013-07-25 00:00:00.0,5648,PENDING_PAYMENT
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -346,6 +388,18 @@
     <span class="s2">&quot;order_status&quot;</span>
 <span class="p">]</span>
 <span class="n">orders</span> <span class="o">=</span> <span class="n">get_df</span><span class="p">(</span><span class="n">orders_path</span><span class="p">,</span> <span class="n">orders_schema</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type(orders)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
 </pre></div>
 </div>
 </div>
@@ -406,6 +460,48 @@
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When it comes to loading data into database using <code class="docutils literal notranslate"><span class="pre">cursor.executemany</span></code>, we need to pass data as list of tuples or list of lists (not as Pandas Dataframe). We can use <code class="docutils literal notranslate"><span class="pre">orders.values.tolist()</span></code> to convert records in the Pandas Dataframe to list of lists.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># orders.values.tolist()[:3]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, &#39;2013-07-25 00:00:00.0&#39;, 11599, &#39;CLOSED&#39;],
+ [2, &#39;2013-07-25 00:00:00.0&#39;, 256, &#39;PENDING_PAYMENT&#39;],
+ [3, &#39;2013-07-25 00:00:00.0&#39;, 12111, &#39;COMPLETE&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type(orders.values.tolist())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type(orders.values.tolist()[2])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -519,7 +615,6 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="05_preparing_database.html" title="previous page">Preparing Database</a>
-    <a class='right-next' id="next-link" href="10_best_practices_batch_loading.html" title="next page">&lt;no title&gt;</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

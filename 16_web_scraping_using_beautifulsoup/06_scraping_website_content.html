@@ -1,0 +1,1258 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scraping Website Content &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/01_overview_of_windows_os.html">
+   Overview of Windows Operating System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/01_postgres_database_operations.html">
+   Perform Database Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/01_getting_started_with_python.html">
+   Getting Started with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/01_basic_programming_constructs.html">
+   Basic Programming Constructs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/01_pre_defined_functions.html">
+   Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/01_user_defined_functions.html">
+   User Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html">
+   Overview of Collections - list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html">
+   Overview of Collections - dict and tuple
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html">
+   Development of Map Reduce APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html">
+   Overview of Object Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_web_scraping_using_beautifulsoup.html">
+   Web Scraping using Beautiful Soup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/01_database_programming_crud_operations.html">
+   Database Programming – CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/16_web_scraping_using_beautifulsoup/06_scraping_website_content.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F16_web_scraping_using_beautifulsoup/06_scraping_website_content.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/16_web_scraping_using_beautifulsoup/06_scraping_website_content.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/16_web_scraping_using_beautifulsoup/06_scraping_website_content.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processing-html-content">
+   Processing HTML Content
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="scraping-website-content">
+<h1>Scraping Website Content<a class="headerlink" href="#scraping-website-content" title="Permalink to this headline">¶</a></h1>
+<p>We can use Python core library <code class="docutils literal notranslate"><span class="pre">requests</span></code> to get the content from HTML pages. Let us understand how we can pass the html content fetched by <code class="docutils literal notranslate"><span class="pre">requests</span></code> to <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">requests</span></code> provides <code class="docutils literal notranslate"><span class="pre">get</span></code> funcion to which we can pass web URL. - <code class="docutils literal notranslate"><span class="pre">python_page</span> <span class="pre">=</span> <span class="pre">requests.get(python_url)</span></code></p></li>
+<li><p>We can access content using <code class="docutils literal notranslate"><span class="pre">python_page.content</span></code>.</p></li>
+<li><p>We can use pass the content to BeautifulSoup and parse the HTML Tags and data for further processing.</p></li>
+</ul>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/cQLjStKMkZ4?rel=0&amp;amp;controls=1&amp;amp;showinfo=0&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/cQLjStKMkZ4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">python_url</span> <span class="o">=</span> <span class="s1">&#39;https://python.itversity.com/mastering-python.html&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">python_page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">python_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">python_page</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>requests.models.Response
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># python_page.content</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;\n&lt;!DOCTYPE html&gt;\n\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;utf-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Mastering Python &amp;#8212; Mastering Python&lt;/title&gt;\n    \n  &lt;link rel=&quot;stylesheet&quot; href=&quot;_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css&quot;&gt;\n\n    \n  &lt;link rel=&quot;stylesheet&quot;\n    href=&quot;_static/vendor/fontawesome/5.13.0/css/all.min.css&quot;&gt;\n  &lt;link rel=&quot;preload&quot; as=&quot;font&quot; type=&quot;font/woff2&quot; crossorigin\n    href=&quot;_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2&quot;&gt;\n  &lt;link rel=&quot;preload&quot; as=&quot;font&quot; type=&quot;font/woff2&quot; crossorigin\n    href=&quot;_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2&quot;&gt;\n\n    \n      \n  &lt;link rel=&quot;stylesheet&quot;\n    href=&quot;_static/vendor/open-sans_all/1.44.1/index.css&quot;&gt;\n  &lt;link rel=&quot;stylesheet&quot;\n    href=&quot;_static/vendor/lato_latin-ext/1.44.1/index.css&quot;&gt;\n\n    \n    &lt;link rel=&quot;stylesheet&quot; href=&quot;_static/pygments.css&quot; type=&quot;text/css&quot; /&gt;\n    &lt;link rel=&quot;stylesheet&quot; href=&quot;_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css&quot; type=&quot;text/css&quot; /&gt;\n    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;_static/togglebutton.css&quot; /&gt;\n    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;_static/copybutton.css&quot; /&gt;\n    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;_static/mystnb.css&quot; /&gt;\n    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;_static/sphinx-thebe.css&quot; /&gt;\n    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css&quot; /&gt;\n    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;_static/panels-variables.06eb56fa6e07937060861dad626602ad.css&quot; /&gt;\n    \n  &lt;link rel=&quot;preload&quot; as=&quot;script&quot; href=&quot;_static/js/index.3da636dd464baa7582d2.js&quot;&gt;\n\n    &lt;script id=&quot;documentation_options&quot; data-url_root=&quot;./&quot; src=&quot;_static/documentation_options.js&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;_static/jquery.js&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;_static/underscore.js&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;_static/doctools.js&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;_static/language_data.js&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;_static/togglebutton.js&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;_static/clipboard.min.js&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;_static/copybutton.js&quot;&gt;&lt;/script&gt;\n    &lt;script &gt;var togglebuttonSelector = \&#39;.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell\&#39;;&lt;/script&gt;\n    &lt;script src=&quot;_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js&quot;&gt;&lt;/script&gt;\n    &lt;script async=&quot;async&quot; src=&quot;https://unpkg.com/thebelab@latest/lib/index.js&quot;&gt;&lt;/script&gt;\n    &lt;script &gt;\n        const thebe_selector = &quot;.thebe&quot;\n        const thebe_selector_input = &quot;pre&quot;\n        const thebe_selector_output = &quot;.output&quot;\n    &lt;/script&gt;\n    &lt;script async=&quot;async&quot; src=&quot;_static/sphinx-thebe.js&quot;&gt;&lt;/script&gt;\n    &lt;link rel=&quot;index&quot; title=&quot;Index&quot; href=&quot;genindex.html&quot; /&gt;\n    &lt;link rel=&quot;search&quot; title=&quot;Search&quot; href=&quot;search.html&quot; /&gt;\n    &lt;link rel=&quot;next&quot; title=&quot;Overview of Windows Operating System&quot; href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot; /&gt;\n\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;\n    &lt;meta name=&quot;docsearch:language&quot; content=&quot;en&quot; /&gt;\n\n\n\n  &lt;/head&gt;\n  &lt;body data-spy=&quot;scroll&quot; data-target=&quot;#bd-toc-nav&quot; data-offset=&quot;80&quot;&gt;\n    \n\n    &lt;div class=&quot;container-xl&quot;&gt;\n      &lt;div class=&quot;row&quot;&gt;\n          \n&lt;div class=&quot;col-12 col-md-3 bd-sidebar site-navigation show&quot; id=&quot;site-navigation&quot;&gt;\n    \n        &lt;div class=&quot;navbar-brand-box&quot;&gt;\n&lt;a class=&quot;navbar-brand text-wrap&quot; href=&quot;index.html&quot;&gt;\n  \n  \n  &lt;h1 class=&quot;site-logo&quot; id=&quot;site-title&quot;&gt;Mastering Python&lt;/h1&gt;\n  \n&lt;/a&gt;\n&lt;/div&gt;\n\n&lt;form class=&quot;bd-search d-flex align-items-center&quot; action=&quot;search.html&quot; method=&quot;get&quot;&gt;\n  &lt;i class=&quot;icon fas fa-search&quot;&gt;&lt;/i&gt;\n  &lt;input type=&quot;search&quot; class=&quot;form-control&quot; name=&quot;q&quot; id=&quot;search-input&quot; placeholder=&quot;Search this book...&quot; aria-label=&quot;Search this book...&quot; autocomplete=&quot;off&quot; &gt;\n&lt;/form&gt;\n\n&lt;nav class=&quot;bd-links&quot; id=&quot;bd-docs-nav&quot; aria-label=&quot;Main navigation&quot;&gt;\n  &lt;ul class=&quot;nav sidenav_l1&quot;&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;#&quot;&gt;\n   Mastering Python\n  &lt;/a&gt;\n &lt;/li&gt;\n&lt;/ul&gt;\n&lt;ul class=&quot;nav sidenav_l1&quot;&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot;&gt;\n   Overview of Windows Operating System\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;04_postgres_database_operations/01_postgres_database_operations.html&quot;&gt;\n   Perform Database Operations\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;05_getting_started_with_python/01_getting_started_with_python.html&quot;&gt;\n   Getting Started with Python\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;06_basic_programming_constructs/01_basic_programming_constructs.html&quot;&gt;\n   Basic Programming Constructs\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;07_pre_defined_functions/01_pre_defined_functions.html&quot;&gt;\n   Pre-defined Functions\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;08_user_defined_functions/01_user_defined_functions.html&quot;&gt;\n   User Defined Functions\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html&quot;&gt;\n   Overview of Collections - list and set\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html&quot;&gt;\n   Overview of Collections - dict and tuple\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html&quot;&gt;\n   Manipulating Collections using Loops\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html&quot;&gt;\n   Development of Map Reduce APIs\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html&quot;&gt;\n   Understanding Python Map Reduce Libraries\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html&quot;&gt;\n   Overview of Object Oriented Programming\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html&quot;&gt;\n   Overview of Pandas Libraries\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html&quot;&gt;\n   Web Scraping using Beautiful Soup\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;17_database_programming_crud_operations/01_database_programming_crud_operations.html&quot;&gt;\n   Database Programming \xe2\x80\x93 CRUD Operations\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;18_database_programming_batch_operations/01_database_programming_batch_operations.html&quot;&gt;\n   Database Programming \xe2\x80\x93 Batch Operations\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toctree-l1&quot;&gt;\n  &lt;a class=&quot;reference internal&quot; href=&quot;19_project_web_scraping_into_database/01_project_web_scraping_into_database.html&quot;&gt;\n   Project \xe2\x80\x93 Web Scraping and loading into Database\n  &lt;/a&gt;\n &lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;/nav&gt;\n\n &lt;!-- To handle the deprecated key --&gt;\n\n&lt;div class=&quot;navbar_extra_footer&quot;&gt;\n  Subscribe to our &lt;a href=&quot;http://notifyme.itversity.com&quot;&gt;Newsletter&lt;/a&gt;\n&lt;/div&gt;\n\n&lt;/div&gt;\n\n\n          \n\n\n          \n&lt;main class=&quot;col py-md-3 pl-md-4 bd-content overflow-auto&quot; role=&quot;main&quot;&gt;\n    \n    &lt;div class=&quot;row topbar fixed-top container-xl&quot;&gt;\n    &lt;div class=&quot;col-12 col-md-3 bd-topbar-whitespace site-navigation show&quot;&gt;\n    &lt;/div&gt;\n    &lt;div class=&quot;col pl-2 topbar-main&quot;&gt;\n        \n        &lt;button id=&quot;navbar-toggler&quot; class=&quot;navbar-toggler ml-0&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot;\n            data-toggle=&quot;tooltip&quot; data-placement=&quot;bottom&quot; data-target=&quot;.site-navigation&quot; aria-controls=&quot;navbar-menu&quot;\n            aria-expanded=&quot;true&quot; aria-label=&quot;Toggle navigation&quot; aria-controls=&quot;site-navigation&quot;\n            title=&quot;Toggle navigation&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;left&quot;&gt;\n            &lt;i class=&quot;fas fa-bars&quot;&gt;&lt;/i&gt;\n            &lt;i class=&quot;fas fa-arrow-left&quot;&gt;&lt;/i&gt;\n            &lt;i class=&quot;fas fa-arrow-up&quot;&gt;&lt;/i&gt;\n        &lt;/button&gt;\n        \n        &lt;div class=&quot;dropdown-buttons-trigger&quot;&gt;\n    &lt;button id=&quot;dropdown-buttons-trigger&quot; class=&quot;btn btn-secondary topbarbtn&quot; aria-label=&quot;Download this page&quot;&gt;&lt;i\n            class=&quot;fas fa-download&quot;&gt;&lt;/i&gt;&lt;/button&gt;\n\n    \n    &lt;div class=&quot;dropdown-buttons&quot;&gt;\n        &lt;!-- ipynb file if we had a myst markdown file --&gt;\n        \n        &lt;!-- Download raw file --&gt;\n        &lt;a class=&quot;dropdown-buttons&quot; href=&quot;_sources/mastering-python.ipynb&quot;&gt;&lt;button type=&quot;button&quot;\n                class=&quot;btn btn-secondary topbarbtn&quot; title=&quot;Download source file&quot; data-toggle=&quot;tooltip&quot;\n                data-placement=&quot;left&quot;&gt;.ipynb&lt;/button&gt;&lt;/a&gt;\n        &lt;!-- Download PDF via print --&gt;\n        &lt;button type=&quot;button&quot; id=&quot;download-print&quot; class=&quot;btn btn-secondary topbarbtn&quot; title=&quot;Print to PDF&quot;\n            onClick=&quot;window.print()&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;left&quot;&gt;.pdf&lt;/button&gt;\n    &lt;/div&gt;\n    \n&lt;/div&gt;\n        &lt;!-- Source interaction buttons --&gt;\n\n&lt;div class=&quot;dropdown-buttons-trigger&quot;&gt;\n    &lt;button id=&quot;dropdown-buttons-trigger&quot; class=&quot;btn btn-secondary topbarbtn&quot;\n        aria-label=&quot;Connect with source repository&quot;&gt;&lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;&lt;/button&gt;\n    &lt;div class=&quot;dropdown-buttons sourcebuttons&quot;&gt;\n        &lt;a class=&quot;repository-button&quot;\n            href=&quot;https://github.com/itversity/mastering-python&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-secondary topbarbtn&quot;\n                data-toggle=&quot;tooltip&quot; data-placement=&quot;left&quot; title=&quot;Source repository&quot;&gt;&lt;i\n                    class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;repository&lt;/button&gt;&lt;/a&gt;\n        &lt;a class=&quot;issues-button&quot;\n            href=&quot;https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2Fmastering-python.html&amp;body=Your%20issue%20content%20here.&quot;&gt;&lt;button\n                type=&quot;button&quot; class=&quot;btn btn-secondary topbarbtn&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;left&quot;\n                title=&quot;Open an issue&quot;&gt;&lt;i class=&quot;fas fa-lightbulb&quot;&gt;&lt;/i&gt;open issue&lt;/button&gt;&lt;/a&gt;\n        &lt;a class=&quot;edit-button&quot; href=&quot;https://github.com/itversity/mastering-python/edit/master/mastering-python.ipynb&quot;&gt;&lt;button\n                type=&quot;button&quot; class=&quot;btn btn-secondary topbarbtn&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;left&quot;\n                title=&quot;Edit this page&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot;&gt;&lt;/i&gt;suggest edit&lt;/button&gt;&lt;/a&gt;\n    &lt;/div&gt;\n&lt;/div&gt;\n\n\n        &lt;!-- Full screen (wrap in &lt;a&gt; to have style consistency --&gt;\n        &lt;a class=&quot;full-screen-button&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-secondary topbarbtn&quot; data-toggle=&quot;tooltip&quot;\n                data-placement=&quot;bottom&quot; onclick=&quot;toggleFullScreen()&quot; aria-label=&quot;Fullscreen mode&quot;\n                title=&quot;Fullscreen mode&quot;&gt;&lt;i\n                    class=&quot;fas fa-expand&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/a&gt;\n\n        &lt;!-- Launch buttons --&gt;\n\n&lt;div class=&quot;dropdown-buttons-trigger&quot;&gt;\n    &lt;button id=&quot;dropdown-buttons-trigger&quot; class=&quot;btn btn-secondary topbarbtn&quot;\n        aria-label=&quot;Launch interactive content&quot;&gt;&lt;i class=&quot;fas fa-rocket&quot;&gt;&lt;/i&gt;&lt;/button&gt;\n    &lt;div class=&quot;dropdown-buttons&quot;&gt;\n        \n        &lt;a class=&quot;binder-button&quot; href=&quot;https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/mastering-python.ipynb&quot;&gt;&lt;button type=&quot;button&quot;\n                class=&quot;btn btn-secondary topbarbtn&quot; title=&quot;Launch Binder&quot; data-toggle=&quot;tooltip&quot;\n                data-placement=&quot;left&quot;&gt;&lt;img class=&quot;binder-button-logo&quot;\n                    src=&quot;_static/images/logo_binder.svg&quot;\n                    alt=&quot;Interact on binder&quot;&gt;Binder&lt;/button&gt;&lt;/a&gt;\n        \n        \n        \n        \n    &lt;/div&gt;\n&lt;/div&gt;\n\n    &lt;/div&gt;\n\n    &lt;!-- Table of contents --&gt;\n    &lt;div class=&quot;d-none d-md-block col-md-2 bd-toc show&quot;&gt;\n        \n        &lt;div class=&quot;tocsection onthispage pt-5 pb-3&quot;&gt;\n            &lt;i class=&quot;fas fa-list&quot;&gt;&lt;/i&gt; Contents\n        &lt;/div&gt;\n        &lt;nav id=&quot;bd-toc-nav&quot;&gt;\n            &lt;ul class=&quot;nav section-nav flex-column&quot;&gt;\n &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;\n  &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#about-python&quot;&gt;\n   About Python\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;\n  &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#course-details&quot;&gt;\n   Course Details\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;\n  &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#desired-audience&quot;&gt;\n   Desired Audience\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;\n  &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#prerequisites&quot;&gt;\n   Prerequisites\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;\n  &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#key-objectives&quot;&gt;\n   Key Objectives\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;\n  &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#training-approach&quot;&gt;\n   Training Approach\n  &lt;/a&gt;\n &lt;/li&gt;\n &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;\n  &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#self-evaluation&quot;&gt;\n   Self Evaluation\n  &lt;/a&gt;\n &lt;/li&gt;\n&lt;/ul&gt;\n\n        &lt;/nav&gt;\n        \n    &lt;/div&gt;\n&lt;/div&gt;\n    &lt;div id=&quot;main-content&quot; class=&quot;row&quot;&gt;\n        &lt;div class=&quot;col-12 col-md-9 pl-md-3 pr-md-0&quot;&gt;\n        \n              &lt;div&gt;\n                \n  &lt;div class=&quot;section&quot; id=&quot;mastering-python&quot;&gt;\n&lt;h1&gt;Mastering Python&lt;a class=&quot;headerlink&quot; href=&quot;#mastering-python&quot; title=&quot;Permalink to this headline&quot;&gt;\xc2\xb6&lt;/a&gt;&lt;/h1&gt;\n&lt;p&gt;This course is primarily designed to learn Python as Programming language to build web or mobile applications, data engineering applications, automation etc.&lt;/p&gt;\n&lt;div class=&quot;section&quot; id=&quot;about-python&quot;&gt;\n&lt;h2&gt;About Python&lt;a class=&quot;headerlink&quot; href=&quot;#about-python&quot; title=&quot;Permalink to this headline&quot;&gt;\xc2\xb6&lt;/a&gt;&lt;/h2&gt;\n&lt;p&gt;Python is one of the leading programming language. It is an open source database and used for different types of applications.&lt;/p&gt;\n&lt;ul class=&quot;simple&quot;&gt;\n&lt;li&gt;&lt;p&gt;Web Applications&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Mobile Applications&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Data Engineering Applications&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Server Automation&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Troubleshooting and Debugging&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Quality Assurance&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Data Science based Applications&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;and many many more&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;It is one of the top 3 programming languages for almost a decade now along with Java and Java Script.&lt;/p&gt;\n&lt;/div&gt;\n&lt;div class=&quot;section&quot; id=&quot;course-details&quot;&gt;\n&lt;h2&gt;Course Details&lt;a class=&quot;headerlink&quot; href=&quot;#course-details&quot; title=&quot;Permalink to this headline&quot;&gt;\xc2\xb6&lt;/a&gt;&lt;/h2&gt;\n&lt;p&gt;This course is primarily designed to go through core programming using Python. It will serve as foundation for role specific courses for different types of IT Professionals or Roles. As part of this course you will be learning the following topics under core programming using Python.&lt;/p&gt;\n&lt;ul class=&quot;simple&quot;&gt;\n&lt;li&gt;&lt;p&gt;Overview of GCP and Setup Ubuntu VM&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Setup Postgres DB using Docker&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Postgres Database Operations - Basic DDL and DML&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Getting Started with Python&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Basic Programming Constructs&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Pre Defined Functions&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;User Defined Functions&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Overview of Collections - list and set&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Overview of Collections - dict and tuple&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Manipulating Collections using loops&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Overview of Map Reduce Libraries&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Overview of Pandas Libraries&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Database Programming - CRUD Operations&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Database Programming - Batch Operations&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/div&gt;\n&lt;div class=&quot;section&quot; id=&quot;desired-audience&quot;&gt;\n&lt;h2&gt;Desired Audience&lt;a class=&quot;headerlink&quot; href=&quot;#desired-audience&quot; title=&quot;Permalink to this headline&quot;&gt;\xc2\xb6&lt;/a&gt;&lt;/h2&gt;\n&lt;p&gt;Here are the desired audience for this course.&lt;/p&gt;\n&lt;ul class=&quot;simple&quot;&gt;\n&lt;li&gt;&lt;p&gt;College students and entry level professionals to get hands on expertise with respect to programming using Python to be prepared for the interviews.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Experienced application developers to understand key aspects of Python Programming to build Python based Web or Mobile Applications.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Data Engineers and Data Warehouse Developers to understand key aspects of Python Programming to build batch or streaming pipelines.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Testers to improve their scripting abilities to validate data in the files tables etc.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;DevOps Engineers, System Administrators, Database Administrators etc to understand Python as scripting language for the automation of day to day tasks.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Data Scientists to be proficient in Python Programming to build the models.&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;div class=&quot;admonition note&quot;&gt;\n&lt;p class=&quot;admonition-title&quot;&gt;Note&lt;/p&gt;\n&lt;p&gt;This course only covers Fundamentals of Python which is useful for almost all the hands on technical roles. It does not include the role specific libraries.&lt;/p&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=&quot;section&quot; id=&quot;prerequisites&quot;&gt;\n&lt;h2&gt;Prerequisites&lt;a class=&quot;headerlink&quot; href=&quot;#prerequisites&quot; title=&quot;Permalink to this headline&quot;&gt;\xc2\xb6&lt;/a&gt;&lt;/h2&gt;\n&lt;p&gt;Here are the prerequisites before signing up for the course.&lt;/p&gt;\n&lt;div class=&quot;sphinx-bs container pb-4 docutils&quot;&gt;\n&lt;div class=&quot;row docutils&quot;&gt;\n&lt;div class=&quot;d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils&quot;&gt;\n&lt;div class=&quot;card w-100 shadow docutils&quot;&gt;\n&lt;div class=&quot;card-body docutils&quot;&gt;\n&lt;p class=&quot;card-text&quot;&gt;&lt;strong&gt;Logistics&lt;/strong&gt;&lt;/p&gt;\n&lt;ul class=&quot;simple&quot;&gt;\n&lt;li&gt;&lt;p class=&quot;card-text&quot;&gt;Computer with decent configuration&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;p class=&quot;card-text&quot;&gt;At least 4 GB RAM&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p class=&quot;card-text&quot;&gt;8 GB RAM is highly desired&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;p class=&quot;card-text&quot;&gt;Chrome Browser&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p class=&quot;card-text&quot;&gt;High Speed Internet&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=&quot;d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils&quot;&gt;\n&lt;div class=&quot;card w-100 shadow docutils&quot;&gt;\n&lt;div class=&quot;card-body docutils&quot;&gt;\n&lt;p class=&quot;card-text&quot;&gt;&lt;strong&gt;Desired Skills&lt;/strong&gt;&lt;/p&gt;\n&lt;ul class=&quot;simple&quot;&gt;\n&lt;li&gt;&lt;p class=&quot;card-text&quot;&gt;Engineering or Science Degree&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p class=&quot;card-text&quot;&gt;Ability to use computer&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p class=&quot;card-text&quot;&gt;Knowledge or working experience with databases is highly desired&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=&quot;section&quot; id=&quot;key-objectives&quot;&gt;\n&lt;h2&gt;Key Objectives&lt;a class=&quot;headerlink&quot; href=&quot;#key-objectives&quot; title=&quot;Permalink to this headline&quot;&gt;\xc2\xb6&lt;/a&gt;&lt;/h2&gt;\n&lt;p&gt;The course is designed for the professionals to achieve these key objectives related to programming using Python as Programming Language.&lt;/p&gt;\n&lt;div class=&quot;admonition attention&quot;&gt;\n&lt;p class=&quot;admonition-title&quot;&gt;Attention&lt;/p&gt;\n&lt;p&gt;This course is primarily designed to gain key database skills for application developers, data engineers, testers, business analysts etc.&lt;/p&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=&quot;section&quot; id=&quot;training-approach&quot;&gt;\n&lt;h2&gt;Training Approach&lt;a class=&quot;headerlink&quot; href=&quot;#training-approach&quot; title=&quot;Permalink to this headline&quot;&gt;\xc2\xb6&lt;/a&gt;&lt;/h2&gt;\n&lt;p&gt;Here are the details related to the training approach.&lt;/p&gt;\n&lt;ul class=&quot;simple&quot;&gt;\n&lt;li&gt;&lt;p&gt;It is self paced with reference material, code snippets and videos.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;One can either use environment provided by us or setup their own environment using Docker.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Modules will be published as and when they are ready. We would recommend to complete &lt;strong&gt;2 modules every week&lt;/strong&gt; by spending &lt;strong&gt;4 to 5 hours per week&lt;/strong&gt;.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;It is highly recommended to take care of the exercises at the end to ensure that you are able to meet all the key objectives for each module.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Support will be provided either through chat or email.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;For those who signed up, we will have weekly monitoring and review sessions to keep track of the progress.&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;div class=&quot;admonition attention&quot;&gt;\n&lt;p class=&quot;admonition-title&quot;&gt;Attention&lt;/p&gt;\n&lt;p&gt;Spend 4 to 5 hours per week up to 8 weeks and complete all the exercises to get best out of this course.&lt;/p&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=&quot;section&quot; id=&quot;self-evaluation&quot;&gt;\n&lt;h2&gt;Self Evaluation&lt;a class=&quot;headerlink&quot; href=&quot;#self-evaluation&quot; title=&quot;Permalink to this headline&quot;&gt;\xc2\xb6&lt;/a&gt;&lt;/h2&gt;\n&lt;p&gt;The course is designed in such a way that one can self evaluate through the course and confirm whether the skills are acquired.&lt;/p&gt;\n&lt;ul class=&quot;simple&quot;&gt;\n&lt;li&gt;&lt;p&gt;Here is the approach we recommend you to take this course.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;p&gt;Go through the consolidated exercises and see if you are able to solve the problems or not.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Make sure to follow the order we have defined as part of the course.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;After each and every section or module, make sure to solve the exercises. We have provided enough information to validate the output of your queries.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;After the completion of the course try to solve the exercises using consolidated list.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Keep in mind that you will be reviewing the same exercises before the course, during the course as well as at the end of the course.&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;By the end of the course, if you are able to solve the problems, then you can come to a conclusion that you are able to master the key skill called as SQL.&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;div class=&quot;toctree-wrapper compound&quot;&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n\n    &lt;script type=&quot;text/x-thebe-config&quot;&gt;\n    {\n        requestKernel: true,\n        binderOptions: {\n            repo: &quot;binder-examples/jupyter-stacks-datascience&quot;,\n            ref: &quot;master&quot;,\n        },\n        codeMirrorConfig: {\n            theme: &quot;abcdef&quot;,\n            mode: &quot;python&quot;\n        },\n        kernelOptions: {\n            kernelName: &quot;python3&quot;,\n            path: &quot;./.&quot;\n        },\n        predefinedOutput: true\n    }\n    &lt;/script&gt;\n    &lt;script&gt;kernelName = \&#39;python3\&#39;&lt;/script&gt;\n\n              &lt;/div&gt;\n              \n        &lt;/div&gt;\n    &lt;/div&gt;\n    \n    \n    &lt;div class=\&#39;prev-next-bottom\&#39;&gt;\n        \n    &lt;a class=\&#39;right-next\&#39; id=&quot;next-link&quot; href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot; title=&quot;next page&quot;&gt;Overview of Windows Operating System&lt;/a&gt;\n\n    &lt;/div&gt;\n    &lt;footer class=&quot;footer mt-5 mt-md-0&quot;&gt;\n    &lt;div class=&quot;container&quot;&gt;\n      &lt;p&gt;\n        \n          By Durga Gadiraju&lt;br/&gt;\n        \n            &amp;copy; Copyright ITVersity, Inc.&lt;br/&gt;\n      &lt;/p&gt;\n    &lt;/div&gt;\n  &lt;/footer&gt;\n&lt;/main&gt;\n\n\n      &lt;/div&gt;\n    &lt;/div&gt;\n\n    \n  &lt;script src=&quot;_static/js/index.3da636dd464baa7582d2.js&quot;&gt;&lt;/script&gt;\n\n\n    \n    &lt;!-- Google Analytics --&gt;\n    &lt;script&gt;\n      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;\n      ga(\&#39;create\&#39;, \&#39;UA-80990145-12\&#39;, \&#39;auto\&#39;);\n      ga(\&#39;set\&#39;, \&#39;anonymizeIp\&#39;, true);\n      ga(\&#39;send\&#39;, \&#39;pageview\&#39;);\n    &lt;/script&gt;\n    &lt;script async src=\&#39;https://www.google-analytics.com/analytics.js\&#39;&gt;&lt;/script&gt;\n    &lt;!-- End Google Analytics --&gt;\n    \n  &lt;/body&gt;\n&lt;/html&gt;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">python_page</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bytes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="processing-html-content">
+<h2>Processing HTML Content<a class="headerlink" href="#processing-html-content" title="Permalink to this headline">¶</a></h2>
+<p>We can pass the content and extract HTML Tags as well as data using BeautifulSoup.</p>
+<ul class="simple">
+<li><p>We have to pass the content using <code class="docutils literal notranslate"><span class="pre">html.parser</span></code> and build the BeautifulSoup object.</p></li>
+<li><p>Let us prettify and print the content.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">python_page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="c1"># print(soup.prettify())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;/&gt;
+  &lt;meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/&gt;
+  &lt;title&gt;
+   Mastering Python — Mastering Python
+  &lt;/title&gt;
+  &lt;link href=&quot;_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css&quot; rel=&quot;stylesheet&quot;/&gt;
+  &lt;link href=&quot;_static/vendor/fontawesome/5.13.0/css/all.min.css&quot; rel=&quot;stylesheet&quot;/&gt;
+  &lt;link as=&quot;font&quot; crossorigin=&quot;&quot; href=&quot;_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2&quot; rel=&quot;preload&quot; type=&quot;font/woff2&quot;/&gt;
+  &lt;link as=&quot;font&quot; crossorigin=&quot;&quot; href=&quot;_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2&quot; rel=&quot;preload&quot; type=&quot;font/woff2&quot;/&gt;
+  &lt;link href=&quot;_static/vendor/open-sans_all/1.44.1/index.css&quot; rel=&quot;stylesheet&quot;/&gt;
+  &lt;link href=&quot;_static/vendor/lato_latin-ext/1.44.1/index.css&quot; rel=&quot;stylesheet&quot;/&gt;
+  &lt;link href=&quot;_static/pygments.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+   &lt;link href=&quot;_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;_static/togglebutton.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+     &lt;link href=&quot;_static/copybutton.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+      &lt;link href=&quot;_static/mystnb.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+       &lt;link href=&quot;_static/sphinx-thebe.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+        &lt;link href=&quot;_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;/&gt;
+        &lt;link href=&quot;_static/panels-variables.06eb56fa6e07937060861dad626602ad.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;/&gt;
+        &lt;link as=&quot;script&quot; href=&quot;_static/js/index.3da636dd464baa7582d2.js&quot; rel=&quot;preload&quot;/&gt;
+        &lt;script data-url_root=&quot;./&quot; id=&quot;documentation_options&quot; src=&quot;_static/documentation_options.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script src=&quot;_static/jquery.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script src=&quot;_static/underscore.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script src=&quot;_static/doctools.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script src=&quot;_static/language_data.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script src=&quot;_static/togglebutton.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script src=&quot;_static/clipboard.min.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script src=&quot;_static/copybutton.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script&gt;
+         var togglebuttonSelector = &#39;.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell&#39;;
+        &lt;/script&gt;
+        &lt;script src=&quot;_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script async=&quot;async&quot; src=&quot;https://unpkg.com/thebelab@latest/lib/index.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;script&gt;
+         const thebe_selector = &quot;.thebe&quot;
+        const thebe_selector_input = &quot;pre&quot;
+        const thebe_selector_output = &quot;.output&quot;
+        &lt;/script&gt;
+        &lt;script async=&quot;async&quot; src=&quot;_static/sphinx-thebe.js&quot;&gt;
+        &lt;/script&gt;
+        &lt;link href=&quot;genindex.html&quot; rel=&quot;index&quot; title=&quot;Index&quot;&gt;
+         &lt;link href=&quot;search.html&quot; rel=&quot;search&quot; title=&quot;Search&quot;/&gt;
+         &lt;link href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot; rel=&quot;next&quot; title=&quot;Overview of Windows Operating System&quot;/&gt;
+         &lt;meta content=&quot;width=device-width, initial-scale=1&quot; name=&quot;viewport&quot;/&gt;
+         &lt;meta content=&quot;en&quot; name=&quot;docsearch:language&quot;/&gt;
+        &lt;/link&gt;
+       &lt;/link&gt;
+      &lt;/link&gt;
+     &lt;/link&gt;
+    &lt;/link&gt;
+   &lt;/link&gt;
+  &lt;/link&gt;
+ &lt;/head&gt;
+ &lt;body data-offset=&quot;80&quot; data-spy=&quot;scroll&quot; data-target=&quot;#bd-toc-nav&quot;&gt;
+  &lt;div class=&quot;container-xl&quot;&gt;
+   &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-3 bd-sidebar site-navigation show&quot; id=&quot;site-navigation&quot;&gt;
+     &lt;div class=&quot;navbar-brand-box&quot;&gt;
+      &lt;a class=&quot;navbar-brand text-wrap&quot; href=&quot;index.html&quot;&gt;
+       &lt;h1 class=&quot;site-logo&quot; id=&quot;site-title&quot;&gt;
+        Mastering Python
+       &lt;/h1&gt;
+      &lt;/a&gt;
+     &lt;/div&gt;
+     &lt;form action=&quot;search.html&quot; class=&quot;bd-search d-flex align-items-center&quot; method=&quot;get&quot;&gt;
+      &lt;i class=&quot;icon fas fa-search&quot;&gt;
+      &lt;/i&gt;
+      &lt;input aria-label=&quot;Search this book...&quot; autocomplete=&quot;off&quot; class=&quot;form-control&quot; id=&quot;search-input&quot; name=&quot;q&quot; placeholder=&quot;Search this book...&quot; type=&quot;search&quot;/&gt;
+     &lt;/form&gt;
+     &lt;nav aria-label=&quot;Main navigation&quot; class=&quot;bd-links&quot; id=&quot;bd-docs-nav&quot;&gt;
+      &lt;ul class=&quot;nav sidenav_l1&quot;&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;#&quot;&gt;
+         Mastering Python
+        &lt;/a&gt;
+       &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;ul class=&quot;nav sidenav_l1&quot;&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot;&gt;
+         Overview of Windows Operating System
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;04_postgres_database_operations/01_postgres_database_operations.html&quot;&gt;
+         Perform Database Operations
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;05_getting_started_with_python/01_getting_started_with_python.html&quot;&gt;
+         Getting Started with Python
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;06_basic_programming_constructs/01_basic_programming_constructs.html&quot;&gt;
+         Basic Programming Constructs
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;07_pre_defined_functions/01_pre_defined_functions.html&quot;&gt;
+         Pre-defined Functions
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;08_user_defined_functions/01_user_defined_functions.html&quot;&gt;
+         User Defined Functions
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html&quot;&gt;
+         Overview of Collections - list and set
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html&quot;&gt;
+         Overview of Collections - dict and tuple
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html&quot;&gt;
+         Manipulating Collections using Loops
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html&quot;&gt;
+         Development of Map Reduce APIs
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html&quot;&gt;
+         Understanding Python Map Reduce Libraries
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html&quot;&gt;
+         Overview of Object Oriented Programming
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html&quot;&gt;
+         Overview of Pandas Libraries
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html&quot;&gt;
+         Web Scraping using Beautiful Soup
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;17_database_programming_crud_operations/01_database_programming_crud_operations.html&quot;&gt;
+         Database Programming – CRUD Operations
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;18_database_programming_batch_operations/01_database_programming_batch_operations.html&quot;&gt;
+         Database Programming – Batch Operations
+        &lt;/a&gt;
+       &lt;/li&gt;
+       &lt;li class=&quot;toctree-l1&quot;&gt;
+        &lt;a class=&quot;reference internal&quot; href=&quot;19_project_web_scraping_into_database/01_project_web_scraping_into_database.html&quot;&gt;
+         Project – Web Scraping and loading into Database
+        &lt;/a&gt;
+       &lt;/li&gt;
+      &lt;/ul&gt;
+     &lt;/nav&gt;
+     &lt;!-- To handle the deprecated key --&gt;
+     &lt;div class=&quot;navbar_extra_footer&quot;&gt;
+      Subscribe to our
+      &lt;a href=&quot;http://notifyme.itversity.com&quot;&gt;
+       Newsletter
+      &lt;/a&gt;
+     &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;main class=&quot;col py-md-3 pl-md-4 bd-content overflow-auto&quot; role=&quot;main&quot;&gt;
+     &lt;div class=&quot;row topbar fixed-top container-xl&quot;&gt;
+      &lt;div class=&quot;col-12 col-md-3 bd-topbar-whitespace site-navigation show&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col pl-2 topbar-main&quot;&gt;
+       &lt;button aria-controls=&quot;site-navigation&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Toggle navigation&quot; class=&quot;navbar-toggler ml-0&quot; data-placement=&quot;left&quot; data-target=&quot;.site-navigation&quot; data-toggle=&quot;tooltip&quot; id=&quot;navbar-toggler&quot; title=&quot;Toggle navigation&quot; type=&quot;button&quot;&gt;
+        &lt;i class=&quot;fas fa-bars&quot;&gt;
+        &lt;/i&gt;
+        &lt;i class=&quot;fas fa-arrow-left&quot;&gt;
+        &lt;/i&gt;
+        &lt;i class=&quot;fas fa-arrow-up&quot;&gt;
+        &lt;/i&gt;
+       &lt;/button&gt;
+       &lt;div class=&quot;dropdown-buttons-trigger&quot;&gt;
+        &lt;button aria-label=&quot;Download this page&quot; class=&quot;btn btn-secondary topbarbtn&quot; id=&quot;dropdown-buttons-trigger&quot;&gt;
+         &lt;i class=&quot;fas fa-download&quot;&gt;
+         &lt;/i&gt;
+        &lt;/button&gt;
+        &lt;div class=&quot;dropdown-buttons&quot;&gt;
+         &lt;!-- ipynb file if we had a myst markdown file --&gt;
+         &lt;!-- Download raw file --&gt;
+         &lt;a class=&quot;dropdown-buttons&quot; href=&quot;_sources/mastering-python.ipynb&quot;&gt;
+          &lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Download source file&quot; type=&quot;button&quot;&gt;
+           .ipynb
+          &lt;/button&gt;
+         &lt;/a&gt;
+         &lt;!-- Download PDF via print --&gt;
+         &lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; id=&quot;download-print&quot; onclick=&quot;window.print()&quot; title=&quot;Print to PDF&quot; type=&quot;button&quot;&gt;
+          .pdf
+         &lt;/button&gt;
+        &lt;/div&gt;
+       &lt;/div&gt;
+       &lt;!-- Source interaction buttons --&gt;
+       &lt;div class=&quot;dropdown-buttons-trigger&quot;&gt;
+        &lt;button aria-label=&quot;Connect with source repository&quot; class=&quot;btn btn-secondary topbarbtn&quot; id=&quot;dropdown-buttons-trigger&quot;&gt;
+         &lt;i class=&quot;fab fa-github&quot;&gt;
+         &lt;/i&gt;
+        &lt;/button&gt;
+        &lt;div class=&quot;dropdown-buttons sourcebuttons&quot;&gt;
+         &lt;a class=&quot;repository-button&quot; href=&quot;https://github.com/itversity/mastering-python&quot;&gt;
+          &lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Source repository&quot; type=&quot;button&quot;&gt;
+           &lt;i class=&quot;fab fa-github&quot;&gt;
+           &lt;/i&gt;
+           repository
+          &lt;/button&gt;
+         &lt;/a&gt;
+         &lt;a class=&quot;issues-button&quot; href=&quot;https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2Fmastering-python.html&amp;amp;body=Your%20issue%20content%20here.&quot;&gt;
+          &lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Open an issue&quot; type=&quot;button&quot;&gt;
+           &lt;i class=&quot;fas fa-lightbulb&quot;&gt;
+           &lt;/i&gt;
+           open issue
+          &lt;/button&gt;
+         &lt;/a&gt;
+         &lt;a class=&quot;edit-button&quot; href=&quot;https://github.com/itversity/mastering-python/edit/master/mastering-python.ipynb&quot;&gt;
+          &lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Edit this page&quot; type=&quot;button&quot;&gt;
+           &lt;i class=&quot;fas fa-pencil-alt&quot;&gt;
+           &lt;/i&gt;
+           suggest edit
+          &lt;/button&gt;
+         &lt;/a&gt;
+        &lt;/div&gt;
+       &lt;/div&gt;
+       &lt;!-- Full screen (wrap in &lt;a&gt; to have style consistency --&gt;
+       &lt;a class=&quot;full-screen-button&quot;&gt;
+        &lt;button aria-label=&quot;Fullscreen mode&quot; class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;bottom&quot; data-toggle=&quot;tooltip&quot; onclick=&quot;toggleFullScreen()&quot; title=&quot;Fullscreen mode&quot; type=&quot;button&quot;&gt;
+         &lt;i class=&quot;fas fa-expand&quot;&gt;
+         &lt;/i&gt;
+        &lt;/button&gt;
+       &lt;/a&gt;
+       &lt;!-- Launch buttons --&gt;
+       &lt;div class=&quot;dropdown-buttons-trigger&quot;&gt;
+        &lt;button aria-label=&quot;Launch interactive content&quot; class=&quot;btn btn-secondary topbarbtn&quot; id=&quot;dropdown-buttons-trigger&quot;&gt;
+         &lt;i class=&quot;fas fa-rocket&quot;&gt;
+         &lt;/i&gt;
+        &lt;/button&gt;
+        &lt;div class=&quot;dropdown-buttons&quot;&gt;
+         &lt;a class=&quot;binder-button&quot; href=&quot;https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/mastering-python.ipynb&quot;&gt;
+          &lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Launch Binder&quot; type=&quot;button&quot;&gt;
+           &lt;img alt=&quot;Interact on binder&quot; class=&quot;binder-button-logo&quot; src=&quot;_static/images/logo_binder.svg&quot;/&gt;
+           Binder
+          &lt;/button&gt;
+         &lt;/a&gt;
+        &lt;/div&gt;
+       &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- Table of contents --&gt;
+      &lt;div class=&quot;d-none d-md-block col-md-2 bd-toc show&quot;&gt;
+       &lt;div class=&quot;tocsection onthispage pt-5 pb-3&quot;&gt;
+        &lt;i class=&quot;fas fa-list&quot;&gt;
+        &lt;/i&gt;
+        Contents
+       &lt;/div&gt;
+       &lt;nav id=&quot;bd-toc-nav&quot;&gt;
+        &lt;ul class=&quot;nav section-nav flex-column&quot;&gt;
+         &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;
+          &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#about-python&quot;&gt;
+           About Python
+          &lt;/a&gt;
+         &lt;/li&gt;
+         &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;
+          &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#course-details&quot;&gt;
+           Course Details
+          &lt;/a&gt;
+         &lt;/li&gt;
+         &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;
+          &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#desired-audience&quot;&gt;
+           Desired Audience
+          &lt;/a&gt;
+         &lt;/li&gt;
+         &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;
+          &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#prerequisites&quot;&gt;
+           Prerequisites
+          &lt;/a&gt;
+         &lt;/li&gt;
+         &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;
+          &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#key-objectives&quot;&gt;
+           Key Objectives
+          &lt;/a&gt;
+         &lt;/li&gt;
+         &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;
+          &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#training-approach&quot;&gt;
+           Training Approach
+          &lt;/a&gt;
+         &lt;/li&gt;
+         &lt;li class=&quot;toc-h2 nav-item toc-entry&quot;&gt;
+          &lt;a class=&quot;reference internal nav-link&quot; href=&quot;#self-evaluation&quot;&gt;
+           Self Evaluation
+          &lt;/a&gt;
+         &lt;/li&gt;
+        &lt;/ul&gt;
+       &lt;/nav&gt;
+      &lt;/div&gt;
+     &lt;/div&gt;
+     &lt;div class=&quot;row&quot; id=&quot;main-content&quot;&gt;
+      &lt;div class=&quot;col-12 col-md-9 pl-md-3 pr-md-0&quot;&gt;
+       &lt;div&gt;
+        &lt;div class=&quot;section&quot; id=&quot;mastering-python&quot;&gt;
+         &lt;h1&gt;
+          Mastering Python
+          &lt;a class=&quot;headerlink&quot; href=&quot;#mastering-python&quot; title=&quot;Permalink to this headline&quot;&gt;
+           ¶
+          &lt;/a&gt;
+         &lt;/h1&gt;
+         &lt;p&gt;
+          This course is primarily designed to learn Python as Programming language to build web or mobile applications, data engineering applications, automation etc.
+         &lt;/p&gt;
+         &lt;div class=&quot;section&quot; id=&quot;about-python&quot;&gt;
+          &lt;h2&gt;
+           About Python
+           &lt;a class=&quot;headerlink&quot; href=&quot;#about-python&quot; title=&quot;Permalink to this headline&quot;&gt;
+            ¶
+           &lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;p&gt;
+           Python is one of the leading programming language. It is an open source database and used for different types of applications.
+          &lt;/p&gt;
+          &lt;ul class=&quot;simple&quot;&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Web Applications
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Mobile Applications
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Data Engineering Applications
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Server Automation
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Troubleshooting and Debugging
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Quality Assurance
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Data Science based Applications
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             and many many more
+            &lt;/p&gt;
+           &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;p&gt;
+           It is one of the top 3 programming languages for almost a decade now along with Java and Java Script.
+          &lt;/p&gt;
+         &lt;/div&gt;
+         &lt;div class=&quot;section&quot; id=&quot;course-details&quot;&gt;
+          &lt;h2&gt;
+           Course Details
+           &lt;a class=&quot;headerlink&quot; href=&quot;#course-details&quot; title=&quot;Permalink to this headline&quot;&gt;
+            ¶
+           &lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;p&gt;
+           This course is primarily designed to go through core programming using Python. It will serve as foundation for role specific courses for different types of IT Professionals or Roles. As part of this course you will be learning the following topics under core programming using Python.
+          &lt;/p&gt;
+          &lt;ul class=&quot;simple&quot;&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Overview of GCP and Setup Ubuntu VM
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Setup Postgres DB using Docker
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Postgres Database Operations - Basic DDL and DML
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Getting Started with Python
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Basic Programming Constructs
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Pre Defined Functions
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             User Defined Functions
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Overview of Collections - list and set
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Overview of Collections - dict and tuple
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Manipulating Collections using loops
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Overview of Map Reduce Libraries
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Overview of Pandas Libraries
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Database Programming - CRUD Operations
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Database Programming - Batch Operations
+            &lt;/p&gt;
+           &lt;/li&gt;
+          &lt;/ul&gt;
+         &lt;/div&gt;
+         &lt;div class=&quot;section&quot; id=&quot;desired-audience&quot;&gt;
+          &lt;h2&gt;
+           Desired Audience
+           &lt;a class=&quot;headerlink&quot; href=&quot;#desired-audience&quot; title=&quot;Permalink to this headline&quot;&gt;
+            ¶
+           &lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;p&gt;
+           Here are the desired audience for this course.
+          &lt;/p&gt;
+          &lt;ul class=&quot;simple&quot;&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             College students and entry level professionals to get hands on expertise with respect to programming using Python to be prepared for the interviews.
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Experienced application developers to understand key aspects of Python Programming to build Python based Web or Mobile Applications.
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Data Engineers and Data Warehouse Developers to understand key aspects of Python Programming to build batch or streaming pipelines.
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Testers to improve their scripting abilities to validate data in the files tables etc.
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             DevOps Engineers, System Administrators, Database Administrators etc to understand Python as scripting language for the automation of day to day tasks.
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Data Scientists to be proficient in Python Programming to build the models.
+            &lt;/p&gt;
+           &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class=&quot;admonition note&quot;&gt;
+           &lt;p class=&quot;admonition-title&quot;&gt;
+            Note
+           &lt;/p&gt;
+           &lt;p&gt;
+            This course only covers Fundamentals of Python which is useful for almost all the hands on technical roles. It does not include the role specific libraries.
+           &lt;/p&gt;
+          &lt;/div&gt;
+         &lt;/div&gt;
+         &lt;div class=&quot;section&quot; id=&quot;prerequisites&quot;&gt;
+          &lt;h2&gt;
+           Prerequisites
+           &lt;a class=&quot;headerlink&quot; href=&quot;#prerequisites&quot; title=&quot;Permalink to this headline&quot;&gt;
+            ¶
+           &lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;p&gt;
+           Here are the prerequisites before signing up for the course.
+          &lt;/p&gt;
+          &lt;div class=&quot;sphinx-bs container pb-4 docutils&quot;&gt;
+           &lt;div class=&quot;row docutils&quot;&gt;
+            &lt;div class=&quot;d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils&quot;&gt;
+             &lt;div class=&quot;card w-100 shadow docutils&quot;&gt;
+              &lt;div class=&quot;card-body docutils&quot;&gt;
+               &lt;p class=&quot;card-text&quot;&gt;
+                &lt;strong&gt;
+                 Logistics
+                &lt;/strong&gt;
+               &lt;/p&gt;
+               &lt;ul class=&quot;simple&quot;&gt;
+                &lt;li&gt;
+                 &lt;p class=&quot;card-text&quot;&gt;
+                  Computer with decent configuration
+                 &lt;/p&gt;
+                 &lt;ul&gt;
+                  &lt;li&gt;
+                   &lt;p class=&quot;card-text&quot;&gt;
+                    At least 4 GB RAM
+                   &lt;/p&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                   &lt;p class=&quot;card-text&quot;&gt;
+                    8 GB RAM is highly desired
+                   &lt;/p&gt;
+                  &lt;/li&gt;
+                 &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                 &lt;p class=&quot;card-text&quot;&gt;
+                  Chrome Browser
+                 &lt;/p&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                 &lt;p class=&quot;card-text&quot;&gt;
+                  High Speed Internet
+                 &lt;/p&gt;
+                &lt;/li&gt;
+               &lt;/ul&gt;
+              &lt;/div&gt;
+             &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils&quot;&gt;
+             &lt;div class=&quot;card w-100 shadow docutils&quot;&gt;
+              &lt;div class=&quot;card-body docutils&quot;&gt;
+               &lt;p class=&quot;card-text&quot;&gt;
+                &lt;strong&gt;
+                 Desired Skills
+                &lt;/strong&gt;
+               &lt;/p&gt;
+               &lt;ul class=&quot;simple&quot;&gt;
+                &lt;li&gt;
+                 &lt;p class=&quot;card-text&quot;&gt;
+                  Engineering or Science Degree
+                 &lt;/p&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                 &lt;p class=&quot;card-text&quot;&gt;
+                  Ability to use computer
+                 &lt;/p&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                 &lt;p class=&quot;card-text&quot;&gt;
+                  Knowledge or working experience with databases is highly desired
+                 &lt;/p&gt;
+                &lt;/li&gt;
+               &lt;/ul&gt;
+              &lt;/div&gt;
+             &lt;/div&gt;
+            &lt;/div&gt;
+           &lt;/div&gt;
+          &lt;/div&gt;
+         &lt;/div&gt;
+         &lt;div class=&quot;section&quot; id=&quot;key-objectives&quot;&gt;
+          &lt;h2&gt;
+           Key Objectives
+           &lt;a class=&quot;headerlink&quot; href=&quot;#key-objectives&quot; title=&quot;Permalink to this headline&quot;&gt;
+            ¶
+           &lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;p&gt;
+           The course is designed for the professionals to achieve these key objectives related to programming using Python as Programming Language.
+          &lt;/p&gt;
+          &lt;div class=&quot;admonition attention&quot;&gt;
+           &lt;p class=&quot;admonition-title&quot;&gt;
+            Attention
+           &lt;/p&gt;
+           &lt;p&gt;
+            This course is primarily designed to gain key database skills for application developers, data engineers, testers, business analysts etc.
+           &lt;/p&gt;
+          &lt;/div&gt;
+         &lt;/div&gt;
+         &lt;div class=&quot;section&quot; id=&quot;training-approach&quot;&gt;
+          &lt;h2&gt;
+           Training Approach
+           &lt;a class=&quot;headerlink&quot; href=&quot;#training-approach&quot; title=&quot;Permalink to this headline&quot;&gt;
+            ¶
+           &lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;p&gt;
+           Here are the details related to the training approach.
+          &lt;/p&gt;
+          &lt;ul class=&quot;simple&quot;&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             It is self paced with reference material, code snippets and videos.
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             One can either use environment provided by us or setup their own environment using Docker.
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Modules will be published as and when they are ready. We would recommend to complete
+             &lt;strong&gt;
+              2 modules every week
+             &lt;/strong&gt;
+             by spending
+             &lt;strong&gt;
+              4 to 5 hours per week
+             &lt;/strong&gt;
+             .
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             It is highly recommended to take care of the exercises at the end to ensure that you are able to meet all the key objectives for each module.
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Support will be provided either through chat or email.
+            &lt;/p&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             For those who signed up, we will have weekly monitoring and review sessions to keep track of the progress.
+            &lt;/p&gt;
+           &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class=&quot;admonition attention&quot;&gt;
+           &lt;p class=&quot;admonition-title&quot;&gt;
+            Attention
+           &lt;/p&gt;
+           &lt;p&gt;
+            Spend 4 to 5 hours per week up to 8 weeks and complete all the exercises to get best out of this course.
+           &lt;/p&gt;
+          &lt;/div&gt;
+         &lt;/div&gt;
+         &lt;div class=&quot;section&quot; id=&quot;self-evaluation&quot;&gt;
+          &lt;h2&gt;
+           Self Evaluation
+           &lt;a class=&quot;headerlink&quot; href=&quot;#self-evaluation&quot; title=&quot;Permalink to this headline&quot;&gt;
+            ¶
+           &lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;p&gt;
+           The course is designed in such a way that one can self evaluate through the course and confirm whether the skills are acquired.
+          &lt;/p&gt;
+          &lt;ul class=&quot;simple&quot;&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             Here is the approach we recommend you to take this course.
+            &lt;/p&gt;
+            &lt;ul&gt;
+             &lt;li&gt;
+              &lt;p&gt;
+               Go through the consolidated exercises and see if you are able to solve the problems or not.
+              &lt;/p&gt;
+             &lt;/li&gt;
+             &lt;li&gt;
+              &lt;p&gt;
+               Make sure to follow the order we have defined as part of the course.
+              &lt;/p&gt;
+             &lt;/li&gt;
+             &lt;li&gt;
+              &lt;p&gt;
+               After each and every section or module, make sure to solve the exercises. We have provided enough information to validate the output of your queries.
+              &lt;/p&gt;
+             &lt;/li&gt;
+             &lt;li&gt;
+              &lt;p&gt;
+               After the completion of the course try to solve the exercises using consolidated list.
+              &lt;/p&gt;
+             &lt;/li&gt;
+             &lt;li&gt;
+              &lt;p&gt;
+               Keep in mind that you will be reviewing the same exercises before the course, during the course as well as at the end of the course.
+              &lt;/p&gt;
+             &lt;/li&gt;
+            &lt;/ul&gt;
+           &lt;/li&gt;
+           &lt;li&gt;
+            &lt;p&gt;
+             By the end of the course, if you are able to solve the problems, then you can come to a conclusion that you are able to master the key skill called as SQL.
+            &lt;/p&gt;
+           &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class=&quot;toctree-wrapper compound&quot;&gt;
+          &lt;/div&gt;
+         &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script type=&quot;text/x-thebe-config&quot;&gt;
+         {
+        requestKernel: true,
+        binderOptions: {
+            repo: &quot;binder-examples/jupyter-stacks-datascience&quot;,
+            ref: &quot;master&quot;,
+        },
+        codeMirrorConfig: {
+            theme: &quot;abcdef&quot;,
+            mode: &quot;python&quot;
+        },
+        kernelOptions: {
+            kernelName: &quot;python3&quot;,
+            path: &quot;./.&quot;
+        },
+        predefinedOutput: true
+    }
+        &lt;/script&gt;
+        &lt;script&gt;
+         kernelName = &#39;python3&#39;
+        &lt;/script&gt;
+       &lt;/div&gt;
+      &lt;/div&gt;
+     &lt;/div&gt;
+     &lt;div class=&quot;prev-next-bottom&quot;&gt;
+      &lt;a class=&quot;right-next&quot; href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot; id=&quot;next-link&quot; title=&quot;next page&quot;&gt;
+       Overview of Windows Operating System
+      &lt;/a&gt;
+     &lt;/div&gt;
+     &lt;footer class=&quot;footer mt-5 mt-md-0&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+       &lt;p&gt;
+        By Durga Gadiraju
+        &lt;br/&gt;
+        © Copyright ITVersity, Inc.
+        &lt;br/&gt;
+       &lt;/p&gt;
+      &lt;/div&gt;
+     &lt;/footer&gt;
+    &lt;/main&gt;
+   &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;script src=&quot;_static/js/index.3da636dd464baa7582d2.js&quot;&gt;
+  &lt;/script&gt;
+  &lt;!-- Google Analytics --&gt;
+  &lt;script&gt;
+   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga(&#39;create&#39;, &#39;UA-80990145-12&#39;, &#39;auto&#39;);
+      ga(&#39;set&#39;, &#39;anonymizeIp&#39;, true);
+      ga(&#39;send&#39;, &#39;pageview&#39;);
+  &lt;/script&gt;
+  &lt;script async=&quot;&quot; src=&quot;https://www.google-analytics.com/analytics.js&quot;&gt;
+  &lt;/script&gt;
+  &lt;!-- End Google Analytics --&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./16_web_scraping_using_beautifulsoup"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-80990145-12', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

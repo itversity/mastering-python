@@ -217,11 +217,6 @@
    Database Programming – Batch Operations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../19_project_web_scraping_into_database/01_project_web_scraping_into_database.html">
-   Project – Web Scraping and loading into Database
-  </a>
- </li>
 </ul>
 
 </nav>
@@ -332,6 +327,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#task-1">
    Task 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-compute-commission-amount">
+   Task - Compute Commission Amount
   </a>
  </li>
 </ul>
@@ -458,6 +458,152 @@ Return series of accumulated sums (or other binary function results).
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 6, 24]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>iter.chain<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span> iter<span class=" -Color -Color-Blue">.</span>chain<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Blue">/,</span> <span class=" -Color -Color-Blue">*</span>args<span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Blue">**</span>kwargs<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>     
+chain(*iterables) --&gt; chain object
+
+Return a chain object whose .__next__() method returns elements from the
+first iterable until it is exhausted, then elements from the next
+iterable, until all of the iterables are exhausted.
+<span class=" -Color -Color-Red">Type:</span>           type
+<span class=" -Color -Color-Red">Subclasses:</span>     
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="nb">iter</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 4, 5, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">iter</span><span class="o">.</span><span class="n">starmap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class starmap in module itertools:
+
+class starmap(builtins.object)
+ |  starmap(function, sequence) --&gt; starmap object
+ |  
+ |  Return an iterator whose values are returned from the function evaluated
+ |  with an argument tuple taken from the given sequence.
+ |  
+ |  Methods defined here:
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |  
+ |  __next__(self, /)
+ |      Implement next(self).
+ |  
+ |  __reduce__(...)
+ |      Return state information for pickling.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="task-compute-commission-amount">
+<h2>Task - Compute Commission Amount<a class="headerlink" href="#task-compute-commission-amount" title="Permalink to this headline">¶</a></h2>
+<p>Create a collection with sales and commission percentage. Using that collection compute total commission amount. If the commission percent is None or not present, treat it as 0.</p>
+<ul class="simple">
+<li><p>Each element in the collection should be a tuple.</p></li>
+<li><p>First element is the sales amount and second element is commission percentage.</p></li>
+<li><p>Commission for each sale can be computed by multiplying commission percentage with sales (make sure to divide commission percentage by 100).</p></li>
+<li><p>Some of the records does not have commission percentage, in that case commission amount for that sale shall be 0</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">376.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">548.23</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">107.93</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">838.22</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">846.85</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">234.84</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">850.2</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">992.2</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">267.01</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">958.91</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">412.59</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">283.14</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">350.01</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">226.95</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="p">(</span><span class="mf">132.7</span><span class="p">,</span> <span class="mi">14</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">iter</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">rec</span><span class="p">:</span> <span class="n">rec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">rec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">rec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">transactions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;itertools.starmap at 0x7f29b8a12f28&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">iter</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">sale_amount</span><span class="p">,</span> <span class="n">comm_pct</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">sale_amount</span> <span class="o">*</span> <span class="n">comm_pct</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">comm_pct</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">transactions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3008.0
+7675.22
+863.44
+11735.08
+17783.85
+0
+17854.2
+20836.2
+0
+20137.11
+0
+0
+4900.14
+0
+1857.8
 </pre></div>
 </div>
 </div>

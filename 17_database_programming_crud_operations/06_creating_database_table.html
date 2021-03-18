@@ -227,11 +227,6 @@
    Database Programming – Batch Operations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../19_project_web_scraping_into_database/01_project_web_scraping_into_database.html">
-   Project – Web Scraping and loading into Database
-  </a>
- </li>
 </ul>
 
 </nav>
@@ -350,8 +345,19 @@
 <li><p>I am using Jupyter based environment for demo - feel free to use what ever is relevant to your project or comfortable for you.</p></li>
 </ul>
 <blockquote>
-<div><p>One need to have decent database and SQL skills to be comfortable with all types of application development. Feel free to <strong>Master SQL using Postgresql</strong> as target database using this course or <a class="reference external" href="https://www.youtube.com/playlist?list=PLf0swTFhTI8p2yirPMTUhJ2xzuQhhUTwY">playlist</a>.</p>
+<div><p>One need to have decent database and SQL skills to be comfortable with all types of application development. Feel free to <strong>Master SQL using Postgresql</strong> as target database using <a class="reference external" href="https://postgresql.itversity.com">this course</a> or <a class="reference external" href="https://www.youtube.com/playlist?list=PLf0swTFhTI8p2yirPMTUhJ2xzuQhhUTwY">playlist</a>.</p>
 </div></blockquote>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/7npQtJ5G_mY?rel=0&amp;amp;controls=1&amp;amp;showinfo=0&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/7npQtJ5G_mY?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
@@ -381,7 +387,7 @@ LIMIT 10
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
 </pre></div>
 </div>
 </div>
@@ -392,6 +398,7 @@ DROP TABLE IF EXISTS users;
 
 SELECT * FROM information_schema.tables 
 WHERE table_catalog = &#39;itversity_sms_db&#39; AND table_schema = &#39;public&#39;
+AND table_name = &#39;users&#39;
 LIMIT 10
 </pre></div>
 </div>
@@ -426,6 +433,7 @@ CREATE TABLE users (
 
 SELECT * FROM information_schema.tables 
 WHERE table_catalog = &#39;itversity_sms_db&#39; AND table_schema = &#39;public&#39;
+AND table_name = &#39;users&#39;
 LIMIT 10
 </pre></div>
 </div>

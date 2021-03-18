@@ -227,11 +227,6 @@
    Database Programming – Batch Operations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../19_project_web_scraping_into_database/01_project_web_scraping_into_database.html">
-   Project – Web Scraping and loading into Database
-  </a>
- </li>
 </ul>
 
 </nav>
@@ -348,11 +343,22 @@
 <li><p>We should leverage database capacity to filter as much data as possible (rather than fetching data into application layer and then filtering).</p></li>
 </ul>
 <blockquote>
-<div><p>To follow the above pattern one need to have decent skills related to Databases and SQL. Feel free to <strong>Master SQL using Postgresql</strong> as target database using this course or <a class="reference external" href="https://www.youtube.com/playlist?list=PLf0swTFhTI8p2yirPMTUhJ2xzuQhhUTwY">playlist</a></p>
+<div><p>To follow the above pattern one need to have decent skills related to Databases and SQL. Feel free to <strong>Master SQL using Postgresql</strong> as target database using <a class="reference external" href="https://postgresql.itversity.com">this course</a> or <a class="reference external" href="https://www.youtube.com/playlist?list=PLf0swTFhTI8p2yirPMTUhJ2xzuQhhUTwY">playlist</a></p>
 </div></blockquote>
 <ul class="simple">
 <li><p>We should avoid hard coding while filtering the data.</p></li>
 </ul>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/Fv4eqhEhJGs?rel=0&amp;amp;controls=1&amp;amp;showinfo=0&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/Fv4eqhEhJGs?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Resetting users table to have 6 records.</p>
@@ -363,10 +369,55 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+10 rows affected.
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+0 rows affected.
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+10 rows affected.
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+0 rows affected.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> 07_inserting_data_into_table.ipynb
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+2 rows affected.
+The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+3 rows affected.
+The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+ * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
 </pre></div>
 </div>
 </div>
@@ -392,6 +443,15 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
 
 <span class="n">sms_connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, False, None, &#39;U&#39;, False, datetime.datetime(2020, 12, 29, 10, 29, 37, 792601), datetime.datetime(2020, 12, 29, 10, 29, 37, 792601))
+(2, &#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, False, None, &#39;U&#39;, False, datetime.datetime(2020, 12, 29, 10, 29, 37, 815507), datetime.datetime(2020, 12, 29, 10, 29, 37, 815507))
+(3, &#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, False, None, &#39;U&#39;, True, datetime.datetime(2020, 12, 29, 10, 29, 37, 837445), datetime.datetime(2020, 12, 29, 10, 29, 37, 837445))
+(4, &#39;Gordan&#39;, &#39;Bradock&#39;, &#39;gbradock0@barnesandnoble.com&#39;, False, &#39;h9LAz7p7ub&#39;, &#39;U&#39;, True, datetime.datetime(2020, 12, 29, 10, 29, 37, 859601), datetime.datetime(2020, 12, 29, 10, 29, 37, 859601))
+(5, &#39;Tobe&#39;, &#39;Lyness&#39;, &#39;tlyness1@paginegialle.it&#39;, False, &#39;oEofndp&#39;, &#39;U&#39;, True, datetime.datetime(2020, 12, 29, 10, 29, 37, 859601), datetime.datetime(2020, 12, 29, 10, 29, 37, 859601))
 </pre></div>
 </div>
 </div>
@@ -425,7 +485,24 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tuple
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, False, None, &#39;U&#39;, False, datetime.datetime(2020, 12, 29, 10, 29, 37, 792601), datetime.datetime(2020, 12, 29, 10, 29, 37, 792601))
 </pre></div>
 </div>
 </div>
@@ -437,6 +514,20 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Column(name=&#39;user_id&#39;, type_code=23),
+ Column(name=&#39;user_first_name&#39;, type_code=1043),
+ Column(name=&#39;user_last_name&#39;, type_code=1043),
+ Column(name=&#39;user_email_id&#39;, type_code=1043),
+ Column(name=&#39;user_email_validated&#39;, type_code=16),
+ Column(name=&#39;user_password&#39;, type_code=1043),
+ Column(name=&#39;user_role&#39;, type_code=1043),
+ Column(name=&#39;is_active&#39;, type_code=16),
+ Column(name=&#39;create_ts&#39;, type_code=1114),
+ Column(name=&#39;last_updated_ts&#39;, type_code=1114))
 </pre></div>
 </div>
 </div>
@@ -462,10 +553,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, False, None, &#39;U&#39;, False, datetime.datetime(2020, 12, 29, 10, 29, 37, 792601), datetime.datetime(2020, 12, 29, 10, 29, 37, 792601))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tuple
 </pre></div>
 </div>
 </div>
@@ -474,6 +575,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">get_user_details</span><span class="p">(</span><span class="n">sms_connection</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, &#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, False, None, &#39;U&#39;, False, datetime.datetime(2020, 12, 29, 10, 29, 37, 815507), datetime.datetime(2020, 12, 29, 10, 29, 37, 815507))
 </pre></div>
 </div>
 </div>
@@ -520,10 +626,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, &#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, False, None, &#39;U&#39;, False, datetime.datetime(2020, 12, 29, 10, 29, 37, 792601), datetime.datetime(2020, 12, 29, 10, 29, 37, 792601)]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>psycopg2.extras.DictRow
 </pre></div>
 </div>
 </div>
@@ -534,10 +650,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;user_email_id&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;scott@tiger.com&#39;
 </pre></div>
 </div>
 </div>
@@ -598,11 +724,114 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, &#39;gbradock0@barnesandnoble.com&#39;, &#39;h9LAz7p7ub&#39;)
+(5, &#39;tlyness1@paginegialle.it&#39;, &#39;oEofndp&#39;)
+(6, &#39;amesias2@twitpic.com&#39;, &#39;ih7Y69u56&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">users</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tuple
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">psycopg2.extras</span> <span class="kn">import</span> <span class="n">DictCursor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span> <span class="o">=</span> <span class="n">sms_connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="n">cursor_factory</span><span class="o">=</span><span class="n">DictCursor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, &#39;gbradock0@barnesandnoble.com&#39;, &#39;h9LAz7p7ub&#39;]
+[5, &#39;tlyness1@paginegialle.it&#39;, &#39;oEofndp&#39;]
+[6, &#39;amesias2@twitpic.com&#39;, &#39;ih7Y69u56&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">users</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>psycopg2.extras.DictRow
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">users</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;user_email_id&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;gbradock0@barnesandnoble.com&#39;
 </pre></div>
 </div>
 </div>

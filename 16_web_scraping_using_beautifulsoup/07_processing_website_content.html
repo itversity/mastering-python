@@ -1,0 +1,850 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Processing Website Content &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/01_overview_of_windows_os.html">
+   Overview of Windows Operating System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/01_postgres_database_operations.html">
+   Perform Database Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/01_getting_started_with_python.html">
+   Getting Started with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/01_basic_programming_constructs.html">
+   Basic Programming Constructs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/01_pre_defined_functions.html">
+   Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/01_user_defined_functions.html">
+   User Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html">
+   Overview of Collections - list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html">
+   Overview of Collections - dict and tuple
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html">
+   Development of Map Reduce APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html">
+   Overview of Object Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_web_scraping_using_beautifulsoup.html">
+   Web Scraping using Beautiful Soup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/01_database_programming_crud_operations.html">
+   Database Programming – CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/16_web_scraping_using_beautifulsoup/07_processing_website_content.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F16_web_scraping_using_beautifulsoup/07_processing_website_content.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/16_web_scraping_using_beautifulsoup/07_processing_website_content.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/16_web_scraping_using_beautifulsoup/07_processing_website_content.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="processing-website-content">
+<h1>Processing Website Content<a class="headerlink" href="#processing-website-content" title="Permalink to this headline">¶</a></h1>
+<p>We can process the website content and extract HTML Tags as well as data using BeautifulSoup.</p>
+<ul class="simple">
+<li><p>We have to pass the content using <code class="docutils literal notranslate"><span class="pre">html.parser</span></code> and build the BeautifulSoup object.</p></li>
+<li><p>Let us prettify and print the content.</p></li>
+</ul>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;560&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;315&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/cgDtbgFSv_4?rel=0&amp;amp;controls=1&amp;amp;showinfo=0&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/cgDtbgFSv_4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">python_base_url</span> <span class="o">=</span> <span class="s1">&#39;https://python.itversity.com&#39;</span>
+<span class="n">python_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">python_base_url</span><span class="si">}</span><span class="s1">/mastering-python.html&#39;</span>
+<span class="n">python_page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">python_url</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">python_page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Let us extract all the <code class="docutils literal notranslate"><span class="pre">a</span></code> tags. We can extract links provided as part of this webpage.</p></li>
+<li><p>Here is the code snippet to get the <code class="docutils literal notranslate"><span class="pre">a</span></code> tags from the landing page.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;navbar-brand text-wrap&quot; href=&quot;index.html&quot;&gt;
+&lt;h1 class=&quot;site-logo&quot; id=&quot;site-title&quot;&gt;Mastering Python&lt;/h1&gt;
+&lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;#&quot;&gt;
+   Mastering Python
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot;&gt;
+   Overview of Windows Operating System
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;04_postgres_database_operations/01_postgres_database_operations.html&quot;&gt;
+   Perform Database Operations
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;05_getting_started_with_python/01_getting_started_with_python.html&quot;&gt;
+   Getting Started with Python
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;06_basic_programming_constructs/01_basic_programming_constructs.html&quot;&gt;
+   Basic Programming Constructs
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;07_pre_defined_functions/01_pre_defined_functions.html&quot;&gt;
+   Pre-defined Functions
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;08_user_defined_functions/01_user_defined_functions.html&quot;&gt;
+   User Defined Functions
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html&quot;&gt;
+   Overview of Collections - list and set
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html&quot;&gt;
+   Overview of Collections - dict and tuple
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html&quot;&gt;
+   Manipulating Collections using Loops
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html&quot;&gt;
+   Development of Map Reduce APIs
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html&quot;&gt;
+   Understanding Python Map Reduce Libraries
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html&quot;&gt;
+   Overview of Object Oriented Programming
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html&quot;&gt;
+   Overview of Pandas Libraries
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html&quot;&gt;
+   Web Scraping using Beautiful Soup
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;17_database_programming_crud_operations/01_database_programming_crud_operations.html&quot;&gt;
+   Database Programming – CRUD Operations
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;18_database_programming_batch_operations/01_database_programming_batch_operations.html&quot;&gt;
+   Database Programming – Batch Operations
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal&quot; href=&quot;19_project_web_scraping_into_database/01_project_web_scraping_into_database.html&quot;&gt;
+   Project – Web Scraping and loading into Database
+  &lt;/a&gt;
+&lt;a href=&quot;http://notifyme.itversity.com&quot;&gt;Newsletter&lt;/a&gt;
+&lt;a class=&quot;dropdown-buttons&quot; href=&quot;_sources/mastering-python.ipynb&quot;&gt;&lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Download source file&quot; type=&quot;button&quot;&gt;.ipynb&lt;/button&gt;&lt;/a&gt;
+&lt;a class=&quot;repository-button&quot; href=&quot;https://github.com/itversity/mastering-python&quot;&gt;&lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Source repository&quot; type=&quot;button&quot;&gt;&lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;repository&lt;/button&gt;&lt;/a&gt;
+&lt;a class=&quot;issues-button&quot; href=&quot;https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2Fmastering-python.html&amp;amp;body=Your%20issue%20content%20here.&quot;&gt;&lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Open an issue&quot; type=&quot;button&quot;&gt;&lt;i class=&quot;fas fa-lightbulb&quot;&gt;&lt;/i&gt;open issue&lt;/button&gt;&lt;/a&gt;
+&lt;a class=&quot;edit-button&quot; href=&quot;https://github.com/itversity/mastering-python/edit/master/mastering-python.ipynb&quot;&gt;&lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Edit this page&quot; type=&quot;button&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot;&gt;&lt;/i&gt;suggest edit&lt;/button&gt;&lt;/a&gt;
+&lt;a class=&quot;full-screen-button&quot;&gt;&lt;button aria-label=&quot;Fullscreen mode&quot; class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;bottom&quot; data-toggle=&quot;tooltip&quot; onclick=&quot;toggleFullScreen()&quot; title=&quot;Fullscreen mode&quot; type=&quot;button&quot;&gt;&lt;i class=&quot;fas fa-expand&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/a&gt;
+&lt;a class=&quot;binder-button&quot; href=&quot;https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/mastering-python.ipynb&quot;&gt;&lt;button class=&quot;btn btn-secondary topbarbtn&quot; data-placement=&quot;left&quot; data-toggle=&quot;tooltip&quot; title=&quot;Launch Binder&quot; type=&quot;button&quot;&gt;&lt;img alt=&quot;Interact on binder&quot; class=&quot;binder-button-logo&quot; src=&quot;_static/images/logo_binder.svg&quot;/&gt;Binder&lt;/button&gt;&lt;/a&gt;
+&lt;a class=&quot;reference internal nav-link&quot; href=&quot;#about-python&quot;&gt;
+   About Python
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal nav-link&quot; href=&quot;#course-details&quot;&gt;
+   Course Details
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal nav-link&quot; href=&quot;#desired-audience&quot;&gt;
+   Desired Audience
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal nav-link&quot; href=&quot;#prerequisites&quot;&gt;
+   Prerequisites
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal nav-link&quot; href=&quot;#key-objectives&quot;&gt;
+   Key Objectives
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal nav-link&quot; href=&quot;#training-approach&quot;&gt;
+   Training Approach
+  &lt;/a&gt;
+&lt;a class=&quot;reference internal nav-link&quot; href=&quot;#self-evaluation&quot;&gt;
+   Self Evaluation
+  &lt;/a&gt;
+&lt;a class=&quot;headerlink&quot; href=&quot;#mastering-python&quot; title=&quot;Permalink to this headline&quot;&gt;¶&lt;/a&gt;
+&lt;a class=&quot;headerlink&quot; href=&quot;#about-python&quot; title=&quot;Permalink to this headline&quot;&gt;¶&lt;/a&gt;
+&lt;a class=&quot;headerlink&quot; href=&quot;#course-details&quot; title=&quot;Permalink to this headline&quot;&gt;¶&lt;/a&gt;
+&lt;a class=&quot;headerlink&quot; href=&quot;#desired-audience&quot; title=&quot;Permalink to this headline&quot;&gt;¶&lt;/a&gt;
+&lt;a class=&quot;headerlink&quot; href=&quot;#prerequisites&quot; title=&quot;Permalink to this headline&quot;&gt;¶&lt;/a&gt;
+&lt;a class=&quot;headerlink&quot; href=&quot;#key-objectives&quot; title=&quot;Permalink to this headline&quot;&gt;¶&lt;/a&gt;
+&lt;a class=&quot;headerlink&quot; href=&quot;#training-approach&quot; title=&quot;Permalink to this headline&quot;&gt;¶&lt;/a&gt;
+&lt;a class=&quot;headerlink&quot; href=&quot;#self-evaluation&quot; title=&quot;Permalink to this headline&quot;&gt;¶&lt;/a&gt;
+&lt;a class=&quot;right-next&quot; href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot; id=&quot;next-link&quot; title=&quot;next page&quot;&gt;Overview of Windows Operating System&lt;/a&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">field_name.string</span></code> to get only the value.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can also get the urls used as part of these <code class="docutils literal notranslate"><span class="pre">a</span></code> tags.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>index.html
+#
+01_overview_of_windows_os/01_overview_of_windows_os.html
+04_postgres_database_operations/01_postgres_database_operations.html
+05_getting_started_with_python/01_getting_started_with_python.html
+06_basic_programming_constructs/01_basic_programming_constructs.html
+07_pre_defined_functions/01_pre_defined_functions.html
+08_user_defined_functions/01_user_defined_functions.html
+09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html
+10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html
+11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html
+12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html
+13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html
+14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html
+15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html
+16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html
+17_database_programming_crud_operations/01_database_programming_crud_operations.html
+18_database_programming_batch_operations/01_database_programming_batch_operations.html
+19_project_web_scraping_into_database/01_project_web_scraping_into_database.html
+http://notifyme.itversity.com
+_sources/mastering-python.ipynb
+https://github.com/itversity/mastering-python
+https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2Fmastering-python.html&amp;body=Your%20issue%20content%20here.
+https://github.com/itversity/mastering-python/edit/master/mastering-python.ipynb
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">decf6af72393</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/bs4/element.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1404</span>         <span class="sd">&quot;&quot;&quot;tag[key] returns the value of the &#39;key&#39; attribute for the Tag,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1405</span><span class="sd">         and throws an exception if it&#39;s not there.&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1406</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1407</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1408</span>     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="ne">KeyError</span>: &#39;href&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>index.html
+#
+01_overview_of_windows_os/01_overview_of_windows_os.html
+04_postgres_database_operations/01_postgres_database_operations.html
+05_getting_started_with_python/01_getting_started_with_python.html
+06_basic_programming_constructs/01_basic_programming_constructs.html
+07_pre_defined_functions/01_pre_defined_functions.html
+08_user_defined_functions/01_user_defined_functions.html
+09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html
+10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html
+11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html
+12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html
+13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html
+14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html
+15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html
+16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html
+17_database_programming_crud_operations/01_database_programming_crud_operations.html
+18_database_programming_batch_operations/01_database_programming_batch_operations.html
+19_project_web_scraping_into_database/01_project_web_scraping_into_database.html
+http://notifyme.itversity.com
+_sources/mastering-python.ipynb
+https://github.com/itversity/mastering-python
+https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2Fmastering-python.html&amp;body=Your%20issue%20content%20here.
+https://github.com/itversity/mastering-python/edit/master/mastering-python.ipynb
+https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/mastering-python.ipynb
+#about-python
+#course-details
+#desired-audience
+#prerequisites
+#key-objectives
+#training-approach
+#self-evaluation
+#mastering-python
+#about-python
+#course-details
+#desired-audience
+#prerequisites
+#key-objectives
+#training-approach
+#self-evaluation
+01_overview_of_windows_os/01_overview_of_windows_os.html
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can also pass attributes such as <code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">id</span></code> etc to narrow down the filter for specific class or id.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;navbar-brand&#39;, &#39;text-wrap&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;reference&#39;, &#39;internal&#39;]
+[&#39;dropdown-buttons&#39;]
+[&#39;repository-button&#39;]
+[&#39;issues-button&#39;]
+[&#39;edit-button&#39;]
+[&#39;full-screen-button&#39;]
+[&#39;binder-button&#39;]
+[&#39;reference&#39;, &#39;internal&#39;, &#39;nav-link&#39;]
+[&#39;reference&#39;, &#39;internal&#39;, &#39;nav-link&#39;]
+[&#39;reference&#39;, &#39;internal&#39;, &#39;nav-link&#39;]
+[&#39;reference&#39;, &#39;internal&#39;, &#39;nav-link&#39;]
+[&#39;reference&#39;, &#39;internal&#39;, &#39;nav-link&#39;]
+[&#39;reference&#39;, &#39;internal&#39;, &#39;nav-link&#39;]
+[&#39;reference&#39;, &#39;internal&#39;, &#39;nav-link&#39;]
+[&#39;headerlink&#39;]
+[&#39;headerlink&#39;]
+[&#39;headerlink&#39;]
+[&#39;headerlink&#39;]
+[&#39;headerlink&#39;]
+[&#39;headerlink&#39;]
+[&#39;headerlink&#39;]
+[&#39;headerlink&#39;]
+[&#39;right-next&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">):</span>
+        <span class="n">classes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{(&#39;binder-button&#39;,),
+ (&#39;dropdown-buttons&#39;,),
+ (&#39;edit-button&#39;,),
+ (&#39;full-screen-button&#39;,),
+ (&#39;headerlink&#39;,),
+ (&#39;issues-button&#39;,),
+ (&#39;navbar-brand&#39;, &#39;text-wrap&#39;),
+ (&#39;reference&#39;, &#39;internal&#39;),
+ (&#39;reference&#39;, &#39;internal&#39;, &#39;nav-link&#39;),
+ (&#39;repository-button&#39;,),
+ (&#39;right-next&#39;,)}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;reference internal&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;reference internal&quot; href=&quot;#&quot;&gt;
+   Mastering Python
+  &lt;/a&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;reference internal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;reference internal&quot; href=&quot;#&quot;&gt;
+   Mastering Python
+  &lt;/a&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can also access attribute values such as <code class="docutils literal notranslate"><span class="pre">href</span></code> of <code class="docutils literal notranslate"><span class="pre">a</span></code> tag.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;reference internal&#39;</span><span class="p">}):</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>#
+01_overview_of_windows_os/01_overview_of_windows_os.html
+04_postgres_database_operations/01_postgres_database_operations.html
+05_getting_started_with_python/01_getting_started_with_python.html
+06_basic_programming_constructs/01_basic_programming_constructs.html
+07_pre_defined_functions/01_pre_defined_functions.html
+08_user_defined_functions/01_user_defined_functions.html
+09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html
+10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html
+11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html
+12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html
+13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html
+14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html
+15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html
+16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html
+17_database_programming_crud_operations/01_database_programming_crud_operations.html
+18_database_programming_batch_operations/01_database_programming_batch_operations.html
+19_project_web_scraping_into_database/01_project_web_scraping_into_database.html
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;reference internal&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>#
+01_overview_of_windows_os/01_overview_of_windows_os.html
+04_postgres_database_operations/01_postgres_database_operations.html
+05_getting_started_with_python/01_getting_started_with_python.html
+06_basic_programming_constructs/01_basic_programming_constructs.html
+07_pre_defined_functions/01_pre_defined_functions.html
+08_user_defined_functions/01_user_defined_functions.html
+09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html
+10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html
+11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html
+12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html
+13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html
+14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html
+15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html
+16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html
+17_database_programming_crud_operations/01_database_programming_crud_operations.html
+18_database_programming_batch_operations/01_database_programming_batch_operations.html
+19_project_web_scraping_into_database/01_project_web_scraping_into_database.html
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>next-link
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Here is an example to narrow down the filter based on <code class="docutils literal notranslate"><span class="pre">id</span></code> on top of <code class="docutils literal notranslate"><span class="pre">a</span></code> tag.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;next-link&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;right-next&quot; href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot; id=&quot;next-link&quot; title=&quot;next page&quot;&gt;Overview of Windows Operating System&lt;/a&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;next-link&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;right-next&quot; href=&quot;01_overview_of_windows_os/01_overview_of_windows_os.html&quot; id=&quot;next-link&quot; title=&quot;next page&quot;&gt;Overview of Windows Operating System&lt;/a&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./16_web_scraping_using_beautifulsoup"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-80990145-12', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
