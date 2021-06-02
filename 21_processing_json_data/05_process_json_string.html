@@ -1,0 +1,987 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Process JSON String &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/01_overview_of_windows_os.html">
+   Overview of Windows Operating System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_setup_ubuntu_vm_on_gcp/01_setup_ubuntu_vm_on_gcp.html">
+   Setup Ubuntu VM on GCP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_setup_postgres_database/01_setup_postgres_database.html">
+   Setup Postgres Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/01_postgres_database_operations.html">
+   Perform Database Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/01_getting_started_with_python.html">
+   Getting Started with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/01_basic_programming_constructs.html">
+   Basic Programming Constructs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/01_pre_defined_functions.html">
+   Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/01_user_defined_functions.html">
+   User Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html">
+   Overview of Collections - list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html">
+   Overview of Collections - dict and tuple
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html">
+   Development of Map Reduce APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html">
+   Overview of Object Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html">
+   Web Scraping using Beautiful Soup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/01_database_programming_crud_operations.html">
+   Database Programming – CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/21_processing_json_data/05_process_json_string.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F21_processing_json_data/05_process_json_string.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/21_processing_json_data/05_process_json_string.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/21_processing_json_data/05_process_json_string.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#single-json-document">
+   Single JSON document
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-json-documents-one-per-line">
+   Multiple JSON Documents - One per line
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-json-documents-array">
+   Multiple JSON Documents - Array
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-on-processing-collections">
+   Exercise on processing collections
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="process-json-string">
+<h1>Process JSON String<a class="headerlink" href="#process-json-string" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to process JSON strings using Python as programming language. Later we will see different ways of storing JSON data in files.</p>
+<p>We will see following examples of processing JSON strings.</p>
+<ul class="simple">
+<li><p>Single JSON document.</p></li>
+<li><p>Multiple JSON documents, with one JSON per line.</p></li>
+<li><p>Multiple JSON documents as an Array under one attribute. Most of the REST APIs which return multiple elements follow this approach.</p></li>
+<li><p>We can process JSON Strings either by using <code class="docutils literal notranslate"><span class="pre">json</span></code> module or <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p></li>
+<li><p>As part of developing backend for web or mobile applications we use <code class="docutils literal notranslate"><span class="pre">json</span></code> or some high level wrappers. For bulk data processing typically we fall back on modules such as <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p></li>
+<li><p>You should be familiar with both. For now, we will focus on <code class="docutils literal notranslate"><span class="pre">json</span></code>.</p></li>
+<li><p>We should first import <code class="docutils literal notranslate"><span class="pre">json</span></code> module to process the JSON strings using it.</p></li>
+<li><p>We have a function called as <code class="docutils literal notranslate"><span class="pre">loads</span></code> which takes a JSON in string and returns <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p></li>
+</ul>
+<div class="section" id="single-json-document">
+<h2>Single JSON document<a class="headerlink" href="#single-json-document" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through the details of processing Single JSON document.</p>
+<ul class="simple">
+<li><p>Import <code class="docutils literal notranslate"><span class="pre">json</span></code> module.</p></li>
+<li><p>Create JSON String.</p></li>
+<li><p>Pass the string to <code class="docutils literal notranslate"><span class="pre">json.loads</span></code>. It will return <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p></li>
+<li><p>Assign it to a variable and use it further.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="s1">&#39;{&quot;id&quot;:1,&quot;first_name&quot;:&quot;Frasco&quot;,&quot;last_name&quot;:&quot;Necolds&quot;,&quot;email&quot;:&quot;fnecolds0@vk.com&quot;,&quot;gender&quot;:&quot;Male&quot;,&quot;ip_address&quot;:&quot;243.67.63.34&quot;}&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">person_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">person_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: 1, &#39;first_name&#39;: &#39;Frasco&#39;, &#39;last_name&#39;: &#39;Necolds&#39;, &#39;email&#39;: &#39;fnecolds0@vk.com&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;ip_address&#39;: &#39;243.67.63.34&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_dict</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_dict</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Frasco&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;id&#39;, &#39;first_name&#39;, &#39;last_name&#39;, &#39;email&#39;, &#39;gender&#39;, &#39;ip_address&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_items([(&#39;id&#39;, 1), (&#39;first_name&#39;, &#39;Frasco&#39;), (&#39;last_name&#39;, &#39;Necolds&#39;), (&#39;email&#39;, &#39;fnecolds0@vk.com&#39;), (&#39;gender&#39;, &#39;Male&#39;), (&#39;ip_address&#39;, &#39;243.67.63.34&#39;)])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Here is an example of a single JSON as string that is part of multiple lines.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;{</span>
+<span class="s1">    &quot;id&quot;:1,</span>
+<span class="s1">    &quot;first_name&quot;:&quot;Frasco&quot;,</span>
+<span class="s1">    &quot;last_name&quot;:&quot;Necolds&quot;,</span>
+<span class="s1">    &quot;email&quot;:&quot;fnecolds0@vk.com&quot;,</span>
+<span class="s1">    &quot;gender&quot;:&quot;Male&quot;,</span>
+<span class="s1">    &quot;ip_address&quot;:&quot;243.67.63.34&quot;</span>
+<span class="s1">}&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">person_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">person_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: 1, &#39;first_name&#39;: &#39;Frasco&#39;, &#39;last_name&#39;: &#39;Necolds&#39;, &#39;email&#39;: &#39;fnecolds0@vk.com&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;ip_address&#39;: &#39;243.67.63.34&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-json-documents-one-per-line">
+<h2>Multiple JSON Documents - One per line<a class="headerlink" href="#multiple-json-documents-one-per-line" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through the steps involved in processing a string which contain one JSON per line.</p>
+<ul class="simple">
+<li><p>We should convert the string into list of JSON strings and then use <code class="docutils literal notranslate"><span class="pre">json.loads</span></code> to process each JSON.</p></li>
+<li><p>Import <code class="docutils literal notranslate"><span class="pre">json</span></code> module.</p></li>
+<li><p>Split the string into multiple strings using new line character (<code class="docutils literal notranslate"><span class="pre">\n</span></code>) as delimiter. String have a function called as <code class="docutils literal notranslate"><span class="pre">splitlines</span></code> and we should be able to leverage it.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">for</span></code> loop or <code class="docutils literal notranslate"><span class="pre">map</span></code> function to convert list of JSON Strings into list of dicts. We should use <code class="docutils literal notranslate"><span class="pre">json.loads</span></code> to convert each JSON String as dict.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">persons</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;{&quot;id&quot;:1,&quot;first_name&quot;:&quot;Frasco&quot;,&quot;last_name&quot;:&quot;Necolds&quot;,&quot;email&quot;:&quot;fnecolds0@vk.com&quot;,&quot;gender&quot;:&quot;Male&quot;,&quot;ip_address&quot;:&quot;243.67.63.34&quot;}</span>
+<span class="s1">{&quot;id&quot;:2,&quot;first_name&quot;:&quot;Dulce&quot;,&quot;last_name&quot;:&quot;Santos&quot;,&quot;email&quot;:&quot;dsantos1@mashable.com&quot;,&quot;gender&quot;:&quot;Female&quot;,&quot;ip_address&quot;:&quot;60.30.246.227&quot;}</span>
+<span class="s1">{&quot;id&quot;:3,&quot;first_name&quot;:&quot;Prissie&quot;,&quot;last_name&quot;:&quot;Tebbett&quot;,&quot;email&quot;:&quot;ptebbett2@infoseek.co.jp&quot;,&quot;gender&quot;:&quot;Genderfluid&quot;,&quot;ip_address&quot;:&quot;22.21.162.56&quot;}</span>
+<span class="s1">{&quot;id&quot;:4,&quot;first_name&quot;:&quot;Schuyler&quot;,&quot;last_name&quot;:&quot;Coppledike&quot;,&quot;email&quot;:&quot;scoppledike3@gnu.org&quot;,&quot;gender&quot;:&quot;Agender&quot;,&quot;ip_address&quot;:&quot;120.35.186.161&quot;}</span>
+<span class="s1">{&quot;id&quot;:5,&quot;first_name&quot;:&quot;Leopold&quot;,&quot;last_name&quot;:&quot;Jarred&quot;,&quot;email&quot;:&quot;ljarred4@wp.com&quot;,&quot;gender&quot;:&quot;Agender&quot;,&quot;ip_address&quot;:&quot;30.119.34.4&quot;}</span>
+<span class="s1">{&quot;id&quot;:6,&quot;first_name&quot;:&quot;Joanna&quot;,&quot;last_name&quot;:&quot;Teager&quot;,&quot;email&quot;:&quot;jteager5@apache.org&quot;,&quot;gender&quot;:&quot;Bigender&quot;,&quot;ip_address&quot;:&quot;245.221.176.34&quot;}</span>
+<span class="s1">{&quot;id&quot;:7,&quot;first_name&quot;:&quot;Lion&quot;,&quot;last_name&quot;:&quot;Beere&quot;,&quot;email&quot;:&quot;lbeere6@bloomberg.com&quot;,&quot;gender&quot;:&quot;Polygender&quot;,&quot;ip_address&quot;:&quot;105.54.139.46&quot;}</span>
+<span class="s1">{&quot;id&quot;:8,&quot;first_name&quot;:&quot;Marabel&quot;,&quot;last_name&quot;:&quot;Wornum&quot;,&quot;email&quot;:&quot;mwornum7@posterous.com&quot;,&quot;gender&quot;:&quot;Polygender&quot;,&quot;ip_address&quot;:&quot;247.229.14.25&quot;}</span>
+<span class="s1">{&quot;id&quot;:9,&quot;first_name&quot;:&quot;Helenka&quot;,&quot;last_name&quot;:&quot;Mullender&quot;,&quot;email&quot;:&quot;hmullender8@cloudflare.com&quot;,&quot;gender&quot;:&quot;Non-binary&quot;,&quot;ip_address&quot;:&quot;133.216.118.88&quot;}</span>
+<span class="s1">{&quot;id&quot;:10,&quot;first_name&quot;:&quot;Christine&quot;,&quot;last_name&quot;:&quot;Swane&quot;,&quot;email&quot;:&quot;cswane9@shop-pro.jp&quot;,&quot;gender&quot;:&quot;Polygender&quot;,&quot;ip_address&quot;:&quot;86.16.210.164&quot;}&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using for loop</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">persons_list</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">persons_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">persons_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">persons_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;{&quot;id&quot;:1,&quot;first_name&quot;:&quot;Frasco&quot;,&quot;last_name&quot;:&quot;Necolds&quot;,&quot;email&quot;:&quot;fnecolds0@vk.com&quot;,&quot;gender&quot;:&quot;Male&quot;,&quot;ip_address&quot;:&quot;243.67.63.34&quot;}&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">persons_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: 1,
+ &#39;first_name&#39;: &#39;Frasco&#39;,
+ &#39;last_name&#39;: &#39;Necolds&#39;,
+ &#39;email&#39;: &#39;fnecolds0@vk.com&#39;,
+ &#39;gender&#39;: &#39;Male&#39;,
+ &#39;ip_address&#39;: &#39;243.67.63.34&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">persons_dict_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persons_list</span><span class="p">:</span>
+    <span class="n">persons_dict_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">person</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">persons_dict_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">persons_dict_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">persons_dict_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: 1,
+ &#39;first_name&#39;: &#39;Frasco&#39;,
+ &#39;last_name&#39;: &#39;Necolds&#39;,
+ &#39;email&#39;: &#39;fnecolds0@vk.com&#39;,
+ &#39;gender&#39;: &#39;Male&#39;,
+ &#39;ip_address&#39;: &#39;243.67.63.34&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-json-documents-array">
+<h2>Multiple JSON Documents - Array<a class="headerlink" href="#multiple-json-documents-array" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through the details of processing multiple JSON Documents as an array.</p>
+<ul class="simple">
+<li><p>We should be able to use <code class="docutils literal notranslate"><span class="pre">json.loads</span></code>. For the below string it will return Python list.</p></li>
+<li><p>Steps are same as processing single JSON document.</p>
+<ul>
+<li><p>Import <code class="docutils literal notranslate"><span class="pre">json</span></code> module.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">json.loads</span></code> to convert to Python list.</p></li>
+<li><p>Process using Python capabilities.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">persons</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;[{&quot;id&quot;:1,&quot;first_name&quot;:&quot;Frasco&quot;,&quot;last_name&quot;:&quot;Necolds&quot;,&quot;email&quot;:&quot;fnecolds0@vk.com&quot;,&quot;gender&quot;:&quot;Male&quot;,&quot;ip_address&quot;:&quot;243.67.63.34&quot;},</span>
+<span class="s1">{&quot;id&quot;:2,&quot;first_name&quot;:&quot;Dulce&quot;,&quot;last_name&quot;:&quot;Santos&quot;,&quot;email&quot;:&quot;dsantos1@mashable.com&quot;,&quot;gender&quot;:&quot;Female&quot;,&quot;ip_address&quot;:&quot;60.30.246.227&quot;},</span>
+<span class="s1">{&quot;id&quot;:3,&quot;first_name&quot;:&quot;Prissie&quot;,&quot;last_name&quot;:&quot;Tebbett&quot;,&quot;email&quot;:&quot;ptebbett2@infoseek.co.jp&quot;,&quot;gender&quot;:&quot;Genderfluid&quot;,&quot;ip_address&quot;:&quot;22.21.162.56&quot;},</span>
+<span class="s1">{&quot;id&quot;:4,&quot;first_name&quot;:&quot;Schuyler&quot;,&quot;last_name&quot;:&quot;Coppledike&quot;,&quot;email&quot;:&quot;scoppledike3@gnu.org&quot;,&quot;gender&quot;:&quot;Agender&quot;,&quot;ip_address&quot;:&quot;120.35.186.161&quot;},</span>
+<span class="s1">{&quot;id&quot;:5,&quot;first_name&quot;:&quot;Leopold&quot;,&quot;last_name&quot;:&quot;Jarred&quot;,&quot;email&quot;:&quot;ljarred4@wp.com&quot;,&quot;gender&quot;:&quot;Agender&quot;,&quot;ip_address&quot;:&quot;30.119.34.4&quot;},</span>
+<span class="s1">{&quot;id&quot;:6,&quot;first_name&quot;:&quot;Joanna&quot;,&quot;last_name&quot;:&quot;Teager&quot;,&quot;email&quot;:&quot;jteager5@apache.org&quot;,&quot;gender&quot;:&quot;Bigender&quot;,&quot;ip_address&quot;:&quot;245.221.176.34&quot;},</span>
+<span class="s1">{&quot;id&quot;:7,&quot;first_name&quot;:&quot;Lion&quot;,&quot;last_name&quot;:&quot;Beere&quot;,&quot;email&quot;:&quot;lbeere6@bloomberg.com&quot;,&quot;gender&quot;:&quot;Polygender&quot;,&quot;ip_address&quot;:&quot;105.54.139.46&quot;},</span>
+<span class="s1">{&quot;id&quot;:8,&quot;first_name&quot;:&quot;Marabel&quot;,&quot;last_name&quot;:&quot;Wornum&quot;,&quot;email&quot;:&quot;mwornum7@posterous.com&quot;,&quot;gender&quot;:&quot;Polygender&quot;,&quot;ip_address&quot;:&quot;247.229.14.25&quot;},</span>
+<span class="s1">{&quot;id&quot;:9,&quot;first_name&quot;:&quot;Helenka&quot;,&quot;last_name&quot;:&quot;Mullender&quot;,&quot;email&quot;:&quot;hmullender8@cloudflare.com&quot;,&quot;gender&quot;:&quot;Non-binary&quot;,&quot;ip_address&quot;:&quot;133.216.118.88&quot;},</span>
+<span class="s1">{&quot;id&quot;:10,&quot;first_name&quot;:&quot;Christine&quot;,&quot;last_name&quot;:&quot;Swane&quot;,&quot;email&quot;:&quot;cswane9@shop-pro.jp&quot;,&quot;gender&quot;:&quot;Polygender&quot;,&quot;ip_address&quot;:&quot;86.16.210.164&quot;}]&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">persons_dict_list</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">persons</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">persons_dict_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">persons_dict_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">persons_dict_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: 1,
+ &#39;first_name&#39;: &#39;Frasco&#39;,
+ &#39;last_name&#39;: &#39;Necolds&#39;,
+ &#39;email&#39;: &#39;fnecolds0@vk.com&#39;,
+ &#39;gender&#39;: &#39;Male&#39;,
+ &#39;ip_address&#39;: &#39;243.67.63.34&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>When we use <code class="docutils literal notranslate"><span class="pre">json.loads</span></code> on below string, it will create a dict where value will be a list.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">persons</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;{</span>
+<span class="s1">    &quot;results&quot;: [</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 1,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Frasco&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Necolds&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;fnecolds0@vk.com&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Male&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;243.67.63.34&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 2,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Dulce&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Santos&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;dsantos1@mashable.com&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Female&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;60.30.246.227&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 3,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Prissie&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Tebbett&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;ptebbett2@infoseek.co.jp&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Genderfluid&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;22.21.162.56&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 4,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Schuyler&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Coppledike&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;scoppledike3@gnu.org&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Agender&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;120.35.186.161&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 5,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Leopold&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Jarred&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;ljarred4@wp.com&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Agender&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;30.119.34.4&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 6,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Joanna&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Teager&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;jteager5@apache.org&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Bigender&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;245.221.176.34&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 7,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Lion&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Beere&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;lbeere6@bloomberg.com&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Polygender&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;105.54.139.46&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 8,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Marabel&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Wornum&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;mwornum7@posterous.com&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Polygender&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;247.229.14.25&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 9,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Helenka&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Mullender&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;hmullender8@cloudflare.com&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Non-binary&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;133.216.118.88&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;id&quot;: 10,</span>
+<span class="s1">            &quot;first_name&quot;: &quot;Christine&quot;,</span>
+<span class="s1">            &quot;last_name&quot;: &quot;Swane&quot;,</span>
+<span class="s1">            &quot;email&quot;: &quot;cswane9@shop-pro.jp&quot;,</span>
+<span class="s1">            &quot;gender&quot;: &quot;Polygender&quot;,</span>
+<span class="s1">            &quot;ip_address&quot;: &quot;86.16.210.164&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">    ]</span>
+<span class="s1">}&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_results</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">persons</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">person_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_results</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;results&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">person_results</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">person_results</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_results</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: 1,
+ &#39;first_name&#39;: &#39;Frasco&#39;,
+ &#39;last_name&#39;: &#39;Necolds&#39;,
+ &#39;email&#39;: &#39;fnecolds0@vk.com&#39;,
+ &#39;gender&#39;: &#39;Male&#39;,
+ &#39;ip_address&#39;: &#39;243.67.63.34&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-on-processing-collections">
+<h2>Exercise on processing collections<a class="headerlink" href="#exercise-on-processing-collections" title="Permalink to this headline">¶</a></h2>
+<p>Take person_results and get list of dicts where each dict contain id, first_name and email. We would like to send an offer for all the persons in the form of email.</p>
+<ul class="simple">
+<li><p>You should use <code class="docutils literal notranslate"><span class="pre">map</span></code> function for the same.</p></li>
+<li><p>Do not use loops.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./21_processing_json_data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-80990145-12', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

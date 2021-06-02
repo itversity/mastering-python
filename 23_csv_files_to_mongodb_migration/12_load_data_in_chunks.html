@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Load Data in Chunks &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/01_overview_of_windows_os.html">
+   Overview of Windows Operating System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_setup_ubuntu_vm_on_gcp/01_setup_ubuntu_vm_on_gcp.html">
+   Setup Ubuntu VM on GCP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_setup_postgres_database/01_setup_postgres_database.html">
+   Setup Postgres Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/01_postgres_database_operations.html">
+   Perform Database Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/01_getting_started_with_python.html">
+   Getting Started with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/01_basic_programming_constructs.html">
+   Basic Programming Constructs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/01_pre_defined_functions.html">
+   Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/01_user_defined_functions.html">
+   User Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html">
+   Overview of Collections - list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html">
+   Overview of Collections - dict and tuple
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../11_manipulating_collections_using_loops/01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html">
+   Development of Map Reduce APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html">
+   Overview of Object Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html">
+   Web Scraping using Beautiful Soup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/01_database_programming_crud_operations.html">
+   Database Programming – CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/23_csv_files_to_mongodb_migration/12_load_data_in_chunks.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F23_csv_files_to_mongodb_migration/12_load_data_in_chunks.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/23_csv_files_to_mongodb_migration/12_load_data_in_chunks.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/23_csv_files_to_mongodb_migration/12_load_data_in_chunks.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="load-data-in-chunks">
+<h1>Load Data in Chunks<a class="headerlink" href="#load-data-in-chunks" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand the overall process of loading CSV data to MongoDB with attribute level mapping in chunks.</p>
+<ul class="simple">
+<li><p>Read data from file into a Pandas Dataframe.</p></li>
+<li><p>Drop the fields that are not required and rename the fields as per the target structure defined.</p></li>
+<li><p>Load the data to MongoDB using Bulk load. We can also load the data in chunks.</p></li>
+<li><p>While loading the data to target database table, it might be better to load the data in chunks. For example, if we have 10,000 records to be loaded, it is a good practice to load in smaller chunks. The chunk size will be determined considering several factors.</p></li>
+<li><p>For this demo, we will be loading 6 records at a time rather than loading all the 20 records in one shot.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">customers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/data/ecomm/customers/part-00000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_mapping_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;{</span>
+<span class="s1">    &quot;customer_first_name&quot;: {&quot;target_field_name&quot;: &quot;FirstName&quot;, &quot;is_required&quot;: true},</span>
+<span class="s1">    &quot;customer_last_name&quot;: {&quot;target_field_name&quot;: &quot;LastName&quot;, &quot;is_required&quot;: true},</span>
+<span class="s1">    &quot;customer_email&quot;: {&quot;target_field_name&quot;: &quot;Email&quot;, &quot;is_required&quot;: true},</span>
+<span class="s1">    &quot;product_name&quot;: {&quot;is_required&quot;: false},</span>
+<span class="s1">    &quot;product_subscription&quot;: {&quot;is_required&quot;: false}</span>
+<span class="s1">}&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">column_mapping</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">column_mapping_str</span><span class="p">)</span>
+
+<span class="c1"># Assigning the list of not required fields to a variable</span>
+<span class="n">columns_to_be_dropped</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">col</span><span class="p">:</span> <span class="ow">not</span> <span class="n">col</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;is_required&#39;</span><span class="p">],</span> <span class="n">column_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">())))</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">required_columns_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">col</span><span class="p">:</span> <span class="n">col</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;is_required&#39;</span><span class="p">],</span> <span class="n">column_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="n">required_columns_mapping</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">col</span><span class="p">:</span> <span class="p">(</span><span class="n">col</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">col</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;target_field_name&#39;</span><span class="p">]),</span> <span class="n">required_columns_list</span><span class="p">))</span>
+
+<span class="c1"># This will take care of dropping the not required fields and rename others as per mapping</span>
+<span class="n">customers_target</span> <span class="o">=</span> <span class="n">customers</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns_to_be_dropped</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">required_columns_mapping</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymongo</span><span class="o">,</span> <span class="nn">getpass</span><span class="o">,</span> <span class="nn">configparser</span>
+
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/home/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">/.jupyterenv&#39;</span><span class="p">)</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">MongoClient</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;pylabsmd.itversity.com&#39;</span><span class="p">,</span> 
+    <span class="n">username</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_scratch_user&#39;</span><span class="p">,</span> 
+    <span class="n">password</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">][</span><span class="s1">&#39;MONGO_SCRATCH_PASS&#39;</span><span class="p">],</span> 
+    <span class="n">authSource</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_scratch_db&#39;</span><span class="p">][</span><span class="s1">&#39;customers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">delete_many</span><span class="p">({})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.DeleteResult at 0x7f90376bf820&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">client</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_scratch_db&#39;</span><span class="p">][</span><span class="s1">&#39;customers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">({}):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>customers_target.to_dict<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> customers_target<span class=" -Color -Color-Blue">.</span>to_dict<span class=" -Color -Color-Blue">(</span>orient<span class=" -Color -Color-Blue">=&#39;dict&#39;,</span> into<span class=" -Color -Color-Blue">=&lt;</span><span class=" -Color -Color-Green">class</span> <span class=" -Color -Color-Blue">&#39;dict&#39;&gt;)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Convert the DataFrame to a dictionary.
+
+The type of the key-value pairs can be customized with the parameters
+(see below).
+
+Parameters
+----------
+orient : str {&#39;dict&#39;, &#39;list&#39;, &#39;series&#39;, &#39;split&#39;, &#39;records&#39;, &#39;index&#39;}
+    Determines the type of the values of the dictionary.
+
+    - &#39;dict&#39; (default) : dict like {column -&gt; {index -&gt; value}}
+    - &#39;list&#39; : dict like {column -&gt; [values]}
+    - &#39;series&#39; : dict like {column -&gt; Series(values)}
+    - &#39;split&#39; : dict like
+      {&#39;index&#39; -&gt; [index], &#39;columns&#39; -&gt; [columns], &#39;data&#39; -&gt; [values]}
+    - &#39;records&#39; : list like
+      [{column -&gt; value}, ... , {column -&gt; value}]
+    - &#39;index&#39; : dict like {index -&gt; {column -&gt; value}}
+
+    Abbreviations are allowed. `s` indicates `series` and `sp`
+    indicates `split`.
+
+into : class, default dict
+    The collections.abc.Mapping subclass used for all Mappings
+    in the return value.  Can be the actual class or an empty
+    instance of the mapping type you want.  If you want a
+    collections.defaultdict, you must pass it initialized.
+
+Returns
+-------
+dict, list or collections.abc.Mapping
+    Return a collections.abc.Mapping object representing the DataFrame.
+    The resulting transformation depends on the `orient` parameter.
+
+See Also
+--------
+DataFrame.from_dict: Create a DataFrame from a dictionary.
+DataFrame.to_json: Convert a DataFrame to JSON format.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame({&#39;col1&#39;: [1, 2],
+...                    &#39;col2&#39;: [0.5, 0.75]},
+...                   index=[&#39;row1&#39;, &#39;row2&#39;])
+&gt;&gt;&gt; df
+      col1  col2
+row1     1  0.50
+row2     2  0.75
+&gt;&gt;&gt; df.to_dict()
+{&#39;col1&#39;: {&#39;row1&#39;: 1, &#39;row2&#39;: 2}, &#39;col2&#39;: {&#39;row1&#39;: 0.5, &#39;row2&#39;: 0.75}}
+
+You can specify the return orientation.
+
+&gt;&gt;&gt; df.to_dict(&#39;series&#39;)
+{&#39;col1&#39;: row1    1
+         row2    2
+Name: col1, dtype: int64,
+&#39;col2&#39;: row1    0.50
+        row2    0.75
+Name: col2, dtype: float64}
+
+&gt;&gt;&gt; df.to_dict(&#39;split&#39;)
+{&#39;index&#39;: [&#39;row1&#39;, &#39;row2&#39;], &#39;columns&#39;: [&#39;col1&#39;, &#39;col2&#39;],
+ &#39;data&#39;: [[1, 0.5], [2, 0.75]]}
+
+&gt;&gt;&gt; df.to_dict(&#39;records&#39;)
+[{&#39;col1&#39;: 1, &#39;col2&#39;: 0.5}, {&#39;col1&#39;: 2, &#39;col2&#39;: 0.75}]
+
+&gt;&gt;&gt; df.to_dict(&#39;index&#39;)
+{&#39;row1&#39;: {&#39;col1&#39;: 1, &#39;col2&#39;: 0.5}, &#39;row2&#39;: {&#39;col1&#39;: 2, &#39;col2&#39;: 0.75}}
+
+You can also specify the mapping type.
+
+&gt;&gt;&gt; from collections import OrderedDict, defaultdict
+&gt;&gt;&gt; df.to_dict(into=OrderedDict)
+OrderedDict([(&#39;col1&#39;, OrderedDict([(&#39;row1&#39;, 1), (&#39;row2&#39;, 2)])),
+             (&#39;col2&#39;, OrderedDict([(&#39;row1&#39;, 0.5), (&#39;row2&#39;, 0.75)]))])
+
+If you want a `defaultdict`, you need to initialize it:
+
+&gt;&gt;&gt; dd = defaultdict(list)
+&gt;&gt;&gt; df.to_dict(&#39;records&#39;, into=dd)
+[defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;col1&#39;: 1, &#39;col2&#39;: 0.5}),
+ defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;col1&#39;: 2, &#39;col2&#39;: 0.75})]
+<span class=" -Color -Color-Red">File:</span>      /opt/anaconda3/envs/beakerx/lib/python3.7/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>      method
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">customers_list</span> <span class="o">=</span> <span class="n">customers_target</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">customers_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">customers_list_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">customers_list</span><span class="p">),</span> <span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">customers_list_range</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 6, 12]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">customers_list_range</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6, 12, 18]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">customers_list_range</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">customers_list_range</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0, 6), (6, 12), (12, 18)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">customers_list_range</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">customers_list_range</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing from </span><span class="si">{</span><span class="n">lb</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">ub</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">customers_list</span><span class="p">[</span><span class="n">lb</span><span class="p">:</span><span class="n">ub</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing last set from </span><span class="si">{</span><span class="n">ub</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">customers_list</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">customers_list</span><span class="p">[</span><span class="n">ub</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing from 0 to 6
+[{&#39;FirstName&#39;: &#39;Cassaundra&#39;, &#39;LastName&#39;: &#39;Collinson&#39;, &#39;Email&#39;: &#39;ccollinson0@alibaba.com&#39;}, {&#39;FirstName&#39;: &#39;Rozamond&#39;, &#39;LastName&#39;: &#39;Oene&#39;, &#39;Email&#39;: &#39;roene1@technorati.com&#39;}, {&#39;FirstName&#39;: &#39;Gus&#39;, &#39;LastName&#39;: &#39;Hawick&#39;, &#39;Email&#39;: &#39;ghawick2@dagondesign.com&#39;}, {&#39;FirstName&#39;: &#39;Delano&#39;, &#39;LastName&#39;: &#39;Ashbey&#39;, &#39;Email&#39;: &#39;dashbey3@purevolume.com&#39;}, {&#39;FirstName&#39;: &#39;Fara&#39;, &#39;LastName&#39;: &#39;Simondson&#39;, &#39;Email&#39;: &#39;fsimondson4@umn.edu&#39;}, {&#39;FirstName&#39;: &#39;Myrilla&#39;, &#39;LastName&#39;: &#39;Gates&#39;, &#39;Email&#39;: &#39;mgates5@sina.com.cn&#39;}]
+Processing from 6 to 12
+[{&#39;FirstName&#39;: &#39;Arabela&#39;, &#39;LastName&#39;: &#39;Tweedlie&#39;, &#39;Email&#39;: &#39;atweedlie6@comcast.net&#39;}, {&#39;FirstName&#39;: &#39;Loise&#39;, &#39;LastName&#39;: &#39;Schindler&#39;, &#39;Email&#39;: &#39;lschindler7@discovery.com&#39;}, {&#39;FirstName&#39;: &#39;Storm&#39;, &#39;LastName&#39;: &#39;McBrearty&#39;, &#39;Email&#39;: &#39;smcbrearty8@ovh.net&#39;}, {&#39;FirstName&#39;: &#39;Westley&#39;, &#39;LastName&#39;: &#39;Matityahu&#39;, &#39;Email&#39;: &#39;wmatityahu9@altervista.org&#39;}, {&#39;FirstName&#39;: &#39;Gerta&#39;, &#39;LastName&#39;: &#39;Shaughnessy&#39;, &#39;Email&#39;: &#39;gshaughnessya@smugmug.com&#39;}, {&#39;FirstName&#39;: &#39;Coretta&#39;, &#39;LastName&#39;: &#39;Shave&#39;, &#39;Email&#39;: &#39;cshaveb@toplist.cz&#39;}]
+Processing from 12 to 18
+[{&#39;FirstName&#39;: &#39;Barn&#39;, &#39;LastName&#39;: &#39;Henkmann&#39;, &#39;Email&#39;: &#39;bhenkmannc@people.com.cn&#39;}, {&#39;FirstName&#39;: &#39;Sammy&#39;, &#39;LastName&#39;: &#39;Desaur&#39;, &#39;Email&#39;: &#39;sdesaurd@edublogs.org&#39;}, {&#39;FirstName&#39;: &#39;Joaquin&#39;, &#39;LastName&#39;: &#39;Skym&#39;, &#39;Email&#39;: &#39;jskyme@storify.com&#39;}, {&#39;FirstName&#39;: &#39;Regen&#39;, &#39;LastName&#39;: &#39;Levitt&#39;, &#39;Email&#39;: &#39;rlevittf@pbs.org&#39;}, {&#39;FirstName&#39;: &#39;Maryjane&#39;, &#39;LastName&#39;: &#39;Ledley&#39;, &#39;Email&#39;: &#39;mledleyg@weather.com&#39;}, {&#39;FirstName&#39;: &#39;Tiffanie&#39;, &#39;LastName&#39;: &#39;Dilliway&#39;, &#39;Email&#39;: &#39;tdilliwayh@statcounter.com&#39;}]
+Processing last set from 18 to 20
+[{&#39;FirstName&#39;: &#39;Phineas&#39;, &#39;LastName&#39;: &#39;Rimmington&#39;, &#39;Email&#39;: &#39;primmingtoni@phpbb.com&#39;}, {&#39;FirstName&#39;: &#39;Cinderella&#39;, &#39;LastName&#39;: &#39;Bordiss&#39;, &#39;Email&#39;: &#39;cbordissj@answers.com&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing from </span><span class="si">{</span><span class="n">lb</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">ub</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">client</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_scratch_db&#39;</span><span class="p">][</span><span class="s1">&#39;customers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="n">customers_list</span><span class="p">[</span><span class="n">lb</span><span class="p">:</span><span class="n">ub</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing last set from </span><span class="si">{</span><span class="n">ub</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">customers_list</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">client</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_scratch_db&#39;</span><span class="p">][</span><span class="s1">&#39;customers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="n">customers_list</span><span class="p">[</span><span class="n">ub</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing from 0 to 6
+Processing from 6 to 12
+Processing from 12 to 18
+Processing last set from 18 to 20
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.InsertManyResult at 0x7f9035d83780&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">client</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_scratch_db&#39;</span><span class="p">][</span><span class="s1">&#39;customers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">({}):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229daa&#39;), &#39;FirstName&#39;: &#39;Cassaundra&#39;, &#39;LastName&#39;: &#39;Collinson&#39;, &#39;Email&#39;: &#39;ccollinson0@alibaba.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229dab&#39;), &#39;FirstName&#39;: &#39;Rozamond&#39;, &#39;LastName&#39;: &#39;Oene&#39;, &#39;Email&#39;: &#39;roene1@technorati.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229dac&#39;), &#39;FirstName&#39;: &#39;Gus&#39;, &#39;LastName&#39;: &#39;Hawick&#39;, &#39;Email&#39;: &#39;ghawick2@dagondesign.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229dad&#39;), &#39;FirstName&#39;: &#39;Delano&#39;, &#39;LastName&#39;: &#39;Ashbey&#39;, &#39;Email&#39;: &#39;dashbey3@purevolume.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229dae&#39;), &#39;FirstName&#39;: &#39;Fara&#39;, &#39;LastName&#39;: &#39;Simondson&#39;, &#39;Email&#39;: &#39;fsimondson4@umn.edu&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229daf&#39;), &#39;FirstName&#39;: &#39;Myrilla&#39;, &#39;LastName&#39;: &#39;Gates&#39;, &#39;Email&#39;: &#39;mgates5@sina.com.cn&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db0&#39;), &#39;FirstName&#39;: &#39;Arabela&#39;, &#39;LastName&#39;: &#39;Tweedlie&#39;, &#39;Email&#39;: &#39;atweedlie6@comcast.net&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db1&#39;), &#39;FirstName&#39;: &#39;Loise&#39;, &#39;LastName&#39;: &#39;Schindler&#39;, &#39;Email&#39;: &#39;lschindler7@discovery.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db2&#39;), &#39;FirstName&#39;: &#39;Storm&#39;, &#39;LastName&#39;: &#39;McBrearty&#39;, &#39;Email&#39;: &#39;smcbrearty8@ovh.net&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db3&#39;), &#39;FirstName&#39;: &#39;Westley&#39;, &#39;LastName&#39;: &#39;Matityahu&#39;, &#39;Email&#39;: &#39;wmatityahu9@altervista.org&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db4&#39;), &#39;FirstName&#39;: &#39;Gerta&#39;, &#39;LastName&#39;: &#39;Shaughnessy&#39;, &#39;Email&#39;: &#39;gshaughnessya@smugmug.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db5&#39;), &#39;FirstName&#39;: &#39;Coretta&#39;, &#39;LastName&#39;: &#39;Shave&#39;, &#39;Email&#39;: &#39;cshaveb@toplist.cz&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db6&#39;), &#39;FirstName&#39;: &#39;Barn&#39;, &#39;LastName&#39;: &#39;Henkmann&#39;, &#39;Email&#39;: &#39;bhenkmannc@people.com.cn&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db7&#39;), &#39;FirstName&#39;: &#39;Sammy&#39;, &#39;LastName&#39;: &#39;Desaur&#39;, &#39;Email&#39;: &#39;sdesaurd@edublogs.org&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db8&#39;), &#39;FirstName&#39;: &#39;Joaquin&#39;, &#39;LastName&#39;: &#39;Skym&#39;, &#39;Email&#39;: &#39;jskyme@storify.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229db9&#39;), &#39;FirstName&#39;: &#39;Regen&#39;, &#39;LastName&#39;: &#39;Levitt&#39;, &#39;Email&#39;: &#39;rlevittf@pbs.org&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229dba&#39;), &#39;FirstName&#39;: &#39;Maryjane&#39;, &#39;LastName&#39;: &#39;Ledley&#39;, &#39;Email&#39;: &#39;mledleyg@weather.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229dbb&#39;), &#39;FirstName&#39;: &#39;Tiffanie&#39;, &#39;LastName&#39;: &#39;Dilliway&#39;, &#39;Email&#39;: &#39;tdilliwayh@statcounter.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229dbc&#39;), &#39;FirstName&#39;: &#39;Phineas&#39;, &#39;LastName&#39;: &#39;Rimmington&#39;, &#39;Email&#39;: &#39;primmingtoni@phpbb.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;60b65e5e8852136200229dbd&#39;), &#39;FirstName&#39;: &#39;Cinderella&#39;, &#39;LastName&#39;: &#39;Bordiss&#39;, &#39;Email&#39;: &#39;cbordissj@answers.com&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_scratch_db&#39;</span><span class="p">][</span><span class="s1">&#39;customers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count_documents</span><span class="p">({})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./23_csv_files_to_mongodb_migration"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-80990145-12', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

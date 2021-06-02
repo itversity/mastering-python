@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises - Manipulating Collections using Loops &#8212; Mastering Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Development of Map Reduce APIs" href="../12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html" />
+    <link rel="prev" title="Limitations of using Loops" href="12_limitations_of_using_loops.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering Python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-python.html">
+   Mastering Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_overview_of_windows_os/01_overview_of_windows_os.html">
+   Overview of Windows Operating System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_setup_ubuntu_vm_on_gcp/01_setup_ubuntu_vm_on_gcp.html">
+   Setup Ubuntu VM on GCP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_setup_postgres_database/01_setup_postgres_database.html">
+   Setup Postgres Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_postgres_database_operations/01_postgres_database_operations.html">
+   Perform Database Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_getting_started_with_python/01_getting_started_with_python.html">
+   Getting Started with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_basic_programming_constructs/01_basic_programming_constructs.html">
+   Basic Programming Constructs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_pre_defined_functions/01_pre_defined_functions.html">
+   Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_user_defined_functions/01_user_defined_functions.html">
+   User Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set.html">
+   Overview of Collections - list and set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple.html">
+   Overview of Collections - dict and tuple
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_manipulating_collections_using_loops.html">
+   Manipulating Collections using Loops
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_reading_files_into_collections.html">
+     Reading files into collections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_standard_transformations.html">
+     Overview of Standard Transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_row_level_transformations.html">
+     Row level transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_getting_unique_elements.html">
+     Getting unique elements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_filtering_data.html">
+     Filtering Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_preparing_data_sets.html">
+     Preparing Data Sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_quick_recap_of_dict_operations.html">
+     Quick Recap of Dict Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_performing_total_aggregations.html">
+     Performing Total Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_performing_grouped_aggregations.html">
+     Performing Aggregations - Grouped
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_joining_data_sets.html">
+     Joining Data Sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_limitations_of_using_loops.html">
+     Limitations of using Loops
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Exercises - Manipulating Collections using Loops
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html">
+   Development of Map Reduce APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries.html">
+   Understanding Python Map Reduce Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming.html">
+   Overview of Object Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../15_overview_of_pandas_libraries/01_overview_of_pandas_libraries.html">
+   Overview of Pandas Libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup.html">
+   Web Scraping using Beautiful Soup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17_database_programming_crud_operations/01_database_programming_crud_operations.html">
+   Database Programming – CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18_database_programming_batch_operations/01_database_programming_batch_operations.html">
+   Database Programming – Batch Operations
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/11_manipulating_collections_using_loops/13_exercises_manipulating_collections_using_loops.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-python/issues/new?title=Issue%20on%20page%20%2F11_manipulating_collections_using_loops/13_exercises_manipulating_collections_using_loops.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-python/edit/master/11_manipulating_collections_using_loops/13_exercises_manipulating_collections_using_loops.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-python/master?urlpath=tree/11_manipulating_collections_using_loops/13_exercises_manipulating_collections_using_loops.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#details-of-data">
+   Details of Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1-read-data-from-file">
+   Exercise 1 - Read data from file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2-complete-order-count">
+   Exercise 2 - Complete Order Count
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2-pending-order-count">
+   Exercise 2 - Pending Order Count
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3-pending-order-count">
+   Exercise 3 - Pending Order Count
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4-compare-performance">
+   Exercise 4 - Compare Performance
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exercises-manipulating-collections-using-loops">
+<h1>Exercises - Manipulating Collections using Loops<a class="headerlink" href="#exercises-manipulating-collections-using-loops" title="Permalink to this headline">¶</a></h1>
+<p>Let us go throuh some of the exercises to understand how to process collections using conventional loops and conditionals. Create functions for each of the below problem statement.</p>
+<ul class="simple">
+<li><p>Get number of COMPLETE orders placed by each customer</p></li>
+<li><p>Get total number of PENDING or PENDING_PAYMENT orders for the month of 2014 January.</p></li>
+<li><p>Get outstanding amount for each month considering orders with status PAYMENT_REVIEW, PENDING, PENDING_PAYMENT and PROCESSING.</p></li>
+</ul>
+<div class="section" id="details-of-data">
+<h2>Details of Data<a class="headerlink" href="#details-of-data" title="Permalink to this headline">¶</a></h2>
+<p>Here are the details about the data which you can leverage to take care of these exercises.</p>
+<ul class="simple">
+<li><p>Location: <code class="docutils literal notranslate"><span class="pre">/data/retail_db/orders/part-00000</span></code></p></li>
+<li><p>Each record is line separated or line delimited.</p></li>
+<li><p>Attribute in each record is comma separated.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the details about file</span>
+<span class="o">!</span>ls -ltr /data/retail_db/orders/part-00000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get first five lines from the file</span>
+<span class="o">!</span>head -5 /data/retail_db/orders/part-00000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get number of lines from the file</span>
+<span class="c1"># We can use linux command wc with -l</span>
+<span class="o">!</span>wc -l /data/retail_db/orders/part-00000
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1-read-data-from-file">
+<h2>Exercise 1 - Read data from file<a class="headerlink" href="#exercise-1-read-data-from-file" title="Permalink to this headline">¶</a></h2>
+<p>Before getting into problem statement, develop the code to read the file into list of elements.</p>
+<ul class="simple">
+<li><p>We should be able to use this function to read any file with text data using line as record delimiter.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the logic here</span>
+<span class="k">def</span> <span class="nf">get_list_from_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="n">data_list</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data_list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Run below cells to validate the function</p></li>
+<li><p>You should see 68883 records as part of the output for the cell with <code class="docutils literal notranslate"><span class="pre">len(orders)</span></code> below.</p></li>
+<li><p>You should see 172198 records as part of the output for the cell with <code class="docutils literal notranslate"><span class="pre">len(order_items)</span></code> below.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="n">get_list_from_file</span><span class="p">(</span><span class="s1">&#39;/data/retail_db/orders/part-00000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span> <span class="o">=</span> <span class="n">get_list_from_file</span><span class="p">(</span><span class="s1">&#39;/data/retail_db/order_items/part-00000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">order_items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2-complete-order-count">
+<h2>Exercise 2 - Complete Order Count<a class="headerlink" href="#exercise-2-complete-order-count" title="Permalink to this headline">¶</a></h2>
+<p>Get number of COMPLETE orders placed by each customer. Develop a function which read the orders data and get us complete order count.</p>
+<ul class="simple">
+<li><p>The function should take the complete order list as argument and return count of Complete orders.</p></li>
+<li><p>The order is said to be complete if the status is <strong>COMPLETE</strong>.</p></li>
+<li><p>The last element in each comma separated record gives us the order status.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the logic here</span>
+<span class="k">def</span> <span class="nf">get_complete_order_count</span><span class="p">(</span><span class="n">orders</span><span class="p">):</span>
+
+    <span class="k">return</span> <span class="n">order_count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Run below cell to validate the function. You should get <strong>22899</strong> as output.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_complete_order_count</span><span class="p">(</span><span class="n">orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You can also validate results using simple linux scripts.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>egrep -w <span class="s1">&#39;COMPLETE&#39;</span> /data/retail_db/orders/part-00000<span class="p">|</span>wc -l
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2-pending-order-count">
+<h2>Exercise 2 - Pending Order Count<a class="headerlink" href="#exercise-2-pending-order-count" title="Permalink to this headline">¶</a></h2>
+<p>Get total number of PENDING or PENDING_PAYMENT orders for the month of 2014 January. Develop a function which read the orders data and get us pending order count.</p>
+<ul class="simple">
+<li><p>The function should take the complete order list as argument and return count of pending orders.</p></li>
+<li><p>The order is said to be complete if the status is <strong>PENDING</strong> or <strong>PENDING_PAYMENT</strong>. We should only consider the orders placed in the month of 2014 January.</p></li>
+<li><p>The second element in each comma separated record gives us the date</p></li>
+<li><p>The 4th or last element in each comma separated record gives us the order status.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the logic here</span>
+<span class="k">def</span> <span class="nf">get_pending_order_count</span><span class="p">(</span><span class="n">orders</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">order_count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Run below cell to validate your function. You should get <strong>1969</strong> as output.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_pending_order_count</span><span class="p">(</span><span class="n">orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You can also validate results using simple linux scripts.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>egrep -w <span class="s1">&#39;(PENDING|PENDING_PAYMENT)&#39;</span> /data/retail_db/orders/part-00000<span class="p">|</span>grep <span class="m">2014</span>-01<span class="p">|</span>wc -l
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-3-pending-order-count">
+<h2>Exercise 3 - Pending Order Count<a class="headerlink" href="#exercise-3-pending-order-count" title="Permalink to this headline">¶</a></h2>
+<p>Get outstanding amount for each month considering orders with status PAYMENT_REVIEW, PENDING, PENDING_PAYMENT and PROCESSING. Modularize by developing multiple functions.</p>
+<ul class="simple">
+<li><p>Develop a function which takes orders list as argument and return a collection of order ids with one of the pending statuses.</p></li>
+<li><p>Develop a function which takes <strong>order_items list</strong> as well as <strong>orders dict with only status</strong> as arguments and return outstanding amount.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Develop a function to create list of orders with pending status and lookup into it.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the logic here</span>
+<span class="k">def</span> <span class="nf">get_pending_orders</span><span class="p">(</span><span class="n">orders</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pending_orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Validate by running below cells to see if the dict is created with order id and order status.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="n">get_list_from_file</span><span class="p">(</span><span class="s1">&#39;/data/retail_db/orders/part-00000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pending_orders</span> <span class="o">=</span> <span class="n">get_pending_orders</span><span class="p">(</span><span class="n">orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It should return list</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">pending_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preview first five elements</span>
+<span class="n">pending_orders</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading first element from the list</span>
+<span class="n">pending_orders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It should return 31644</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">pending_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_outstanding_revenue</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="n">pending_orders</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">outstanding_revenue</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span> <span class="o">=</span> <span class="n">get_list_from_file</span><span class="p">(</span><span class="s1">&#39;/data/retail_db/order_items/part-00000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># You should get 15982030.54 as output. Even if it is different by few dollars it is fine.</span>
+<span class="n">get_outstanding_revenue</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="n">pending_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Develop a function to create set of orders with pending status and lookup into it.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the logic here</span>
+<span class="k">def</span> <span class="nf">get_pending_orders_set</span><span class="p">(</span><span class="n">orders</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pending_orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Validate by running below cells to see if the dict is created with order id and order status.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="n">get_list_from_file</span><span class="p">(</span><span class="s1">&#39;/data/retail_db/orders/part-00000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pending_orders</span> <span class="o">=</span> <span class="n">get_pending_orders_set</span><span class="p">(</span><span class="n">orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It should return set</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">pending_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preview first five elements</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">pending_orders</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading first element from the list</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">pending_orders</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It should return 31644</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">pending_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_outstanding_revenue</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="n">pending_orders</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">outstanding_revenue</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span> <span class="o">=</span> <span class="n">get_list_from_file</span><span class="p">(</span><span class="s1">&#39;/data/retail_db/order_items/part-00000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># You should get 15982030.54 as output. Even if it is different by few dollars it is fine.</span>
+<span class="n">get_outstanding_revenue</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="n">pending_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Develop a function to create dict of orders with pending status and lookup into it. The dict need to have order id as key and some constant value as value. In my case, I have used 1 as value.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the logic here</span>
+<span class="k">def</span> <span class="nf">get_pending_orders_dict</span><span class="p">(</span><span class="n">orders</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pending_orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Validate by running below cells to see if the dict is created with order id and order status.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="n">get_list_from_file</span><span class="p">(</span><span class="s1">&#39;/data/retail_db/orders/part-00000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pending_orders</span> <span class="o">=</span> <span class="n">get_pending_orders_dict</span><span class="p">(</span><span class="n">orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It should return dict</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">pending_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preview first five elements</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">pending_orders</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading first element from the dict</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">pending_orders</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It should return 31644</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">pending_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_outstanding_revenue</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="n">pending_orders</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">outstanding_revenue</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span> <span class="o">=</span> <span class="n">get_list_from_file</span><span class="p">(</span><span class="s1">&#39;/data/retail_db/order_items/part-00000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># You should get 15982030.54 as output. Even if it is different by few dollars it is fine.</span>
+<span class="n">get_outstanding_revenue</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="n">pending_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-4-compare-performance">
+<h2>Exercise 4 - Compare Performance<a class="headerlink" href="#exercise-4-compare-performance" title="Permalink to this headline">¶</a></h2>
+<p>As part of the previous exercise you were asked to come up with the solution using 3 different approaches. You need to add a markdown cell below each question and provide answer.</p>
+<ul class="simple">
+<li><p>Question: Which of the 3 approaches is faster? Add a markdown cell below and provide your answer.</p>
+<ul>
+<li><p>list</p></li>
+<li><p>set</p></li>
+<li><p>dict</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Question: Provide explanation why the option you have chosen is faster over others. Add a markdown cell below and provide your answer.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./11_manipulating_collections_using_loops"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="12_limitations_of_using_loops.html" title="previous page">Limitations of using Loops</a>
+    <a class='right-next' id="next-link" href="../12_development_of_map_reduce_apis/01_development_of_map_reduce_apis.html" title="next page">Development of Map Reduce APIs</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-80990145-12', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
