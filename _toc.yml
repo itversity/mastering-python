@@ -1,10 +1,8 @@
-file: mastering-python
-
+format: jb-article
+root: mastering-python
 sections:
-
 - file: 01_overview_of_windows_os/01_overview_of_windows_os
   sections:
-  - file: 01_overview_of_windows_os/01_overview_of_windows_os
   - file: 01_overview_of_windows_os/02_getting_system_details
   - file: 01_overview_of_windows_os/03_managing_windows_system
   - file: 01_overview_of_windows_os/04_overview_of_microsoft_office
@@ -12,10 +10,8 @@ sections:
   - file: 01_overview_of_windows_os/06_power_shell_and_command_prompt
   - file: 01_overview_of_windows_os/07_connecting_to_linux_servers
   - file: 01_overview_of_windows_os/08_folders_and_files
-
 - file: 02_setup_ubuntu_vm_on_gcp/01_setup_ubuntu_vm_on_gcp
   sections:
-  - file: 02_setup_ubuntu_vm_on_gcp/01_setup_ubuntu_vm_on_gcp
   - file: 02_setup_ubuntu_vm_on_gcp/02_signing_up_for_gcp
   - file: 02_setup_ubuntu_vm_on_gcp/03_understanding_gcp_web_console
   - file: 02_setup_ubuntu_vm_on_gcp/04_overview_of_gcp_pricing
@@ -23,10 +19,8 @@ sections:
   - file: 02_setup_ubuntu_vm_on_gcp/06_setup_docker
   - file: 02_setup_ubuntu_vm_on_gcp/07_validating_python
   - file: 02_setup_ubuntu_vm_on_gcp/08_setup_jupyter_lab
-
 - file: 03_setup_postgres_database/01_setup_postgres_database
   sections:
-  - file: 03_setup_postgres_database/01_setup_postgres_database
   - file: 03_setup_postgres_database/02_docker_cheat_sheet
   - file: 03_setup_postgres_database/03_setup_postgres_using_docker
   - file: 03_setup_postgres_database/04_accessing_postgres_using_docker_cli
@@ -37,10 +31,8 @@ sections:
   - file: 03_setup_postgres_database/09_sql_workbench_features
   - file: 03_setup_postgres_database/10_troubleshooting_issues
   - file: 03_setup_postgres_database/11_jupyter_lab_and_postgresql
-
 - file: 04_postgres_database_operations/01_postgres_database_operations
   sections:
-  - file: 04_postgres_database_operations/01_postgres_database_operations
   - file: 04_postgres_database_operations/02_overview_of_sql
   - file: 04_postgres_database_operations/03_create_database_and_users_table
   - file: 04_postgres_database_operations/04_ddl_data_definition_language
@@ -51,10 +43,8 @@ sections:
   - file: 04_postgres_database_operations/09_example_data_engineering
   - file: 04_postgres_database_operations/10_example_web_application
   - file: 04_postgres_database_operations/11_exercise_database_operations
-
 - file: 05_getting_started_with_python/01_getting_started_with_python
   sections:
-  - file: 05_getting_started_with_python/01_getting_started_with_python
   - file: 05_getting_started_with_python/02_installing_python
   - file: 05_getting_started_with_python/03_overview_of_anaconda
   - file: 05_getting_started_with_python/04_python_cli_and_jupyter_notebook
@@ -63,23 +53,21 @@ sections:
   - file: 05_getting_started_with_python/07_overview_of_visual_studio_code
   - file: 05_getting_started_with_python/08_using_itversity_labs
   - file: 05_getting_started_with_python/09_leveraging_googles_colab
-
 - file: 06_basic_programming_constructs/01_basic_programming_constructs
   sections:
-  - file: 06_basic_programming_constructs/01_basic_programming_constructs
   - file: 06_basic_programming_constructs/02_getting_help
   - file: 06_basic_programming_constructs/03_variables_and_objects
   - file: 06_basic_programming_constructs/04_data_types_commonly_used
-  - file: 06_basic_programming_constructs/05_operators_in_python
-  - file: 06_basic_programming_constructs/06_comments_and_doc_strings
-  - file: 06_basic_programming_constructs/07_conditionals
-  - file: 06_basic_programming_constructs/08_all_about_for_loops
-  - file: 06_basic_programming_constructs/09_running_os_commands
-  - file: 06_basic_programming_constructs/10_exercises_basic_programming_constructs
-
+  - file: 06_basic_programming_constructs/05_overview_of_boolean_type
+  - file: 06_basic_programming_constructs/06_operators_in_python
+  - file: 06_basic_programming_constructs/07_comments_and_doc_strings
+  - file: 06_basic_programming_constructs/08_conditionals
+  - file: 06_basic_programming_constructs/09_all_about_for_loops
+  - file: 06_basic_programming_constructs/10_running_os_commands
+  - file: 06_basic_programming_constructs/11_exercises_basic_programming_constructs
+  - file: 06_basic_programming_constructs/12_eval_and_exec
 - file: 07_pre_defined_functions/01_pre_defined_functions
   sections:
-  - file: 07_pre_defined_functions/01_pre_defined_functions
   - file: 07_pre_defined_functions/02_overview_of_pre-defined_functions
   - file: 07_pre_defined_functions/03_numeric_functions
   - file: 07_pre_defined_functions/04_overview_of_strings
@@ -89,10 +77,8 @@ sections:
   - file: 07_pre_defined_functions/08_date_manipulation_functions
   - file: 07_pre_defined_functions/09_special_functions
   - file: 07_pre_defined_functions/10_exercises_pre_defined_functions
-
 - file: 08_user_defined_functions/01_user_defined_functions
   sections:
-  - file: 08_user_defined_functions/01_user_defined_functions
   - file: 08_user_defined_functions/02_defining_functions
   - file: 08_user_defined_functions/03_doc_strings
   - file: 08_user_defined_functions/04_returning_values
@@ -104,26 +90,24 @@ sections:
   - file: 08_user_defined_functions/10_lambda_functions
   - file: 08_user_defined_functions/11_usage_of_lambda_functions
   - file: 08_user_defined_functions/12_exercise_user_defined_functions
-
 - file: 09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set
   sections:
-  - file: 09_overview_of_collections_list_and_set/01_overview_of_collections_list_and_set
   - file: 09_overview_of_collections_list_and_set/02_overview_of_list_and_set
   - file: 09_overview_of_collections_list_and_set/03_common_operations
   - file: 09_overview_of_collections_list_and_set/04_accessing_elements_from_list
   - file: 09_overview_of_collections_list_and_set/05_adding_elements_to_list
-  - file: 09_overview_of_collections_list_and_set/06_updating_and_deleting_elements - list
+  - file: 09_overview_of_collections_list_and_set/06_updating_and_deleting_elements
+      - list
   - file: 09_overview_of_collections_list_and_set/07_other_list_operations
   - file: 09_overview_of_collections_list_and_set/08_adding_and_deleting_elements_set
   - file: 09_overview_of_collections_list_and_set/09_typical_set_operations
   - file: 09_overview_of_collections_list_and_set/10_validating_set
   - file: 09_overview_of_collections_list_and_set/11_list_and_set_usage
   - file: 09_overview_of_collections_list_and_set/12_exercises_list_and_set
-  - file: 09_overview_of_collections_list_and_set/13_sorting_data_in_lists
-
+  - file: 09_overview_of_collections_list_and_set/13_sorting_data_in_lists_and_sets
+  - file: 09_overview_of_collections_list_and_set/14_exercises_sorting_lists_and_sets
 - file: 10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple
   sections:
-  - file: 10_overview_of_collections_dict_and_tuple/01_overview_of_collections_dict_and_tuple
   - file: 10_overview_of_collections_dict_and_tuple/02_overview_of_dict_and_tuple
   - file: 10_overview_of_collections_dict_and_tuple/03_common_operations
   - file: 10_overview_of_collections_dict_and_tuple/04_accessing_elements_tuples
@@ -132,115 +116,278 @@ sections:
   - file: 10_overview_of_collections_dict_and_tuple/07_common_examples_dict
   - file: 10_overview_of_collections_dict_and_tuple/08_list_of_tuples
   - file: 10_overview_of_collections_dict_and_tuple/09_list_of_dicts
-
-- file: 11_manipulating_collections_using_loops/01_manipulating_collections_using_loops
+  - file: 10_overview_of_collections_dict_and_tuple/10_process_dict_values
+  - file: 10_overview_of_collections_dict_and_tuple/11_process_dict_items
+  - file: 10_overview_of_collections_dict_and_tuple/12_sorting_dict_items
+  - file: 10_overview_of_collections_dict_and_tuple/15_exercises_dicts_and_tuples
+- file: 11_basics_of_file_io_using_python/02_overview_of_file_io
   sections:
-  - file: 11_manipulating_collections_using_loops/01_manipulating_collections_using_loops
-  - file: 11_manipulating_collections_using_loops/02_reading_files_into_collections
-  - file: 11_manipulating_collections_using_loops/03_overview_of_standard_transformations
-  - file: 11_manipulating_collections_using_loops/04_row_level_transformations
-  - file: 11_manipulating_collections_using_loops/05_getting_unique_elements
-  - file: 11_manipulating_collections_using_loops/06_filtering_data
-  - file: 11_manipulating_collections_using_loops/07_preparing_data_sets
-  - file: 11_manipulating_collections_using_loops/07_run_other_python_notebook_demo
-  - file: 11_manipulating_collections_using_loops/08_quick_recap_of_dict_operations
-  - file: 11_manipulating_collections_using_loops/09_performing_total_aggregations
-  - file: 11_manipulating_collections_using_loops/10_performing_grouped_aggregations
-  - file: 11_manipulating_collections_using_loops/11_joining_data_sets
-  - file: 11_manipulating_collections_using_loops/12_limitations_of_using_loops
-  - file: 11_manipulating_collections_using_loops/13_exercises_manipulating_collections_using_loops
-
-- file: 12_development_of_map_reduce_apis/01_development_of_map_reduce_apis
+  - file: 11_basics_of_file_io_using_python/03_folders_and_files
+  - file: 11_basics_of_file_io_using_python/04_file_paths_and_names
+  - file: 11_basics_of_file_io_using_python/05_overview_of_retail_data
+  - file: 11_basics_of_file_io_using_python/06_read_text_file_into_string
+  - file: 11_basics_of_file_io_using_python/07_write_string_to_text_file
+  - file: 11_basics_of_file_io_using_python/08_overview_of_modes
+  - file: 11_basics_of_file_io_using_python/09_overview_of_delimited_strings
+  - file: 11_basics_of_file_io_using_python/10_read_csv_into_list_of_strings
+  - file: 11_basics_of_file_io_using_python/11_write_strings_to_file_in_append_mode
+  - file: 11_basics_of_file_io_using_python/12_managing_files_and_folders_using_python
+- file: 12_manipulating_collections_using_loops/01_manipulating_collections_using_loops
   sections:
-  - file: 12_development_of_map_reduce_apis/01_development_of_map_reduce_apis
-  - file: 12_development_of_map_reduce_apis/02_develop_myFilter
-  - file: 12_development_of_map_reduce_apis/03_validate_myFilter
-  - file: 12_development_of_map_reduce_apis/04_develop_myMap
-  - file: 12_development_of_map_reduce_apis/05_validate_myMap
-  - file: 12_development_of_map_reduce_apis/06_develop_myReduce
-  - file: 12_development_of_map_reduce_apis/07_validate_myReduce
-  - file: 12_development_of_map_reduce_apis/08_develop_myReduceByKey
-  - file: 12_development_of_map_reduce_apis/09_validate_myReduceByKey
-  - file: 12_development_of_map_reduce_apis/10_develop_myJoin
-  - file: 12_development_of_map_reduce_apis/11_validate_myJoin
-  - file: 12_development_of_map_reduce_apis/12_exercises_custom_map_reduce_functions
-
-- file: 13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries
+  - file: 12_manipulating_collections_using_loops/02_reading_files_into_collections
+  - file: 12_manipulating_collections_using_loops/03_overview_of_standard_transformations
+  - file: 12_manipulating_collections_using_loops/04_row_level_transformations
+  - file: 12_manipulating_collections_using_loops/05_getting_unique_elements
+  - file: 12_manipulating_collections_using_loops/06_filtering_data
+  - file: 12_manipulating_collections_using_loops/07_preparing_data_sets
+  - file: 12_manipulating_collections_using_loops/07_run_other_python_notebook_demo
+  - file: 12_manipulating_collections_using_loops/08_quick_recap_of_dict_operations
+  - file: 12_manipulating_collections_using_loops/09_performing_total_aggregations
+  - file: 12_manipulating_collections_using_loops/10_performing_grouped_aggregations
+  - file: 12_manipulating_collections_using_loops/11_joining_data_sets
+  - file: 12_manipulating_collections_using_loops/12_limitations_of_using_loops
+  - file: 12_manipulating_collections_using_loops/13_exercises_manipulating_collections_using_loops
+- file: 13_development_of_map_reduce_apis/01_development_of_map_reduce_apis
   sections:
-  - file: 13_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries
-  - file: 13_understanding_map_reduce_libraries/02_preparing_data_sets
-  - file: 13_understanding_map_reduce_libraries/03_filtering_data_using_filter
-  - file: 13_understanding_map_reduce_libraries/04_projecting_data_using_map
-  - file: 13_understanding_map_reduce_libraries/05_row_level_transformations_using_map
-  - file: 13_understanding_map_reduce_libraries/06_aggregations_using_reduce
-  - file: 13_understanding_map_reduce_libraries/07_overview_of_itertools
-  - file: 13_understanding_map_reduce_libraries/08_using_groupby
-  - file: 13_understanding_map_reduce_libraries/09_limitations_of_map_reduce_libraries
-
-- file: 14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming
+  - file: 13_development_of_map_reduce_apis/02_develop_myFilter
+  - file: 13_development_of_map_reduce_apis/03_validate_myFilter
+  - file: 13_development_of_map_reduce_apis/04_develop_myMap
+  - file: 13_development_of_map_reduce_apis/05_validate_myMap
+  - file: 13_development_of_map_reduce_apis/06_develop_myReduce
+  - file: 13_development_of_map_reduce_apis/07_validate_myReduce
+  - file: 13_development_of_map_reduce_apis/08_develop_myReduceByKey
+  - file: 13_development_of_map_reduce_apis/09_validate_myReduceByKey
+  - file: 13_development_of_map_reduce_apis/10_develop_myJoin
+  - file: 13_development_of_map_reduce_apis/11_validate_myJoin
+  - file: 13_development_of_map_reduce_apis/12_exercises_custom_map_reduce_functions
+- file: 14_understanding_map_reduce_libraries/01_understanding_map_reduce_libraries
   sections:
-  - file: 14_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming
-  - file: 14_overview_of_object_oriented_programming/02_classes_and_objects
-  - file: 14_overview_of_object_oriented_programming/03_constructors
-  - file: 14_overview_of_object_oriented_programming/04_methods
-  - file: 14_overview_of_object_oriented_programming/05_inheritance
-  - file: 14_overview_of_object_oriented_programming/06_encapsulation
-  - file: 14_overview_of_object_oriented_programming/07_polymorphism
-  - file: 14_overview_of_object_oriented_programming/08_dynamic_classes
-
-- file: 15_overview_of_pandas_libraries/01_overview_of_pandas_libraries
+  - file: 14_understanding_map_reduce_libraries/02_preparing_data_sets
+  - file: 14_understanding_map_reduce_libraries/03_filtering_data_using_filter
+  - file: 14_understanding_map_reduce_libraries/04_projecting_data_using_map
+  - file: 14_understanding_map_reduce_libraries/05_row_level_transformations_using_map
+  - file: 14_understanding_map_reduce_libraries/06_aggregations_using_reduce
+  - file: 14_understanding_map_reduce_libraries/07_overview_of_itertools
+  - file: 14_understanding_map_reduce_libraries/08_using_groupby
+  - file: 14_understanding_map_reduce_libraries/09_limitations_of_map_reduce_libraries
+  - file: 14_understanding_map_reduce_libraries/12_exercises_map_reduce_functions
+- file: 15_overview_of_object_oriented_programming/01_overview_of_object_oriented_programming
   sections:
-  - file: 15_overview_of_pandas_libraries/01_overview_of_pandas_libraries
-  - file: 15_overview_of_pandas_libraries/02_pandas_data_structures_overview
-  - file: 15_overview_of_pandas_libraries/03_overview_of_series
-  - file: 15_overview_of_pandas_libraries/04_creating_data_frames_from_lists
-  - file: 15_overview_of_pandas_libraries/05_data_frames_basic_operations
-  - file: 15_overview_of_pandas_libraries/06_csv_to_pandas_data_frame
-  - file: 15_overview_of_pandas_libraries/07_projecting_and_filtering
-  - file: 15_overview_of_pandas_libraries/08_performing_total_aggregations
-  - file: 15_overview_of_pandas_libraries/09_performing_grouped_aggregations
-  - file: 15_overview_of_pandas_libraries/10_writing_data_frames_to_files
-  - file: 15_overview_of_pandas_libraries/11_joining_data_frames
-  - file: 15_overview_of_pandas_libraries/12_exercises_pandas_data_frames
-
-- file: 16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup
+  - file: 15_overview_of_object_oriented_programming/02_classes_and_objects
+  - file: 15_overview_of_object_oriented_programming/03_constructors
+  - file: 15_overview_of_object_oriented_programming/04_class_methods
+  - file: 15_overview_of_object_oriented_programming/05_static_methods
+  - file: 15_overview_of_object_oriented_programming/06_public_and_private_methods
+  - file: 15_overview_of_object_oriented_programming/07_inheritance
+  - file: 15_overview_of_object_oriented_programming/08_multiple_inheritance
+  - file: 15_overview_of_object_oriented_programming/09_multilevel_inheritance
+  - file: 15_overview_of_object_oriented_programming/10_encapsulation
+  - file: 15_overview_of_object_oriented_programming/11_polymorphism
+  - file: 15_overview_of_object_oriented_programming/12_dynamic_classes
+  - file: 15_overview_of_object_oriented_programming/13_method_overloading
+  - file: 15_overview_of_object_oriented_programming/14_method_overriding
+  - file: 15_overview_of_object_oriented_programming/15_repr_and_str_functions
+  - file: 15_overview_of_object_oriented_programming/16_using_slotted_classes
+  - file: 15_overview_of_object_oriented_programming/17_overview_of_data_classes
+- file: 17_overview_of_pandas_libraries/01_overview_of_pandas_libraries
   sections:
-  - file: 16_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup
-  - file: 16_web_scraping_using_beautifulsoup/02_installing_pre-requisites
-  - file: 16_web_scraping_using_beautifulsoup/03_overview_of_beautifulsoup
-  - file: 16_web_scraping_using_beautifulsoup/04_parsing_html_using_beautifulsoup
-  - file: 16_web_scraping_using_beautifulsoup/05_manipulating_html_content
-  - file: 16_web_scraping_using_beautifulsoup/06_scraping_website_content
-  - file: 16_web_scraping_using_beautifulsoup/07_processing_website_content
-  - file: 16_web_scraping_using_beautifulsoup/08_getting_urls_from_website
-  - file: 16_web_scraping_using_beautifulsoup/09_extracting_content_from_website
-  - file: 16_web_scraping_using_beautifulsoup/10_analyzing_data_using_pandas
-  - file: 16_web_scraping_using_beautifulsoup/11_cleanup_html_using_beautifulsoup
-
-- file: 17_database_programming_crud_operations/01_database_programming_crud_operations
+  - file: 17_overview_of_pandas_libraries/02_pandas_data_structures_overview
+  - file: 17_overview_of_pandas_libraries/03_overview_of_series
+  - file: 17_overview_of_pandas_libraries/04_creating_data_frames_from_lists
+  - file: 17_overview_of_pandas_libraries/05_data_frames_basic_operations
+  - file: 17_overview_of_pandas_libraries/06_csv_to_pandas_data_frame
+  - file: 17_overview_of_pandas_libraries/07_projecting_and_filtering
+  - file: 17_overview_of_pandas_libraries/08_performing_total_aggregations
+  - file: 17_overview_of_pandas_libraries/09_performing_grouped_aggregations
+  - file: 17_overview_of_pandas_libraries/10_writing_data_frames_to_files
+  - file: 17_overview_of_pandas_libraries/11_joining_data_frames
+  - file: 17_overview_of_pandas_libraries/12_exercises_pandas_data_frames
+  - file: 17_overview_of_pandas_libraries/13_set_up_variables_for_db_connectivity
+  - file: 17_overview_of_pandas_libraries/14_set_up_courses_table_with_data
+  - file: 17_overview_of_pandas_libraries/15_running_sql_queries_using_pandas
+- file: 18_database_programming_crud_operations/01_database_programming_crud_operations
   sections:
-  - file: 17_database_programming_crud_operations/01_database_programming_crud_operations
-  - file: 17_database_programming_crud_operations/02_overview_of_database_programming
-  - file: 17_database_programming_crud_operations/03_recap_of_rdbms_concepts
-  - file: 17_database_programming_crud_operations/04_setup_database_client_libraries
-  - file: 17_database_programming_crud_operations/05_function_get_database_connection
-  - file: 17_database_programming_crud_operations/06_creating_database_table
-  - file: 17_database_programming_crud_operations/07_inserting_data_into_table
-  - file: 17_database_programming_crud_operations/08_updating_existing_table_data
-  - file: 17_database_programming_crud_operations/09_deleting_data_from_table
-  - file: 17_database_programming_crud_operations/10_querying_data_from_table
-  - file: 17_database_programming_crud_operations/11_recap_crud_operations
-
-- file: 18_database_programming_batch_operations/01_database_programming_batch_operations
+  - file: 18_database_programming_crud_operations/02_overview_of_database_programming
+  - file: 18_database_programming_crud_operations/03_recap_of_rdbms_concepts
+  - file: 18_database_programming_crud_operations/04_setup_database_client_libraries
+  - file: 18_database_programming_crud_operations/05_function_get_database_connection
+  - file: 18_database_programming_crud_operations/06_creating_database_table
+  - file: 18_database_programming_crud_operations/07_inserting_data_into_table
+  - file: 18_database_programming_crud_operations/08_updating_existing_table_data
+  - file: 18_database_programming_crud_operations/09_deleting_data_from_table
+  - file: 18_database_programming_crud_operations/10_querying_data_from_table
+  - file: 18_database_programming_crud_operations/11_recap_crud_operations
+- file: 19_database_programming_batch_operations/01_database_programming_batch_operations
   sections:
-  - file: 18_database_programming_batch_operations/01_database_programming_batch_operations
-  - file: 18_database_programming_batch_operations/02_function_get_database_connection
-  - file: 18_database_programming_batch_operations/03_creating_database_table
-  - file: 18_database_programming_batch_operations/04_recap_of_insert
-  - file: 18_database_programming_batch_operations/05_preparing_database
-  - file: 18_database_programming_batch_operations/06_reading_data_from_file
-  - file: 18_database_programming_batch_operations/07_batch_loading_of_data
-  - file: 18_database_programming_batch_operations/08_best_practices_batch_loading
-
-
-
+  - file: 19_database_programming_batch_operations/02_function_get_database_connection
+  - file: 19_database_programming_batch_operations/03_creating_database_table
+  - file: 19_database_programming_batch_operations/04_recap_of_insert
+  - file: 19_database_programming_batch_operations/05_preparing_database
+  - file: 19_database_programming_batch_operations/06_reading_data_from_file
+  - file: 19_database_programming_batch_operations/07_batch_loading_of_data
+  - file: 19_database_programming_batch_operations/08_best_practices_batch_loading
+  - file: 19_database_programming_batch_operations/09_execute_values_for_batch_inserts
+- file: 20_environment_variables/02_overview_of_sdlc
+  sections:
+  - file: 20_environment_variables/03_recap_of_environment_variables
+  - file: 20_environment_variables/04_accessing_environment_variables_using_os
+  - file: 20_environment_variables/05_adding_environment_variables
+  - file: 20_environment_variables/06_overview_of_dotenv
+  - file: 20_environment_variables/07_passing_values_using_dotenv
+  - file: 20_environment_variables/08_overview_of_configparser
+  - file: 20_environment_variables/09_create_application_config_file
+  - file: 20_environment_variables/10_load_application_config_values
+  - file: 20_environment_variables/11_using_configparser_for_app_variables
+- file: 22_processing_json_data/02_overview_of_json
+  sections:
+  - file: 22_processing_json_data/03_json_data_types
+  - file: 22_processing_json_data/04_create_json_string
+  - file: 22_processing_json_data/05_process_json_string
+  - file: 22_processing_json_data/06_single_json_in_files
+  - file: 22_processing_json_data/07_multiple_jsons_in_files
+  - file: 22_processing_json_data/08_process_json_using_pandas
+  - file: 22_processing_json_data/09_common_use_cases_for_json
+  - file: 22_processing_json_data/10_write_to_json_files_using_json
+  - file: 22_processing_json_data/11_write_to_json_files_using_pandas
+- file: 23_processing_rest_payloads/02_overview_of_rest_apis
+  sections:
+  - file: 23_processing_rest_payloads/03_using_curl_command
+  - file: 23_processing_rest_payloads/04_overview_of_postman
+  - file: 23_processing_rest_payloads/05_getting_started_with_requests
+  - file: 23_processing_rest_payloads/06_decipher_rest_get_using_requests
+  - file: 23_processing_rest_payloads/07_convert_rest_payload_to_dict
+  - file: 23_processing_rest_payloads/08_get_repo_details_using_get
+  - file: 23_processing_rest_payloads/09_process_repo_details_using_pandas
+  - file: 23_processing_rest_payloads/10_exercise_rest_payload_to_db_table
+- file: 24_modularize_and_reusability/00_setup_database_variables
+  sections:
+  - file: 24_modularize_and_reusability/01_development_life_cycle
+  - file: 24_modularize_and_reusability/02_requirements_for_loading_rest_payloads
+  - file: 24_modularize_and_reusability/03_primitive_solution_for_loading_rest_payloads
+  - file: 24_modularize_and_reusability/04_common_issues_with_primitive_solution
+  - file: 24_modularize_and_reusability/05_develop_function_to_load_data_into_table
+  - file: 24_modularize_and_reusability/06_end_to_end_pipeline
+- file: 25_web_scraping_using_beautifulsoup/01_web_scraping_using_beautifulsoup
+  sections:
+  - file: 25_web_scraping_using_beautifulsoup/02_installing_pre-requisites
+  - file: 25_web_scraping_using_beautifulsoup/03_overview_of_beautifulsoup
+  - file: 25_web_scraping_using_beautifulsoup/04_parsing_html_using_beautifulsoup
+  - file: 25_web_scraping_using_beautifulsoup/05_manipulating_html_content
+  - file: 25_web_scraping_using_beautifulsoup/06_scraping_website_content
+  - file: 25_web_scraping_using_beautifulsoup/07_processing_website_content
+  - file: 25_web_scraping_using_beautifulsoup/08_getting_urls_from_website
+  - file: 25_web_scraping_using_beautifulsoup/09_extracting_content_from_website
+  - file: 25_web_scraping_using_beautifulsoup/10_analyzing_data_using_pandas
+  - file: 25_web_scraping_using_beautifulsoup/11_cleanup_html_using_beautifulsoup
+- file: 30_advanced_data_processing_tasks/02_data_migration_between_databases
+  sections:
+  - file: 30_advanced_data_processing_tasks/12_incremental_loads_of_rest_payloads
+  - file: 30_advanced_data_processing_tasks/read_file_in_chunks_pandas
+- file: 40_google_sheets_to_postgres/02_high_level_steps
+  sections:
+  - file: 40_google_sheets_to_postgres/03_install_required_libraries
+  - file: 40_google_sheets_to_postgres/04_understanding_google_sheets
+  - file: 40_google_sheets_to_postgres/05_overview_of_google_sheets_api
+  - file: 40_google_sheets_to_postgres/06_create_google_api_credentials
+  - file: 40_google_sheets_to_postgres/07_google_sheets_api_authentication
+  - file: 40_google_sheets_to_postgres/08_reading_google_sheets_metadata
+  - file: 40_google_sheets_to_postgres/09_reading_data_from_google_sheets
+  - file: 40_google_sheets_to_postgres/10_processing_data_using_pandas
+  - file: 40_google_sheets_to_postgres/11_create_db_tables
+  - file: 40_google_sheets_to_postgres/12_populate_users_table
+  - file: 40_google_sheets_to_postgres/13_populate_form_submissions_table
+- file: 41_project_survey_data_into_database/01_project_web_scraping_into_database
+  sections:
+  - file: 41_project_survey_data_into_database/02_define_problem_statement
+  - file: 41_project_survey_data_into_database/03_setup_project
+  - file: 41_project_survey_data_into_database/04_overview_of_python_virtual_environments
+  - file: 41_project_survey_data_into_database/05_installing_required_libraries
+  - file: 41_project_survey_data_into_database/06_setup_logging
+  - file: 41_project_survey_data_into_database/07_modularizing_the_project
+  - file: 41_project_survey_data_into_database/08_setup_database
+  - file: 41_project_survey_data_into_database/10_create_required_table
+  - file: 41_project_survey_data_into_database/11_reading_the_data
+  - file: 41_project_survey_data_into_database/12_validating_data
+  - file: 41_project_survey_data_into_database/13_apply_required_transformations
+  - file: 41_project_survey_data_into_database/14_writing_to_database
+  - file: 41_project_survey_data_into_database/15_run_queries_against_data
+- file: 42_youtube_management/01_setup_database
+  sections:
+  - file: 42_youtube_management/02_create_required_tables
+  - file: 42_youtube_management/03_configure_youtube_apis
+  - file: 42_youtube_management/04_function_get_database_connection
+  - file: 42_youtube_management/05_populate_categories
+  - file: 42_youtube_management/06_get_playlists_data
+  - file: 42_youtube_management/07_populate_playlists_data
+  - file: 42_youtube_management/08_get_videos_data
+  - file: 42_youtube_management/09_populate_playlist_videos
+  - file: 42_youtube_management/inserting_failed_videos
+  - file: 42_youtube_management/youtube_data_analysis
+- file: 44_serialization_and_deserialization/02_recap_of_class_and_object
+  sections:
+  - file: 44_serialization_and_deserialization/03_create_marshmallow_schema
+  - file: 44_serialization_and_deserialization/04_serializing_objects
+  - file: 44_serialization_and_deserialization/05_deserializing_objects
+  - file: 44_serialization_and_deserialization/06_serializing_list_of_objects
+  - file: 44_serialization_and_deserialization/07_deserializing_list_of_objects
+- file: 52_database_programming_using_mongodb/03_getting_started_with_mongo_using_cli
+  sections:
+  - file: 52_database_programming_using_mongodb/04_interacting_with_mongo_using_python
+  - file: 52_database_programming_using_mongodb/05_insert_data_into_mongo_collection
+- file: 53_csv_files_to_mongodb_migration/02_overview_of_data_migration
+  sections:
+  - file: 53_csv_files_to_mongodb_migration/03_understand_characteristics_of_data
+  - file: 53_csv_files_to_mongodb_migration/04_read_data_into_dataframe
+  - file: 53_csv_files_to_mongodb_migration/05_analyze_the_dataframe
+  - file: 53_csv_files_to_mongodb_migration/06_create_column_mapping
+  - file: 53_csv_files_to_mongodb_migration/07_drop_columns_from_dataframe
+  - file: 53_csv_files_to_mongodb_migration/08_rename_columns_in_dataframe
+  - file: 53_csv_files_to_mongodb_migration/09_recap_of_mongodb
+  - file: 53_csv_files_to_mongodb_migration/10_load_data_to_mongodb
+  - file: 53_csv_files_to_mongodb_migration/11_load_csv_data_to_mongodb
+  - file: 53_csv_files_to_mongodb_migration/12_load_data_in_chunks
+- file: 82_managing_files_in_linux/02_understanding_linux_terminal
+  sections:
+  - file: 82_managing_files_in_linux/03_listing_files_and_folders
+  - file: 82_managing_files_in_linux/04_getting_help_for_commands
+  - file: 82_managing_files_in_linux/05_creating_folders
+  - file: 82_managing_files_in_linux/06_file_and_directory_permissions
+  - file: 82_managing_files_in_linux/07_copying_files
+  - file: 82_managing_files_in_linux/08_copying_folders
+  - file: 82_managing_files_in_linux/09_moving_files_and_folders
+  - file: 82_managing_files_in_linux/10_deleting_files_and_folders
+- file: 91_python_assessments/000_get_database_connection
+  sections:
+  - file: 91_python_assessments/001_get_max_number
+  - file: 91_python_assessments/002_sum_of_integers_in_range
+  - file: 91_python_assessments/003_sort_dates_in_the_list
+  - file: 91_python_assessments/004_sort_elements_in_the_json_string
+  - file: 91_python_assessments/005_compare_elements_in_the_list
+  - file: 91_python_assessments/006_get_unique_states
+  - file: 91_python_assessments/007_sort_addresses_by_state
+  - file: 91_python_assessments/008_date_and_time_objects
+  - file: 91_python_assessments/009_standardization_of_dates
+  - file: 91_python_assessments/010_generate_table_of_contents
+  - file: 91_python_assessments/011_formatting_email
+  - file: 91_python_assessments/012_get_list_of_players_per_sport
+  - file: 91_python_assessments/013_create_missing_directories_using_os
+  - file: 91_python_assessments/014_get_field_list_from_election_results
+  - file: 91_python_assessments/015_convert_players_json_to_csv_list
+  - file: 91_python_assessments/016_fulfilment_of_restaurant_raw_materials
+  - file: 91_python_assessments/017_generate_chunk_ranges
+  - file: 91_python_assessments/018_load_customer_data_to_mongo_collection
+  - file: 91_python_assessments/019_convert_election_results_to_dict
+  - file: 91_python_assessments/020_create_missing_directories_using_subprocess
+  - file: 91_python_assessments/021_save_players_json_as_csv
+  - file: 91_python_assessments/022_formatting_emails_using_mongo_data-draft
+  - file: 91_python_assessments/023_generate_delimited_string
+  - file: 91_python_assessments/024_create_table_for_courses
+  - file: 91_python_assessments/025_dump_list_of_constituencies_to_json_file
+  - file: 91_python_assessments/029_get_count_of_friends_from_json_file
+  - file: 91_python_assessments/031_read_courses_from_file
+  - file: 91_python_assessments/035_generate_list_of_delimited_strings
+  - file: 91_python_assessments/042_filter_the_course_data
+  - file: 91_python_assessments/050_load_data_into_courses
+  - file: 91_python_assessments/055_write_dicts_to_delimited_files
+  - file: 91_python_assessments/066_delete_data_from_courses
+  - file: 91_python_assessments/072_write_tuples_to_delimited_files

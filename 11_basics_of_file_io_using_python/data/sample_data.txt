@@ -1,1 +1,0 @@
-Just some random text to demonstrate read and write operations.
